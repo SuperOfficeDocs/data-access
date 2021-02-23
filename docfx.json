@@ -12,7 +12,9 @@
           "samples/**/*.*",
           "**/includes/**",
           "**/util/**",
-          "***/contributing.md"
+          "***/contributing.md",
+          "**/tmp/**",
+          "assets/**/*.*"
         ]
       }
     ],
