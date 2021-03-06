@@ -61,6 +61,14 @@
 	],
 	"description": "Include (superoffice-docs)"
 	},
+	"Add XML snippet": {
+		"scope": "json, markdown",
+		"prefix": "xml, code, include, reuse",
+		"body": [
+			"[!code-xml[XML](includes/FILE.xml)]"
+		],
+		"description": "Include (superoffice-docs)"
+		},
 	"SO grid card": {
 		"scope": "markdown",
 		"prefix": "card, grid, block",
@@ -84,6 +92,9 @@
 	"body": [
 		"<!-- Referenced links -->"
 		"[1]:"
+		""
+		"<!-- Referenced images -->"
+		"[img1]: media/"
 	],
 	"description": "Bottom link section"
 	},
@@ -92,7 +103,7 @@
 	"prefix": "tab, param",
 	"body": [
 		"| Parameter | Description |"
-		"|-----------|-------------|"
+		"|---|---|"
 	],
 	"description": "Table header for params"
 	},
