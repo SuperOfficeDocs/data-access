@@ -3,11 +3,9 @@
     "content": [
       {
         "files": [
-          "**/*.md",
-          "**/*.yml"
+          "**/*.{md,yml}",
+          "*.{md,yml}" 
         ],
-        "src": "docs",
-        "dest": ".",
         "exclude": [
           "samples/**/*.*",
           "**/includes/**",
@@ -27,9 +25,7 @@
           "**/*.jpg",
           "**/*.gif",
           "**/*.bmp"
-        ],
-        "src": "docs",
-        "dest": "."
+        ]
       }
     ],    
     "dest": "_site",
