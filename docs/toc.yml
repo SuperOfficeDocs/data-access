@@ -60,15 +60,17 @@ items:
     items:
     - name: WebAPI
       href: authentication/onsite/webapi/index.md 
-  - name: Session Handling
-    href: authentication/session-handling/index.md
-    items:
-    - name: Create a SoSession
-      href: authentication/session-handling/create-session.md
-    - name: Suspend a SoSession
-      href: authentication/session-handling/suspend-session.md
-    - name: Switch a SoSession
-      href: authentication/session-handling/switch-sessions.md
+    - name: SoSession
+      href: authentication/onsite/sosession/index.md
+      items:
+      - name: Create an SoSession
+        href: authentication/onsite/sosession/create.md
+      - name: Suspend an SoSession
+        href: authentication/onsite/sosession/suspend.md
+      - name: Switch SoSessions
+        href: authentication/onsite/sosession/switch.md
+      - name: How to access web services using SOAP
+        href: authentication/onsite/sosession/using-soap.md
 - name: Configuration
   href: netserver/config/index.md
   items:
