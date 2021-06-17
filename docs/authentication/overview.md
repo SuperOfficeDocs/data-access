@@ -104,22 +104,7 @@ With the WSDL files and using a tool like SOAPUI, raw SOAP requests are sent to 
 
 To successfully use the REST APIs (introduced in SuperOffice version 8), you must pass along credentials in each request header.
 
-Below is an HTML page that contains a few text boxes for determining where, or what version of, the services reside, user name, and password. With this required information, the user can specify a project ID and click the **Get** button to execute an XMLHttpRequest.
-
-![request-page][img7]
-
-### Basic
-
-As seen earlier, the `setRequestHeader` method is used to add the Authorization header key entry with a value equal to "Basic " plus a base64 encoded representation of the user name, plus a colon, and password. Note the space following the word *Basic*. In the JavaScript code, we use the built-in DOM `window.btoa(...)` method to convert the value to base64.
-
-### SOTicket
-
-Alternatively, if the HTML page is running in the context of a SuperOffice web panel, and the application passes in the user's `SoCredential.Ticket`, the REST request header also supports SOTicket, instead of Basic. In that case, the Authentication header value is "SOTicket " plus the ticket string. Once again, notice the space following *SOTicket*.
-
-[!code-html[HTML](includes/rest-auth.html)]
-
-> [!NOTE]
-> In this case, don't use the `window.btos(...)` method to convert a Ticket to base64 because the **ticket value is already base64 encoded**.
+Read about WebAPI authentication in the [onsite authentication][8] section.
 
 ## Conclusion
 
@@ -133,9 +118,9 @@ SuperOffice supports several different access points to SuperOffice APIs. Withou
 [5]: ../netserver/config/data.md
 [6]: onsite/com/index.md
 [7]: onsite/sosession/index.md
+[8]: onsite/webapi/index.md
 
 <!-- Referenced images -->
 [img1]: media/authenticate-overview.png
 [img5]: media/services-authenticate-soapui.png
 [img6]: media/services-authenticate-fiddler.png
-[img7]: media/simple-rest-page.png

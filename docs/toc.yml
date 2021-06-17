@@ -60,6 +60,13 @@ items:
     items:
     - name: WebAPI
       href: authentication/onsite/webapi/index.md 
+      items:
+      - name: Enable Basic authentication (username + password)
+        href: authentication/onsite/webapi/enable-basic-auth.md
+      - name: Enable IIS Identity (AD)
+        href: authentication/onsite/webapi/enable-iis-identity.md
+      - name: Reuse session with X-XSRF-TOKEN
+        href: authentication/onsite/webapi/reuse-session.md
     - name: SoSession
       href: authentication/onsite/sosession/index.md
       items:
@@ -529,5 +536,7 @@ items:
       href: webapi/headers/content-type.md
     - name: Modified and unmodified
       href: webapi/headers/modified-unmodified.md
+  - name: Reverse proxy
+    href: webapi/reverse-proxy.md
   - name: Timezones
     href: webapi/so-timezone.md
