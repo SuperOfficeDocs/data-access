@@ -12,6 +12,10 @@ items:
   items:
   - name: Overview
     href: authentication/overview.md
+  - name: Terminology
+    href: authentication/terminology.md
+  - name: Users and associates
+    href: authentication/users-and-associates.md
   - name: Online authentication (OIDC/OAuth 2.0)
     href: authentication/online/index.md
     items:
