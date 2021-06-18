@@ -89,7 +89,7 @@ items:
     - name: Configuration
       items:
       - name: NetServer
-        href: authentication/netserver-config.md
+        href: authentication/onsite/netserver-config.md
       - name: Enable anonymous user
         href: authentication/onsite/config-anonymous-user.md
       - name: Enable external user

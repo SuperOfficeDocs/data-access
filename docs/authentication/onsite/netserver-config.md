@@ -40,6 +40,6 @@ The `Database` section is used to define your database-specific details and will
 The `Explicit` section allows an application to determine what type of users are authorized to use this application, as well as must set the database credentials, which map to both a database server user and a SuperOffice system user.
 
 <!-- Referenced links -->
-[5]: ../../../netserver/config/data.md
+[5]: ../../netserver/config/data.md
 
 <!-- Referenced images -->
