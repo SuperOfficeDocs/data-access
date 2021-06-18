@@ -12,7 +12,7 @@ so.client: Windows
 
 # COM
 
-This section assumes that you have a working installation of the SuperOffice Windows client on your development machine. If not, perhaps you want to [try the NetServer sections][1].
+This section assumes that you have a working installation of the SuperOffice Windows client on your development machine. If not, perhaps you want to [try the NetServer options][1].
 
 In contrast to NetServer-based development, COM-based SuperOffice development is the one case where you don't need to worry about configuration files. The only thing you need to decide at this point is whether you will interact with the Windows client or not.
 
@@ -56,7 +56,7 @@ Using the `SoApplication` type, you have complete access to both the SuperOffice
 Please read more about the `IDatabase` APIs, either in the SDK download or here online.
 
 <!-- Referenced links -->
-[1]: ../../overview.md#skip-to-netserver
+[1]: ../../overview.md#options
 
 <!-- Referenced images -->
 [img2]: media/com-add-reference.png

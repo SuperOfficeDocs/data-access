@@ -84,8 +84,12 @@ items:
         href: authentication/onsite/sosession/switch.md
       - name: How to access web services using SOAP
         href: authentication/onsite/sosession/using-soap.md
+    - name: NetServer web service custom proxies
+      href: authentication/onsite/custom-proxies/index.md
     - name: Configuration
       items:
+      - name: NetServer
+        href: authentication/netserver-config.md
       - name: Enable anonymous user
         href: authentication/onsite/config-anonymous-user.md
       - name: Enable external user

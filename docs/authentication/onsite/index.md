@@ -3,7 +3,7 @@ title: Authentication
 uid: auth_onsite
 description: Authentication in SuperOffice onsite
 author: {github-id}
-keywords: authentication
+keywords: authentication, ticket, credentials
 so.topic: concept
 so.envir: onsite
 # so.client:
