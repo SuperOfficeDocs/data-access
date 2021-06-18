@@ -58,6 +58,8 @@ items:
   - name: Onsite authentication
     href: authentication/onsite/index.md
     items:
+    - name: Pipeline and plug-ins
+      href: authentication/onsite/pipeline.md
     - name: WebAPI
       href: authentication/onsite/webapi/index.md 
       items:
@@ -78,6 +80,18 @@ items:
         href: authentication/onsite/sosession/switch.md
       - name: How to access web services using SOAP
         href: authentication/onsite/sosession/using-soap.md
+    - name: Configuration
+      items:
+      - name: Enable anonymous user
+        href: authentication/onsite/config-anonymous-user.md
+      - name: Enable external user
+        href: authentication/onsite/config-external-user.md
+    - name: Legacy
+      items:
+      - name: COM API
+        href: authentication/onsite/com/index.md
+      - name: From secret to ticket
+        href: authentication/onsite/from-secret-to-ticket.md
 - name: Configuration
   href: netserver/config/index.md
   items:
