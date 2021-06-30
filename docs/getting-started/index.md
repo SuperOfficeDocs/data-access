@@ -14,11 +14,20 @@ so.client: win, web
 
 It can sometimes be daunting for people new to SuperOffice programming to know where to begin. With several platforms, for both Customer Relationship Management (CRM) and Customer Service (CS), it can be difficult to understand which application programming interface (API) is appropriate for which platform. This article explores the different platforms and explains what SuperOffice APIs are available for each one, as well as provides links to the corresponding API documentation.
 
+![imagejcbmo.png -screenshot][img5]
+
+## High-level integration points
+
+* [Webhooks][22]
+* [SOAP][23]
+* [REST][24]
+* [CRMScript][25]
+
 ## Internal automation API versus external integration API
 
 The primary focus of this article is to discuss the APIs that enable external integration with SuperOffice. This typically means applications that are compiled into executables and run in their own process. However, there are also important internal integration points in SuperOffice that are just as important and are covered briefly.
 
-Both SuperOffice CRM and SuperOffice Customer Service (CS) support different forms of scripting automation. SuperOffice CS, available in both on-site and online, supports scripting automation and accounts for a majority of CS integrations. SuperOffice CRM on the other hand, is available as four unique platforms, each of which has their own extensible characteristics:
+Both SuperOffice CRM and SuperOffice Customer Service (CS) support different forms of scripting automation. SuperOffice CS, available in both on-site and online, supports scripting automation and accounts for a majority of CS integrations. SuperOffice CRM on the other hand is available as four unique platforms, each of which has its own extensible characteristics:
 
 * Windows client
 * Onsite Web client
@@ -33,7 +42,7 @@ The sections below discuss the capabilities of both internal automation and exte
 
 Automation allows an application to execute code when an event occurs inside the client. These events occur when an action takes place: such as when a dialog is opened, or a person is created.
 
-While automation code is usually defined by customer requirements, consultants often create routines that assist with common tasks. Automation code can perform just about any tasks imaginable, but generally involve validating, transforming and/or moving data. These types of routines are commonly discussed in the [Developer Forums][1].
+While automation code is usually defined by customer requirements, consultants often create routines that assist with common tasks. Automation code can perform just about any task imaginable, but generally involve validating, transforming and/or moving data. These types of routines are commonly discussed in the [Developer Forums][1].
 
 **Script automation options by platform:**
 
@@ -64,7 +73,7 @@ Dim contactId
 contactId = CurrentContact.Identity
 ```
 
-While the same is possible on the Web client, it requires a round trip request to the web server using JavaScript, and is not considered an internal automation API.
+While the same is possible on the Web client, it requires a round trip request to the web server using JavaScript and is not considered an internal automation API.
 
 ```javascript
 var contact = AjaxMethodDispatcher.CallSync(
@@ -82,9 +91,17 @@ NetServer, although used as an umbrella term that encapsulates a variety of data
 
 SuperOffice has several partners and 3rd party vendors who have built tightly-coupled integrations with SuperOffice using external APIs. The different types of integrations built range from tiny edge-case security plugins to integrations with completely new document management systems. There are even complete enterprise resource planning systems that leverage SuperOffice CRM as the heart of its ecosystem.
 
+**Integration services:**
+
+* [Database Mirroring Service][26]
+* [ERPSync Connector Service][27]
+* [Quote Connector Service][28]
+
+These services are either independent applications or augment an existing application.
+
 Where to get started depends on your target SuperOffice platform and your preferred technology stack.
 
-The list of available APIs for integrations decreases the closer they are to on-line. That is just the nature of the respective environment and not the limitations of the platforms or APIs.
+The list of available APIs for integrations decreases the closer they are to CRM Online. That is just the nature of the respective environment and not the limitations of the platforms or APIs.
 
 **Recommended APIs for each platform:**
 
@@ -145,7 +162,7 @@ SuperOffice CRM Web also enjoys many integration capabilities. I would go so far
 
 Both SuperOffice on-site installations and CRM Online applications use the same NetServer web service APIs. The only difference between the two environments is how integrations are authenticated. While on-site integrations have a more direct approach, supplying credentials, CRM Online integrations must use [federated authentication][8].
 
-Federated authentication is a way SuperOffice can provide a single sign-in experience for multi-tenant users and applications that serve multi-tenant installations.
+Federated authentication is a way SuperOffice can provide a single-sign-in experience for multi-tenant users and applications that serve multi-tenant installations.
 
 The SuperOffice CRM Online environment hosts an app store with several partner integrations. These integrations are comprised of Business to Consumer (B2C) applications. Most applications expose functionality inside SuperOffice by adding web panels in relevant areas, while others add a button that opens a web page to the application. All application vendors have their own cloud platforms to manage customers and tenant users.
 
@@ -162,7 +179,7 @@ You can find out more information about CRM Online integration points by reading
 
 **Related SDK**:
 
-* [CRM Online SDK][9]
+* [CRM Online SDK][17]
 
 ### Customer Service
 
@@ -183,7 +200,7 @@ There are no prebuilt SuperOffice proxies available for these APIs. You must use
 
 ### NetServer Architecture
 
-All SuperOffice clients, in one form or another, depend on NetServer for database access. While each client has its own extensibility points, NetServer also has extensibility points. Some of NetServer extensibility options surface to the clients, such as the Document Plug-in.
+All SuperOffice clients, in one form or another, depend on NetServer for database access. While each client has its own extensibility points, NetServer also has extensibility points. Some of NetServer's extensibility options surface to the clients, such as the Document Plug-in.
 
 As a multi-tiered database access layer that bridges communications between clients and the SuperOffice database, NetServer uses database-independent database access code, as well as high-level web services for both the SuperOffice Web and PocketCRM clients.
 
@@ -252,9 +269,17 @@ Read more about each platform API in the SDK documentation.
 [19]: ../api-reference/netserver/services/index.md
 [20]: https://community.superoffice.com/en/developer/forum/
 [21]: mailto:sdk@superoffice.com
+[22]: ../../../superoffice-docs/docs/automation/webhook/index.md
+[23]: ../api-reference/soap/index.md
+[24]: ../api-reference/restful/rest/index.md
+[25]: ../../../crmscript/docs/overview/index.md
+[26]: ../../../superoffice-docs/docs/mirroring/overview.md
+[27]: ../netserver/erp-connectors/index.md
+[28]: ../netserver/quote-connectors/index.md
 
 <!-- Referenced images -->
 [img1]: media/scriptingapibysuperofficeplatform.png
 [img2]: media/automationcapabilitiesbyplatform.png
 [img3]: media/targetapibysuperofficecrmplatform.png
 [img4]: media/netserverarchitecture-blue-650.png
+[img5]: media/imagejcbmo.png
