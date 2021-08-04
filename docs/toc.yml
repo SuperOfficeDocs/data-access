@@ -211,6 +211,10 @@ items:
       href: netserver/services/make-soap-call-crm6.md
     - name: Call service using NetServer version 7
       href: netserver/services/make-soap-call-crm7.md
+- name: Archive providers
+  href: netserver/archive-providers/reference/
+- name: MDO providers
+  href: netserver/mdo-providers/
 - name: Entities
   href: netserver/entities/index.md
   items:
