@@ -213,10 +213,6 @@ items:
       href: netserver/services/make-soap-call-crm6.md
     - name: Call service using NetServer version 7
       href: netserver/services/make-soap-call-crm7.md
-- name: Archive providers
-  href: netserver/archive-providers/reference/
-- name: MDO providers
-  href: netserver/mdo-providers/
 - name: Entities
   href: netserver/entities/index.md
   items:
@@ -403,9 +399,13 @@ items:
       href: netserver/archive-providers/joiners.md
     - name: Base and helper classes
       href: netserver/archive-providers/base-and-helper-classes.md
+  - name: Archive provider reference
+    href: netserver/archive-providers/reference/
+  - name: MDO providers
+    href: netserver/mdo-providers/
   - name: OData Search in WebApi
     href: netserver/search/odata/index.md
-    items:    
+    items:
     - name: Associate
       href: netserver/search/odata/associate.md
     - name: Boolean
