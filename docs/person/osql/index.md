@@ -1,6 +1,6 @@
 ---
 title: Person - OSQL
-uid: api_person_sql
+uid: api_person_osql
 description: Working with contacts (person) in API with Objectified SQL.
 author: Bergfrid Skaara Dias
 so.date: 11.04.2021
