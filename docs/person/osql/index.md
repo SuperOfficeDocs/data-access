@@ -15,4 +15,4 @@ so.topic: concept
 
 <!-- Referenced links -->
 [1]: get-persons-from-contact-sodatareader.md
-[2]: osql/update-person-osql.md
+[2]: update-person-osql.md

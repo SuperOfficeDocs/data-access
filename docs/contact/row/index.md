@@ -17,4 +17,4 @@ so.topic: concept
 <!-- Referenced links -->
 [1]: create-contact-row.md
 [2]: create-contact-row.md
-[3]: add-new-contact-interests.md
+[3]: add-new-contact-interest.md
