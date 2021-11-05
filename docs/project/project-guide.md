@@ -71,6 +71,7 @@ SELECT * FROM PROJSTATUS WHERE ProjStatus_id IN
 | 5 | Project planning | 4 | Project planning | 0 | 2021-11-05 10:57:03 | |
 | 6 | Implementation | 7 | Implementation | 0 | 2021-11-05 10:57:03 | |
 | 7 | Completion | 9 | Completion | 0 | 2021-11-05 10:57:03 | |
+
 ## Tasks
 
 The different tasks defined for a project's different statuses is found in the `ProjectTypeStatusLink` table:
