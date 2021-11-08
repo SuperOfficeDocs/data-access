@@ -91,5 +91,3 @@ If you change the start time for a single appointment, the rule is not affected.
 
 <!-- Referenced images -->
 [img1]: media/recurrence-dialog.png
-[img2]: media/recurrence-rule-table.png
-[img3]: media/recurrence-rule-5.png

@@ -14,7 +14,7 @@ so.topic: howto
 
 This example shows how to get all the user-defined fields along with the field values on a given contact.
 
-![02][img1]
+![02 -screenshot][img1]
 
 ## Code
 

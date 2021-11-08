@@ -32,23 +32,23 @@ Recently a partner, experimenting with creating a managed document plug-in, disc
 
 Start by creating a strong name key file that will be used to sign the assembly that will contain the `IDocumentInterface` definition, as well as your document plug-in assembly. As seen below, open a Visual Studio Command Prompt and use the SN.exe utility to generate the keypair file.
 
-![x][img1]
+![x -screenshot][img1]
 
 Next, you will need a managed version of the `IDocumentInterface` declaration to reference in the document plugin. Using the *DocumentInterface.tlb* and the keyfile you just generated, use the *TLBIMP.exe* utility to generate a managed assembly that contains the `IDocumentInterface` definition. See code below. Do not forget the /keyfile:yourKeyFile.snk switch, as both this assembly and the document plugin, require a strong name.
 
 Now you should have a strong name key file to sign your document plugin assembly, as well as the signed assembly that contains the `IDocumentInterface` definition. Now it is time to create the solution.
 
-![x][img2]
+![x -screenshot][img2]
 
 ## The Solution
 
 Create a new class library solution and name it in accordance with the SuperOffice naming scheme for document plugins, for example, SoDocPlugin_YourPluginName. When the class library project is created, create a reference to the assembly that contains the IDocumentInterface, see below. Rename the default class to something you like, for example, `MyDocumentPlugIn`.
 
-![x][img3]
+![x -screenshot][img3]
 
 Since this assembly is being consumed in a COM environment, it will need to be visible in that COM environment. To make this happen, a few things first need to be set. This includes making the class COM Visible, assigning the class a GUID value, as well as setting the class interface type. Using VB.NET in VS 2005, this is all done for you if you are creating a COMClass library when first creating the solution. However, in C#, this is accomplished by decorating the class declaration with the appropriate attributes. As seen below, these include COMVisible, GUID, and ClassInterface. Optionally, you can also set these values in the project properties>AssemblyInformation window.
 
-![x][img4]
+![x -screenshot][img4]
 
 Next, you must implement each method defined in the `IDocumentInterface` in accordance with guidelines specified in the Client SDK (Reference > Plugin Systems > Document Plugin API).
 
@@ -58,11 +58,11 @@ When finished implementing the plugin, copy all referenced assemblies into the
 
 Next, your document plugin assembly, as well as the managed `IDocumentInterface` assembly, needs to be placed in the **Global Assembly Cache** (GAC). Do this by either dragging and dropping your assembly into the *WINDOWS\\assembly* directory, or using the *GACUTIL.exe* utility:
 
-![x][5]
+![x screenshot][img5]
 
 For SuperOffice to discover your document plugin, SuperOffice must be able to detect the class that implements `IDocumentInterface`, and call each interface method as necessary. Since SuperOffice is not able to read a .Net assembly, you must generate a type library with the same name as your plugin (or at least starting withSoDocPlugin), which exposes this information for your assembly. To do this, use the REGASM.exe utility. Open a Visual Studio Command Prompt and generate the type library:
 
-![x][img6]
+![x -screenshot][img6]
 
 Finally, modify the *SoLoader.ini* file and test the plugin.
 
@@ -90,7 +90,7 @@ SoDocPluginMyDocumentPlugin.dll = SuperOffice Plugin
 
 Now it's time to test. Open SuperOffice and verify your plugin is listed in the Preferences > System > Default document archive list:
 
-![x][img7]
+![x -screenshot][img7]
 
 ## Conclusion
 
