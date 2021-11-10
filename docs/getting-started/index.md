@@ -1,10 +1,10 @@
 ---
-uid: into-to-superoffice-apis
+uid: intro-to-superoffice-apis
 title: Introduction to SuperOffice APIs
 description: Introducing SuperOffice APIs
 author: Tony Yates
 so.date: 08.12.2015
-keywords: api
+keywords: api, getting started, integration point
 so.topic: getting-started
 so.envir: cloud, onsite
 so.client: win, web
@@ -15,21 +15,6 @@ so.client: win, web
 It can sometimes be daunting for people new to SuperOffice programming to know where to begin. With several platforms, for both Customer Relationship Management (CRM) and Customer Service (CS), it can be difficult to understand which application programming interface (API) is appropriate for which platform. This article explores the different platforms and explains what SuperOffice APIs are available for each one, as well as provides links to the corresponding API documentation.
 
 ![Integration points -screenshot][img5]
-
-## High-level integration points
-
-* [Webhooks][2]
-* [SOAP][3]
-* [REST][4]
-* [CRMScript][5]
-
-## Integration services
-
-These services are either independent applications or augment an existing application.
-
-* [Database Mirroring Service][6]
-* [ERPSync Connector Service][7]
-* [Quote Connector Service][8]
 
 ## Internal automation API versus external integration API
 
@@ -241,6 +226,7 @@ All types of technology platforms, including Java, PHP, Python, Ruby, and many m
 * [Webhooks][15]
 * [SOAP][11]
 * [REST][17]
+* [CRMScript][3]
 
 Related SDK:
 
@@ -258,6 +244,7 @@ Read more about each platform API in the SDK documentation.
 <!-- Referenced links -->
 [1]: https://community.superoffice.com/en/developer/forum/?clubId=3
 [2]: https://msdn.microsoft.com/en-us/library/aa227633(v=vs.60).aspx
+[3]: ../../../crmscript/docs/overview/index.md
 [5]: https://github.com/SuperOffice/SDK-Doc/tree/master/COM.IApplication
 [6]: https://github.com/SuperOffice/SDK-Doc/tree/master/COM.IDatabase
 [7]: ../api-reference/web/index.md
@@ -271,17 +258,9 @@ Read more about each platform API in the SDK documentation.
 [20]: https://community.superoffice.com/en/developer/forum/
 [21]: mailto:sdk@superoffice.com
 
-[2]: ../../automation/webhook/index.md
-[3]: ../../../../data-access/docs/api-reference/soap/index.md
-[4]: ../../../../data-access/docs/api-reference/restful/rest/index.md
-[5]: ../../../../crmscript/docs/overview/index.md
-[6]: ../../mirroring/overview.md
-[7]: ../../../../data-access/docs/netserver/erp-connectors/index.md
-[8]: ../../../../data-access/docs/netserver/quote-connectors/index.md
-
 <!-- Referenced images -->
 [img1]: media/scriptingapibysuperofficeplatform.png
 [img2]: media/automationcapabilitiesbyplatform.png
 [img3]: media/targetapibysuperofficecrmplatform.png
 [img4]: media/netserverarchitecture-blue-650.png
-[img5]: media/integartion-points.png
+[img5]: media/integration-points.png
