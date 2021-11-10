@@ -96,94 +96,7 @@ There are virtually no limitations as to which API you leverage when building an
 
 Although integrations in SuperOffice CRM Online can display visual elements, such as partner applications through a web panel, the Web client in SuperOffice CRM Online only supports service-orientated integrations today. Meaning that all data access routines must use the web services APIs. Considering the SuperOffice Web client relies exclusively on these APIs, and has more functionality than the Windows user and administration clients, the capability of the web service APIs should never be considered inferior. The web service APIs should be given serious consideration for nearly all scenarios.
 
-## Integration Scenarios by Platform
-
-To gain a better understanding of what types of integrations are possible, the remainder of this article is going to discuss each SuperOffice client and NetServer to help clarify which integration approach is best for your specific needs.
-
-### Window Client
-
-A flagship CRM platform, the SuperOffice CRM client has been the leading SuperOffice CRM product since 1989. SuperOffice CRM was created to support the needs of the sales person by making his everyday life easier – and make it so user-friendly and elegant that the user would want to use it.
-
-The Windows client exposes many hooks that make it easy for vendors to create a seamless experience with their applications. Integrations have full-duplex type communications, providing integrations the ability to receive notifications when users perform actions, immediately process the data concerned, and even switch the user's context and show important relevant information related to that action.
-
-**Integration Points:**
-
-* COM API
-* Automation Engine (vbScript and JScript scripts)
-* Event Subscriptions (internal scripts and external COM subscriptions)
-* Web Panels
-* Buttons to launch external applications
-* Document Plugin (NetServer based since version 8)
-* Sentry Plugin (COM)
-* Email Plugin (COM)
-
-**Related SDK**:
-
-* [IApplicationCOM API][5]
-* [IDatabaseCOM API][6]
-
-### Web Client (On-Site)
-
-Available since 2007, the SuperOffice Web client has enjoyed a wide-spread adoption by many on-site customer installations. The product has several advantages over the Windows client. For example, customers can install SuperOffice on a web server that is accessible both near and far without having to pay extra license fees for disconnected functionality such as Travel, or incure the extra maintenance costs for maintaining Travel Gateway and the processing of .up and .dwn files.
-
-SuperOffice CRM Web also enjoys many integration capabilities. I would go so far as to say that it is the most extensible CRM platform available today! With the ability to modify and adapt the user's experience, manipulate the data processing and logic, nearly every component in the SuperOffice CRM Web stack is over-ridable and extensible for complementary functionality or control.
-
-**Integration Points:**
-
-* Add controls to existing pages
-* Add custom dialogs
-* Override default functionality and inject custom logic into
-  * DataHandlers (create, update, delete of page data
-  * Archive Providers (read-only search providers
-  * Most buttons
-* Add custom views (tabs or preview pane options)
-* Add web panels
-
-**Related SDK**:
-
-* [Web Client SDK][7]
-
-### Web Client (Online)
-
-Both SuperOffice on-site installations and CRM Online applications use the same NetServer web service APIs. The only difference between the two environments is how integrations are authenticated. While on-site integrations have a more direct approach, supplying credentials, CRM Online integrations must use [federated authentication][8].
-
-Federated authentication is a way SuperOffice can provide a single sign-in experience for multi-tenant users and applications that serve multi-tenant installations.
-
-The SuperOffice CRM Online environment hosts an app store with several partner integrations. These integrations are comprised of Business to Consumer (B2C) applications. Most applications expose functionality inside SuperOffice by adding web panels in relevant areas, while others add a button that opens a web page to the application. All application vendors have their own cloud platforms to manage customers and tenant users.
-
-You can find out more information about CRM Online integration points by reading the CRM Online SDK pages.
-
-**Integration Points (Online)**:
-
-* Custom Lists
-* Custom List Items
-* User-defined Fields
-* Web Panels
-* Custom buttons (navigator and button bar)
-* Access to Web Services, including webhooks (see NetServer Architecture below).
-
-**Related SDK**:
-
-* [CRM Online SDK][9]
-
-### Customer Service
-
-There are several articles available that explain in detail many of the internal automation integration points provided by SuperOffice CS. There are not, however, too many external integration points to discuss. The ones that do exist are primarily the CS legacy [SOAP services][11]. It must be said that these services have not evolved for quite some time, and do not appear to be on any road map. That said, there are a few major installations that do leverage these endpoints, and therefore they are not likely to fade away any time soon either. Similar to the Windows client COM APIs, these APIs are in the future not likely to change.
-
-There are no prebuilt SuperOffice proxies available for these APIs. You must use a proxy generator appropriate for your target technology platform, or use raw SOAP requests, to use these services.
-
-**Integrations Points:**
-
-* SOAP Services (**Not available in Online**) (available at `http://<domain>/scripts/SOAP.exe?action=<endpoint>`. Available action parameters:
-  * customer
-  * ticket
-  * admin
-
-**Related SDK**:
-
-* [Customer Service][11]
-
-### NetServer Architecture
+## NetServer Architecture
 
 All SuperOffice clients, in one form or another, depend on NetServer for database access. While each client has its own extensibility points, NetServer also has extensibility points. Some of NetServer's extensibility options surface to the clients, such as the Document Plug-in.
 
@@ -237,25 +150,20 @@ Related SDK:
 
 Whether constructing a small internal automation routine or building a complex integration, SuperOffice has many integration options. Once you get past the problem of knowing with which SuperOffice platforms you are integrating, it becomes a matter of just choosing the right API for your solution.
 
-With the understanding that each SuperOffice platform provides a lot of integrations points, and knowing that any problem can have multiple solutions, it's important to consider all options before you decide which approach to take. Assistance and guidance are available. Please use the [developer forums][20] to ask for recommendations, or you may submit integration questions directly to SuperOffice at [sdk@superoffice.com][21].
+With the understanding that each SuperOffice platform provides a lot of integrations points, and knowing that any problem can have multiple solutions, it's important to consider all options before you decide which approach to take. Assistance and guidance are available. Please use the [developer forums][1] to ask for recommendations, or you may submit integration questions directly to SuperOffice at [sdk@superoffice.com][21].
 
 Read more about each platform API in the SDK documentation.
 
 <!-- Referenced links -->
-[1]: https://community.superoffice.com/en/developer/forum/?clubId=3
+[1]: https://community.superoffice.com/en/developer/forum/
 [2]: https://msdn.microsoft.com/en-us/library/aa227633(v=vs.60).aspx
 [3]: ../../../crmscript/docs/overview/index.md
-[5]: https://github.com/SuperOffice/SDK-Doc/tree/master/COM.IApplication
-[6]: https://github.com/SuperOffice/SDK-Doc/tree/master/COM.IDatabase
-[7]: ../api-reference/web/index.md
-[8]: ../../../superoffice-docs/docs/identity-management/federated-auth.md
 [11]: ../netserver/services/reference/index.md
 [12]: ../netserver/what-is-netserver.md
 [15]: ../netserver/webhooks/index.md
 [17]: ../api-reference/webapi/index.md
 [18]: ../api-reference/netserver/core/index.md
 [19]: ../api-reference/netserver/services/index.md
-[20]: https://community.superoffice.com/en/developer/forum/
 [21]: mailto:sdk@superoffice.com
 
 <!-- Referenced images -->

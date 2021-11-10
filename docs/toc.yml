@@ -1,6 +1,8 @@
 items:
 - name: SuperOffice APIs
   href: getting-started/index.md
+- name: Integration scenarios by platform
+  href: getting-started/scenarios-by-platform.md
 - name: Onsite vs. Online Development
   href: getting-started/online-vs-onsite.md
 - name: NetServer fundamentals
