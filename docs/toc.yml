@@ -1,10 +1,8 @@
 items:
 - name: SuperOffice APIs
   href: getting-started/index.md
-- name: Internal automation
-  href: getting-started/internal-automation.md
-- name: External integration
-  href: getting-started/external-integration.md
+- name: Scripting options
+  href: getting-started/scripting-options.md
 - name: Scenarios
   items:
   - name: Web (online)
@@ -15,6 +13,8 @@ items:
     href: getting-started/extend-service.md
   - name: Windows
     href: getting-started/extend-win.md
+- name: NetServer architecture
+  href: getting-started/netserver-architecture.md
 - name: NetServer fundamentals
   href: netserver/index.md
 - name: What is NetServer

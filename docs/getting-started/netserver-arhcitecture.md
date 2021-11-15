@@ -1,46 +1,16 @@
 ---
-uid: superoffice_external_integration_apis
-title: External integration APIs
-description: External integration APIs
+uid: superoffice_netserver_architecture
+title: NetServer architecture
+description: NetServer architecture
 author: Tony Yates
-so.date: 11.10.2021
-keywords: API, getting started, integration point, COM API, NetServer
+so.date: 11.15.2021
+keywords: API, NetServer
 so.topic: concept
 so.envir: cloud, onsite
 so.client: win, web
 ---
 
-# External integration APIs
-
-The term external API refers to all SuperOffice client products, SuperOffice COM APIs, and the NetServer API landscape.
-
-**NetServer**, although used as an umbrella term that encapsulates a variety of data access capabilities, is just as much if not more extensible than the SuperOffice clients. With constructs such as low-level database objects to high-level business objects, to higher-level web services and web service proxy libraries, NetServer is itself an extensible SuperOffice product.
-
-SuperOffice has several partners and 3rd party vendors who have built tightly-coupled integrations with SuperOffice using external APIs. The different types of integrations built range from tiny edge-case security plugins to integrations with completely new document management systems. There are even complete enterprise resource planning systems that leverage SuperOffice CRM as the heart of its ecosystem.
-
-Where to get started depends on your target SuperOffice platform and your preferred technology stack.
-
-The list of available APIs for integrations decreases the closer they are to online. That is just the nature of the respective environment and not the limitations of the platforms or APIs.
-
-## Recommended APIs for each platform
-
-| | Window | Web | Online |
-|---|:-:|:-:|:-:|
-| COM | x | | |
-| NetServer Core | x | x | |
-| NetServer Web Services | x | x | x |
-
-From NetServer Core, Web supports NetServer script events only.
-Using NetServer web services, the configuration must be set to Local Mode for Windows and Local or Remote mode for Web.
-
-There are virtually no limitations as to which API you leverage when building an integration that targets just the Windows client. If, however, your requirements include both the Windows client and the Web client together, the available API options decrease. This is not necessarily a bad thing though. Sometimes it just makes technological sense to build an integration using only one of the available APIs. It does not make sense, for example, to use the COM-based API in today's web service architectures.
-
-> [!NOTE]
-> Although it sometimes can't be avoided, we generally discourage building integrations that leverage more than one of our APIs in the same solution.
-
-Although integrations in SuperOffice CRM Online can display visual elements, such as partner applications through a web panel, the Web client in SuperOffice CRM Online only supports service-orientated integrations today. Meaning that all data access routines must use the web services APIs. Considering the SuperOffice Web client relies exclusively on these APIs, and has more functionality than the Windows user and administration clients, the capability of the web service APIs should never be considered inferior. The web service APIs should be given serious consideration for nearly all scenarios.
-
-## NetServer architecture
+# NetServer architecture
 
 All SuperOffice clients, in one form or another, depend on NetServer for database access. While each client has its own extensibility points, NetServer also has extensibility points. Some of NetServer's extensibility options surface to the clients, such as the Document Plug-in.
 
