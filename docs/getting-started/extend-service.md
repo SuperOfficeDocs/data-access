@@ -23,6 +23,12 @@ There are several articles available that explain in detail many of the internal
   * customer
   * ticket
   * admin
+* Custom tables and fields
+* Custom screens and dialogs
+* Scheduled events
+* Event-driven interaction
+* Data Exchange
+* High-level automation
 
 ## Related SDK
 

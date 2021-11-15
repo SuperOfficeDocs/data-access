@@ -18,6 +18,7 @@ SuperOffice CRM Web also enjoys many integration capabilities. I would go so far
 
 ## Integration points
 
+* Custom tables and fields
 * Add controls to existing pages
 * Add custom dialogs
 * Override default functionality and inject custom logic into
@@ -26,6 +27,7 @@ SuperOffice CRM Web also enjoys many integration capabilities. I would go so far
   * Most buttons
 * Add custom views (tabs or preview pane options)
 * Add web panels
+* Scheduled events
 
 ## Related SDK
 

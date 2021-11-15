@@ -20,9 +20,11 @@ The Windows client exposes many hooks that make it easy for vendors to create a 
 
 * COM API
 * Automation Engine (vbScript and JScript scripts)
-* Event Subscriptions (internal scripts and external COM subscriptions)
-* Web Panels
+* Event-driven interaction (internal scripts and external COM subscriptions)
+* Access current values
+* Web panels
 * Buttons to launch external applications
+* Custom tables and fields
 * Document Plugin (NetServer-based since version 8)
 * Sentry Plugin (COM)
 * Email Plugin (COM)
