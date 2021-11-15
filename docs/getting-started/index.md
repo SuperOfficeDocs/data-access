@@ -24,7 +24,7 @@ The first two levels of extensibility are exposed inside the admin UI pages of S
 
 The **scripting level** pertains to a few different features that provide similar functionality, albeit by different means. [CRMScript][3] is a SuperOffice scripting dialect similar to JavaScript and is managed inside the administrative pages of SuperOffice. **NetServer scripting** is an Application Server capability that is accessible onsite only.
 
-**External APIs** provide complete data access for both SuperOffice clients and online applications. This level includes SuperOffice COM APIs and the NetServer API landscape.
+**External APIs** provide complete data access for both SuperOffice clients and online applications. This level includes SuperOffice COM APIs and the [NetServer API landscape][15].
 
 **Internal APIs** are the nearly limitless amount of customization capabilities that most onsite installations leverage to provide everything from custom pages and dialogs, document and sentry plugins, and so much more.
 
@@ -165,6 +165,7 @@ Read more about each platform API in the SDK documentation.
 [12]: ../netserver/quote-connectors/index.md
 [13]: ../../../superoffice-docs/docs/mirroring/overview.md
 [14]: scripting-languages.md
+[15]: ../netserver/index.md
 
 <!-- Referenced images -->
 [img1]: media/web-client-custom-code.png

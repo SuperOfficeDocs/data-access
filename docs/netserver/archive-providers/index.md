@@ -81,6 +81,39 @@ Namespace is `SuperOffice.CRM.ArchiveLists`.
 * [Providers][6], [Extenders][7], and [Joiners][8]
 * [Base and helper classes][9]
 
+## Example
+
+The example below shows how we can read the name+department as one field, and the postal address city as a separate field. Unlike an entity, the archive will not load categories or email addresses unless they are requested.
+
+```csharp
+using SuperOffice;
+using SuperOffice.CRM.ArchiveLists;
+using SuperOffice.Util;
+using(SoSession newSession = SoSession.Authenticate("SAL0", ""))
+{
+  IArchiveProvider contactArchive = ArchiveProviderFactory.CreateFindContactProvider();
+
+  //Set the columns that needs to be returned
+  contactArchive.SetDesiredColumns("contactId", "nameDepartment", "address/city");
+
+  //set the paging properties of the provider.
+  contactArchive.SetPagingInfo(10, 0);
+
+  //An array of restrictions with an implicit and in between them.
+  contactArchive.SetRestriction(new ArchiveRestrictionInfo("contactId", "=", "1234"));
+
+  //Display the retrieved data in another list box
+  foreach (ArchiveRow row in contactArchive.GetRows())
+  {
+    foreach (KeyValuePair<string, ArchiveColumnData> column in row.ColumnData)
+    {
+      resultsListbox.Items.Add(column.Value.ToString());
+    }
+    resultsListbox.Items.Add(" --- ");
+  }
+}
+```
+
 <!-- Referenced links -->
 [1]: reference/index.md
 [2]: encoded-values.md
