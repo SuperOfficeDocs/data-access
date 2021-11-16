@@ -86,7 +86,13 @@ Unlike RDB object properties, which are full-blown entities themselves (for exam
 
 ## SuperOffice database interface layer (OSQL)
 
-At the lowest levels of the framework is a database-independent objectified SQL library. [OSQL][1] encompasses all **common SQL elements**, such as SELECT, JOIN, WHERE, AND, OR, and so forth. OSQL exposes all of these elements as **class objects**, to be constructed and leveraged in an object-orientated manner **debatable**.
+At the lowest levels of the framework is a database-independent objectified SQL library.
+
+[OSQL][1] encompasses all **common SQL elements**, such as SELECT, JOIN, WHERE, AND, OR, and so forth. It exposes all of these elements as **class objects**, to be constructed and leveraged in an "object-orientated" manner.
+
+OSQL has the best performance of all NetServer API layers. When using OSQL to create code, the code will be more responsive and efficient than when using the Services, RDB, or the HDB layers.
+
+[Read more about OSQL.][1]
 
 ## Programming with NetServer APIs
 
