@@ -11,7 +11,7 @@ so.client: win, web
 
 # High-level database layer (Rows)
 
-Rows are simple, straightforward persistence objects that represent one or more rows from a database table. Each table in the database has a corresponding **Row object** and **Rows collection**. Rows can contain and expose properties of **basic data types only** (String, Double, Int, and so on).
+[NetServer exposes many layers][11] of its API to do the same functionality. Rows are simple, straightforward persistence objects that represent one or more rows from a database table. Each table in the database has a corresponding **Row object** and **Rows collection**. Rows can contain and expose properties of **basic data types only** (String, Double, Int, and so on).
 
 HDB rows are very similar to that of ADO.NET DataTable and DataRow objects. The NetServer **DataTable** equivalent is a rows collection, such as PersonRows, whereas the **DataRow** equivalent is a single row object, such as PersonRow.
 
@@ -141,6 +141,7 @@ For example, in the `Sale` Entity, the `Associate` property would refer to the `
 [8]: update-row-in-entity.md
 [9]: delete-row.md
 [10]: delete-row-from-entity.md
+[11]: ../index.md
 
 <!-- Referenced images -->
 [img5]: media/personrowsobject.gif

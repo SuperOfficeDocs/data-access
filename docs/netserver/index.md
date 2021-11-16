@@ -3,7 +3,7 @@ uid: what_is_netserver
 title: What is Netserver / Understanding NetServer
 description: What is NetServer / Understanding NetServer
 author: AnthonyYates
-so.date: 11.15.2021
+so.date: 11.16.2021
 keywords: API, NetServer, HDB, RDB, entity, row, archive, OSQL
 so.topic: concept
 so.envir: cloud, onsite
@@ -71,12 +71,14 @@ Archives simplify searching and retrieving collections of related data efficient
 
 ## Relational database layer (entities)
 
-The Relational Database (RDB) layer, conceptually the **business logic** layer, is encapsulated within the **SuperOffice.Entities namespace**. Relational database objects, such as `Contact`, `ContactCollection`, `Person`, and `PersonCollection`, are all found here. These objects abstract away the complexities required to access and present information from the database.
+The relational database (RDB) layer, conceptually the **business logic** layer, is encapsulated within the **SuperOffice.Entities namespace**. Relational database objects, such as `Contact`, `ContactCollection`, `Person`, and `PersonCollection`, are all found here. These objects abstract away the complexities required to access and present information from the database.
 
-Relational database objects expose the data as neat and logical objects commonly referred to as [entities][3]. Entities represent real-world objects, such as companies and people.
+Relational database objects expose the data as neat and logical objects commonly referred to as [entities][3]. Entities **represent real-world objects**, such as companies and people.
 
 > [!TIP]
 > This layer is great for creating and saving new entities, such as creating a new Contact or Sale, but is not as efficient as one of the lower layers when retrieving information.
+
+[Read more about Entities.][3]
 
 ## High-level database layer (rows)
 

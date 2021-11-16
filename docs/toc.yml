@@ -280,7 +280,7 @@ items:
 - name: Objectified SQL
   href: netserver/osql/index.md
   items:
-  - name: Introduction to OSQL.
+  - name: Introduction to OSQL
     href: netserver/osql/index.md
   - name: OSQL Evolution
     href: netserver/osql/osql-evolution.md
