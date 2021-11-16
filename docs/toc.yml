@@ -253,6 +253,10 @@ items:
 - name: Rows
   href: netserver/rows/index.md
   items:
+  - name: Introduction to Row and Rows
+    href: netserver/rows/index.md
+  - name: CustomSearch
+    href: netserver/rows/customsearch.md
   - name: Row events
     href: netserver/rows/events.md
   - name: How to...

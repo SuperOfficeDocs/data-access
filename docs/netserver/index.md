@@ -80,9 +80,14 @@ Relational database objects expose the data as neat and logical objects commonly
 
 ## High-level database layer (rows)
 
-The High-Level Database (HDB) layer, found under the **SuperOffice.Rows namespace**, is a table-object view of the database. This layer exposes **database tables** and the information they contain as row objects, such as `ContactRow` and `ContactRows`.
+The high-level database (HDB) layer, found under the **SuperOffice.Rows namespace**, is a table-object view of the database. This layer exposes **database tables** and the information they contain as row objects, such as `ContactRow` and `ContactRows`.
 
-Unlike RDB object properties, which are full-blown entities themselves (for example, `Contact.Associate` corresponds to an `Associate` object with populated properties), HDB object properties contain identity values that represent identity field values in a corresponding table. In this case, the `ContactRow` associate property, which is called `AssociateId`, is an integer value that correlates to a row in the `associate` table where the `ContactRow.AssociateId` value equals the `associate_id` field value.
+Unlike RDB object properties, which are full-blown entities themselves, HDB object properties contain **ID values** that represent ID field values in a corresponding table.
+
+> [!NOTE]
+> The Row objects **do not contain any business logic**, so here you need to maintain the relationship between rows yourself.
+
+[Read more about Row and Rows.][2]
 
 ## SuperOffice database interface layer (OSQL)
 
