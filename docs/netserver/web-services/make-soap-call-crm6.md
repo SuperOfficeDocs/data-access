@@ -75,4 +75,4 @@ myContact.SaveContactEntity(ref myContactEntity);
 ```
 
 <!-- Referenced links -->
-[1]: ../services/call-ws-from-dotnet-std-tools/add-web-reference.md
+[1]: call-ws-from-dotnet-std-tools/add-web-reference.md
