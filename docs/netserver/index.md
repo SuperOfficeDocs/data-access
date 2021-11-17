@@ -21,6 +21,7 @@ As a multi-tiered database access layer that bridges communications between clie
 In a nutshell, NetServer is a layered, factory-driven library that enables developers to conduct Create, Read, Update and Delete (CRUD) operations to the SuperOffice database, and more. Whether deploying a solution to a local SuperOffice database installation or operating in a distributed environment, NetServer exposes an array of application programming interface (API) approaches to facilitate a wide range of solution implementations.
 
 Although the terrain is vast and complex, and at first sight, be can somewhat intimidating, the NetServer APIs tailor to a wide variety of developers by layering the architecture in various intuitive abstractions. The layered aspect of NetServer invites developers to tap into the database from several facets. In this article, we will guide you through the various regions of NetServer, show you the attractions, as well as point out the areas to avoid.
+![NetServer Architecture][img1]
 
 ## Persistence layers
 
@@ -143,6 +144,7 @@ The following figure displays a summary of performance using the different objec
 This has been a high-level view of NetServer. As you can see, there is a vast difference between the different approaches. Be aware though that, just because one layer took longer to complete than the other, it does not any one layer should be ignored. Each query type has its place in the development world when used judiciously.
 
 <!-- Referenced links -->
+<<<<<<< HEAD
 [1]: osql/index.md
 [2]: rows/index.md
 [3]: entities/index.md
@@ -162,3 +164,13 @@ This has been a high-level view of NetServer. As you can see, there is a vast di
 [img3]: media/netserver-components-overview.png
 [img4]: media/netserverarchitecture-blue-650.png
 [img6]: media/contactchart.png
+=======
+[1]: ../netserver/osql/index.md
+[2]: ../netserver/rows/index.md
+[3]: ../netserver/entities/index.md
+[4]: ../netserver/archive-providers/index.md
+[5]: ../netserver/services/index.md
+
+<!-- Referenced images -->
+[img1]: media/netserver-components-overview.png
+>>>>>>> main
