@@ -531,13 +531,13 @@ SuperOffice REST services add another API surface to the NetServer real estate, 
 
 Take your time getting to know SuperOffice REST services, and if you happen to stumble into an area that lacks support, please submit an email to sdk@superoffice.com with your API wishes.
 <!-- Referenced links -->
-[1]: ../../netserver/config/webapi.md
+[1]: ../../config/webapi.md
 [2]: https://www.getpostman.com/
 [3]: http://www.w3schools.com/jsref/met_win_btoa.asp
 [4]: index.md
-[6]: ../agents/index.md
+[6]: ../agents-webapi/index.md
 [7]: https://en.wikipedia.org/wiki/Open_Data_Protocol
-[8]: ../../netserver/search/odata/index.md
+[8]: ../../search/odata/index.md
 
 <!-- Referenced images -->
 [img1]: media/iis-configuration.png

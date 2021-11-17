@@ -175,18 +175,18 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 * [Read Tony's article][15] on how to consume SuperOffice REST resources, set required authentication headers, and how a request URL, body, and response body should appear and behave.
 
 <!-- Referenced links -->
-[1]: ../agents/index.md
-[2]: ../../contact/services/create-contact-rest.md
-[3]: ../../netserver/lists/services/rest/add-catlist-item-rest.md
-[4]: ../../documents/rest/add-document-template.md
-[5]: ../../documents/rest/generate-document.md
-[6]: ../../person/services/get-person-image-rest.md
-[7]: ../../person/services/update-person-image-rest.md
-[8]: ../../netserver/webhooks/register.md
-[9]: ../../assets/downloads/Swagger-v1-REST.zip
-[10]: ../../security/sentry/services/index.md
-[11]: ../../netserver/webhooks/reference/index.md
+[1]: ../agents-webapi/index.md
+[2]: ../../../../contact/services/create-contact-rest.md
+[3]: ../../lists/services/rest/add-catlist-item-rest.md
+[4]: ../../../../documents/rest/add-document-template.md
+[5]: ../../../../documents/rest/generate-document.md
+[6]: ../../../../person/services/get-person-image-rest.md
+[7]: ../../../../person/services/update-person-image-rest.md
+[8]: ../../webhooks/register.md
+[9]: ../../../../assets/downloads/Swagger-v1-REST.zip
+[10]: ../../../../security/sentry/services/index.md
+[11]: ../../webhooks/reference/index.md
 [12]: get-version.md
 [13]: submit-rest.md
-[14]: ../../api-reference/restful/rest/index.md
+[14]: ../../../../api-reference/restful/rest/index.md
 [15]: rest.md

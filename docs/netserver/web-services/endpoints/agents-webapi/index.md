@@ -92,11 +92,11 @@ POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=glops
 * [Download REST WebAPI Swagger file][6]
 
 <!-- Referenced links -->
-[1]: ../rest/index.md
-[2]: ../../contact/services/create-contact-webapi-agents.md
-[3]: ../../netserver/lists/services/listagent/add-catlist-item-webapi-agents.md
-[4]: ../../documents/agents-web-api/add-document-template.md
-[5]: ../../documents/agents-web-api/generate-document.md
-[6]: ../../assets/downloads/Swagger-v1-Agents.zip
+[1]: ../rest-webapi/index.md
+[2]: ../../../../contact/services/create-contact-webapi-agents.md
+[3]: ../../lists/services/listagent/add-catlist-item-webapi-agents.md
+[4]: ../../../../documents/agents-web-api/add-document-template.md
+[5]: ../../../../documents/agents-web-api/generate-document.md
+[6]: ../../../../assets/downloads/Swagger-v1-Agents.zip
 [7]: get-version.md
-[8]: ../../api-reference/restful/agent/index.md
+[8]: ../../../../api-reference/restful/agent/index.md
