@@ -48,15 +48,11 @@ The highest level of NetServer data access is the service-orientated architectur
 
 An important aspect of NetServer web service development is its **deployment flexibility**. It's capable of being embedded in a domain-centric fat client application, as well as a thin client deployed with NetServer service proxies for data access across the internet.
 
-This article is an overview of the NetServer API, as well as dive into the different aspects of NetServers service offerings.
-
-Each level is described briefly below and in detail in the linked sections.
+This article is an overview of the NetServer API, as well as dive into the different aspects of NetServers service offerings. Each level is described briefly below and in detail in the linked sections.
 
 ## Services layer
 
 At the highest level, encapsulated in the **SuperOffice.Services namespace**, is an agent pattern-derived API that in terms of deployment is quite flexible. Access and modification to data in the database, using service objects, will always be coded the same, whether the application and database are located on the same server, or operating in a distributed environment. This flexibility does come at a performance price though.
-
-![Services layer][img1]
 
 > [!NOTE]
 > The SuperOffice.Services layer should not be confused with the web services available in the installation directory: InstallBase\\WebServices. SuperOffice.Services is a **consumer** of these web services, whereas the web services are hosted in IIS. The layer is a **client proxy** to the NetServer web services and greatly simplifies what is required to call them.
@@ -148,7 +144,7 @@ This has been a high-level view of NetServer. As you can see, there is a vast di
 [3]: entities/index.md
 [4]: archive-providers/index.md
 [5]: services/index.md
-[6]: services/reference/index.md
+[6]: ../api-reference/soap/index.md
 [7]: ../api-reference/netserver/services/index.md
 [8]: ../api-reference/netserver/core/index.md
 [9]: webhooks/index.md
