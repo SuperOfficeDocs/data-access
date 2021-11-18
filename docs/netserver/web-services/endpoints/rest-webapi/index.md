@@ -42,9 +42,9 @@ The entities all have similar structures.
 
 ### Filter
 
-`/api/v1/Contact?$select=name,category&$filter=registeredDate before '2009-1-1'`
+`/api/v1/Contact?$select=name,category&$filter=registeredDate before '2021-1-1'`
 
-This returns the contact ID, name, and category for contacts created before 2009.
+This returns the contact ID, name, and category for contacts created before 2021.
 
 ### Default
 
@@ -85,13 +85,13 @@ SuperOffice has built-in lists (Category, Business, Position, and so on). You ca
 
 `/api/v1/List` returns a list of lists.
 
-To return meta-data about the list, including the list ID:
+To return **meta-data** about the list, including the list ID:
 
 * `/api/v1/List/Category`
 * `/api/v1/List/Business`
 * `/api/v1/List/YourOwnList`
 
-To return the list items in the given list:
+To return the **list items** in the given list:
 
 * `/api/v1/List/Category/Items`
 * `/api/v1/List/Business/Items`
@@ -127,7 +127,7 @@ Built-in string resources can be read in supported languages.
 
 ## System
 
-Users, Roles, License stuff are exposed via simple endpoints. If you have admin rights in your role, you can POST or PUT to update system information.
+Users, roles, and license stuff are exposed via simple endpoints. If you have admin rights in your role, you can POST or PUT to update system information.
 
 * `/api/v1/User/Tony`
 * `/api/v1/Role/12`
