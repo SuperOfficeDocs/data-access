@@ -2,9 +2,9 @@
 title: Agents WebAPI
 uid: webapi_agents
 description: Agents Web API
-author: {github-id}
-keywords: webapi, agents
-so.date:
+author: Bergfrid Dias
+so.date: 11.18.2021
+keywords: API, web services, endpoints, WebAPI, REST, Agents
 so.topic: concept
 ---
 
@@ -41,8 +41,8 @@ POST /api/v1/Agents/Appointment/CalculateDays
 { "Contact": { "ContactId": 123 },
   "AppointmentId": 1234,
   "Description": "string",
-  "StartDate": "2017-06-06T13:02:55Z",
-  "EndDate": "2017-06-06T13:02:55Z"
+  "StartDate": "2021-06-06T13:02:55Z",
+  "EndDate": "2021-06-06T13:02:55Z"
 }
 ```
 
@@ -73,10 +73,12 @@ POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=glops
 }
 ```
 
+You may also get a 200 OK with an internal error object.
+
 ## How to
 
 > [!NOTE]
-> The examples below are given using JavaScripty pseudo-code.
+> The examples below are given using JavaScripty pseudocode.
 
 * [Create a new company][2]
 * [Add a category list item][3]
@@ -94,7 +96,7 @@ POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=glops
 <!-- Referenced links -->
 [1]: ../rest-webapi/index.md
 [2]: ../../../../contact/services/create-contact-webapi-agents.md
-[3]: ../../lists/services/listagent/add-catlist-item-webapi-agents.md
+[3]: ../../../lists/services/listagent/add-catlist-item-webapi-agents.md
 [4]: ../../../../documents/agents-web-api/add-document-template.md
 [5]: ../../../../documents/agents-web-api/generate-document.md
 [6]: ../../../../assets/downloads/Swagger-v1-Agents.zip

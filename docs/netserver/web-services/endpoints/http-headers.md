@@ -3,7 +3,7 @@ title: Headers
 uid: webapi_headers
 description: WebAPI headers
 author: Bergfrid Dias
-so.date: 11.17.2021
+so.date: 11.18.2021
 keywords: API, WebAPI, headers, Accept-Language, Content-Type, If-Modified-Since, If-Unmodified-Since, internationalization, SO-Language, SO-Culture, Accept, If-Modified-Since, If-Unmodified-Since
 so.topic: concept 
 ---
@@ -100,9 +100,18 @@ The API supports both JSON and XML responses. Use the `Accept` header to specify
 
 ### XML
 
+**Agents:**
+
 ```http
+POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=123
 Accept: application/xml
+```
+
+**REST:**
+
+```http
 GET /api/v1/Contact/123
+Accept: application/xml
 ```
 
 Returns an XML representation of the contact:
@@ -119,9 +128,18 @@ Returns an XML representation of the contact:
 
 ### JSON
 
+**Agents:**
+
 ```http
+POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=123
 Accept: application/json
+```
+
+**REST:**
+
+```http
 GET /api/v1/Contact/123
+Accept: application/json
 ```
 
 Returns a JSON representation of the same (contact 123):
