@@ -2,8 +2,9 @@
 title: How to get the API version
 uid: webapi_rest_get_version
 description: How to get the REST WebAPI version
-author: {github-id}
-keywords:
+author: Bergfrid Dias
+so.date: 11.18.2021
+keywords: API, web services, endpoints, WebAPI, REST
 so.topic: howto
 # so.envir:
 # so.client:
@@ -11,26 +12,23 @@ so.topic: howto
 
 # How to get the API version
 
-You can get the version number and build-date from the **API endpoint**: `/api`
+You can get the version number and build date from the **API endpoint**: `/api`
 
 This returns a block with the supported versions and the NetServer version number.
 
 * If you don't ask specifically, you get the HTML representation.
-* If you ask for Javascript, you get the following:
+* If you ask for JavaScript, you get the following:
 
 ```javascript
 { "v1": "http://www.example.com/crm/api/v1",
-  "Version": "v1",
-  "NetServerVersion": "8.1.6431.038",
-  "NetServerAssembly": "8.1.0.0",
-  "NetServerDate": "2017-08-10",
-  "NetServer": "SuperOffice NetServer 8.1 Release (Build: 6431)",
-  "NetServerLabel": "9729",
-  "Services": "Services83",
-  "Services80": "http://www.superoffice.net/ws/crm/NetServer/Services80",
-  "Services81": "http://www.superoffice.net/ws/crm/NetServer/Services81",
-  "Services82": "http://www.superoffice.net/ws/crm/NetServer/Services82",
-  "Services83": "http://www.superoffice.net/ws/crm/NetServer/Services83",
+  "NetServerVersion": "10.0.2.617",
+  "NetServerAssembly": "10.0.0.0",
+  "NetServerDate": "2021-11-18",
+  "NetServerLabel": "Release_10.0.2_2021.11.12-01",
+  "NetServer": "SuperOffice 10.0.2 NetServer 10.0 Release (Build: Release_10.0.2_2021.11.12-01)",
+  "Services": "Services87",
+  "ServicesCurrent": "Services88",
+  "Version": "v1"
 }
 ```
 
@@ -67,7 +65,7 @@ This returns an array of URLs mapped to the HTTP methods they support, along wit
     "PUT": "Updates the existing WebPanelEntity",
     "DELETE": "Marks the existing WebPanelEntity as deleted."
   },
- ...
+  ...
 ```
 
 You can use this information to determine if the server supports the features you need.
