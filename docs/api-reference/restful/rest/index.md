@@ -1,7 +1,5 @@
 # SuperOffice REST API v1
-## v1-REST
- 
-# Welcome 
+
 Welcome to the SuperOffice WebAPI.
 
 You can get the version number and build-date from the API endpoint.
@@ -65,21 +63,22 @@ returns an array of URLs mapped to the HTTP methods they support, along with a b
  	....
 ```
 
-
 You can use this information to determine if the server supports the features you need.
-
 
 ## Building Blocks
 
 The SuperOffice WebAPI has two major parts:
+
 * **REST API** - URLs describe entities like person or sale.
-* **Agents API** - the services API, accessible via HTTP. 
+* **Agents API** - the services API, accessible via HTTP.
 
 ## REST API
+
 The REST API exposes objects as entities that can be retrieved using HTTP GET,
 modified using HTTP PUT, created using HTTP POST, and deleted using HTTP DELETE.
 
 ### REST API - Entities
+
 The REST API has the major entities (Company, Person, Project, Sale, etc) exposed.
 
     /api/v1/Contact
@@ -130,8 +129,8 @@ Many have related lists of other entities as well:
 
 These lists are archives that you can filter and sort using OData operations.
 
-
 ### REST API - Lists
+
 SuperOffice has a number of built-in lists (Category, Business, Position, etc).
 You can add your own custom lists.
 
@@ -156,8 +155,8 @@ These return the list items in the given list.
 Gives you read access to hierarchical lists, and other list providers
 in the system.
 
-
 ### REST API - Archives etc
+
 **Archives**
 
     /api/v1/Archive/OwnerContacts?$select=contactId,name,orgnr
@@ -179,16 +178,14 @@ User preferences and pref.descriptions can be read and updated.
 Returns the key called 'Lookup' from the foreign app 'Glops' for the 
 Contact record 123.
 
-
-
 **Strings**
 
     /api/v1/String/SR_YES?isoLangCode=sv
 
 Built-in string resources can be read in supported languages.
 
-
 ### REST API - System
+
      /api/v1/User/Tony
      /api/v1/Role/12
      /api/v1/License/SuperOffice
@@ -197,8 +194,8 @@ Users, Roles, License stuff is exposed via simple endpoints.
 If you have admin rights in your role, you can POST or PUT to update
 system information.
 
-
 ## Agent API
+
 The agents expose the latest Services agents and functions.
 
     /api/v1/Agents/Appointment/CalculateDays
@@ -220,9 +217,8 @@ be in the POST body.
 
 The result of the service call is returned as JSON.
 
-
-
 ## Errors
+
 Errors are returned using HTTP error codes, and as a JSON object:
 
     /api/v1/Contact/99999
@@ -230,29 +226,10 @@ Errors are returned using HTTP error codes, and as a JSON object:
 Returns HTTP 404 Contact Not Found, and the following JSON result
 
 ```javascript
-    {
-      "Error": true,
-      "ErrorType": "SoNotFoundException",
-      "ErrorMessage": "Contact id 99999 not found",
-      "ErrorSource": "SuperOffice.Services.Implementation"
-    }
+{
+  "Error": true,
+  "ErrorType": "SoNotFoundException",
+  "ErrorMessage": "Contact id 99999 not found",
+  "ErrorSource": "SuperOffice.Services.Implementation"
+}
 ```
-
-## Authorization
-
-You will need to provide some login information in order to use the SuperOffice web API.
-
-* BASIC authentication: Base64 Encode SuperOffice username:password
-* SOTICKET authentication. Pass the SuperOffice ticket (7T:abc123==) without any encoding.
-* BEARER authentication. Online only. Pass along an access token (7A:abc123==) from SuperId.
-
-### X-XSRF-TOKEN
-
-If you call the API without specifying an **Authorization** header, then the API will try to log in using
-the current user's session. To avoid 3rd party pages calling the API and piggy-backing off the 
-current session, the API requires that a special HTTP header is added to these requests.
-
-The SM.web pages contain an INPUT field XSRF_TOKEN. This field contains a random value identifying the 
-current session. You must add an X-XSRF-TOKEN header with the random value from the input field.
-
-The XSRF-TOKEN is also stored in a cookie, just in case the input field is not available.

@@ -3,8 +3,8 @@ title: Authorization
 uid: webapi_auth
 description: Web API authentication
 author: AnthonyYates
-so.date: 05.08.2018
-keywords: security, authentication, WebAPI, REST
+so.date: 11.17.2021
+keywords: security, authentication, WebAPI, REST, web services, config, BASIC, SOTICKET, BEARER, X-XSRF-TOKEN, CORS
 so.topic: concept
 so.envir: onsite
 so.client: Web
