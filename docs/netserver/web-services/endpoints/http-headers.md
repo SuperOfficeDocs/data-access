@@ -28,7 +28,7 @@ GET /api/v1/List/Category/Items/2
 
 This returns a multi-language string `NO:"Leverandør";US:"Supplier"` - which is not so useful when we want to show something to the user.
 
-If we add the `Accept-Language: en` header, then we get back a parsed result:
+If we add the `Accept-Language: en` header, then we get back a **parsed result:**
 
 ```http
 Accept-Language: en
@@ -39,7 +39,7 @@ This returns just `Supplier`.
 
 Similarly, string resource IDs are replaced when a language is specified. This applies to some archive headings and entity properties.
 
-Field properties contain reasons why fields are required. Without an Accept-Language header, you get back `FieldProperties` like this:
+**Field properties** contain reasons why fields are required. Without an `Accept-Language` header, you get back `FieldProperties` like this:
 
 ```json
 "FieldRight": {
@@ -127,18 +127,18 @@ GET /api/v1/Contact/123
 Returns a JSON representation of the same (contact 123):
 
 ```json
- { "ContactId": 123,
-   "Name": "Elan Hoppski",
-   "Department": "EAvdeling",
-   "OrgNr": "",
-   "Number1": "123"
- }
+{ "ContactId": 123,
+  "Name": "Elan Hoppski",
+  "Department": "EAvdeling",
+  "OrgNr": "",
+  "Number1": "123"
+}
 ```
 
 ## <a name="modified-unmodified">Modified or unmodified
 
 > [!NOTE]
-> These headers apply only to the **REST API** (not Agents).
+> These headers apply only to the **REST WebAPI** (not Agents).
 
 These headers apply to the major entities (Contact, Project,...) that have last modified date fields on them.
 
@@ -174,4 +174,4 @@ If-Unmodified-Since: Wed, 21 Oct 2015 07:28:00 GMT
 
 This will return a **412 Precondition failed** response if the contact has been modified after October 2015.
 
-This is telling you that your cached copy of the data is no good anymore. It has been modified on the server since you fetched it.
+This is telling you that your cached copy of the data is no good anymore. It has been modified on the server after you fetched it.
