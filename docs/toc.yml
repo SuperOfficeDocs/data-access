@@ -214,15 +214,9 @@ items:
       href: netserver/web-services/endpoints/reverse-proxy.md
     - name: Timezones
       href: netserver/web-services/endpoints/so-timezone.md
-  - name: Service Carriers
-    href: netserver/web-services/carriers/index.md
-    items:
-    - name: Read-only Carriers
-      href: netserver/web-services/carriers/index.md
-    - name: Entity carriers
-      href: netserver/web-services/carriers/index.md#entity-carriers
-  - name: Service Agents
-    href: netserver/web-services/agents/index.md
+  - name: Modes
+    href: netserver/web-services/modes.md
+  # Calling
   - name: Service Script Engine
     href: netserver/web-services/scripting/index.md
     items:

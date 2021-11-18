@@ -23,7 +23,7 @@ The **REST** API is not as complete as the **Agents** API, but it should cover t
 
 ### Getting started
 
-* Get the version number and build-date from the **API endpoint**: `/api`
+* Get the version number and build date from the **API endpoint**: `/api`
 * Get a list of supported URLs using the version URL: `/api/v1`
 
 ### Authorization

@@ -1,9 +1,9 @@
 ---
 uid: what_is_netserver
 title: What is Netserver / Understanding NetServer
-description: What is NetServer / Understanding NetServer
+description: NetServer is a multi-tiered database access layer that bridges communication between clients and the SuperOffice database.
 author: AnthonyYates
-so.date: 11.16.2021
+so.date: 11.18.2021
 keywords: API, NetServer, HDB, RDB, entity, row, archive, OSQL
 so.topic: concept
 so.envir: cloud, onsite
