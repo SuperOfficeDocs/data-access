@@ -4,13 +4,13 @@ uid: soap_table_rights
 description: Table rights in SOAP
 author: {github-id}
 so.date: 11.05.2016
-keywords:
-so.topic: 
+keywords: SOAP, security, TableRight
+so.topic: howto
 ---
 
 # Table rights in SOAP (3.1)
 
-We recommend that you create an enum that looks like the code listed below. Feel free to copy this code and use it in your client. This is C#.Net, please modify to suit the language of choice.
+We recommend that you create an enum that looks like the code listed below. Feel free to copy this code and use it in your client. This is C# .NET, please modify to suit the language of choice.
 
 ```csharp
 [Flags]
@@ -60,7 +60,7 @@ public enum ETableRight
 };
 ```
 
-So let’s say that you get the value “51” in the `Right` property of the `TableRight`. The XML returned from our service would look like this:
+So let’s say that you get the value "51" in the `Right` property of the `TableRight`. The XML returned from our service would look like this:
 
 ```XML
 <TableRight>
@@ -76,10 +76,10 @@ Using this algorithm, we find that `Uninitialized` is not a part of our table ri
 Programmatically, this is done more elegantly. The bitwise AND operator *&*, enable you to do this quite easily using the previously defined `ETableRight` enumeration. Let’s say that you want to verify that a user has Delete table rights. It would look something like this:
 
 ```csharp
-ETableRight right ;
+ETableRight right;
 
 if( (right & ETableRight.Delete) == ETableRight.Delete )
   //Delete something :)
 ```
 
-What you do here is that you perform a logical bitwise AND operation on the bit representing Delete. If the result equals the value of Delete, that table right is present in the 16-bit interger representing the user's table rights.
+What you do here is that you perform a logical bitwise AND operation on the bit representing Delete. If the result equals the value of Delete, that table right is present in the 16-bit integer representing the user's table rights.

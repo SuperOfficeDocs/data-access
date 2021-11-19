@@ -194,6 +194,9 @@ items:
     items:
     - name: SOAP (SuperOfice.NetServer.Services)
       href: netserver/web-services/endpoints/soap/index.md
+      items:
+      - name: TableRight
+        href: netserver/web-services/endpoints/soap/table-rights.md
     - name: Agents WebAPI
       href: netserver/web-services/endpoints/agents-webapi/index.md
     - name: REST WebAPI
