@@ -200,7 +200,7 @@ items:
       - name: How to submit a request
         href: netserver/web-services/endpoints/rest-webapi/submit-rest.md
       - name: In-depth article
-        href: netserver/web-services/endpoints/rest-webapi/rest.md
+        href: netserver/web-services/endpoints/rest-webapi/in-depth.md
     - name: Get version
       href: netserver/web-services/endpoints/get-webapi-version.md
     - name: HTTP request headers

@@ -12,7 +12,7 @@ so.version: 8.1
 
 # SuperOffice RESTful WebAPI
 
-SuperOffice REST WebAPI services available from version 8.1.
+SuperOffice REST WebAPI services are available from version 8.1.
 
 ## Introduction
 
@@ -158,7 +158,7 @@ Authorization: SOTicket 7:HlksdjfLKJlkjKJHKJhkjHKJHiuhuYGHGFgdttGVuYGuR&R&f==
 
 Given an HTML form that contains three text box controls for: username, password, and ID, the following example demonstrates how an XMLHttpRequest is used to call to the project resource to get a project by a given ID value.
 
-**Example HTML / Javascript method:**
+**Example HTML / JavaScript method:**
 
 ```html
 <script>
