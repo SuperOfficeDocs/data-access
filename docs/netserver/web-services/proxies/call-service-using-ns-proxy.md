@@ -1,10 +1,10 @@
 ---
 title: Calling through a NetServer proxy
 uid: call_service_using_ns_proxy
-description: Calling through a NetServer proxyincluding spaces.
-author: {github-id}
-so.date:
-keywords:
+description: Calling through a NetServer proxy
+author: Bergfrid Dias
+so.date: 11.18.2021
+keywords: API, web services, proxy, SOAP, NetServer
 so.topic: howto
 # so.envir:
 # so.client:
@@ -31,7 +31,7 @@ The application’s configuration file will need to be changed to reflect the fo
 </Services>
 ```
 
-What happens when the application’s config file is changed from running Local to Remote is that the `AgentFactory` returns a different type of objects when its various factory functions are called.
+What happens when the application’s config file is changed from running Local to Remote is that the `AgentFactory` returns a different type of object when its various factory functions are called.
 
 * When running locally, the new ContactAgent() returns a `ContactAgentImpl` that lives in the *SuperOffice.CRM.Services.Implementation.dll*.
 * When running remotely, the new ContactAgent() returns a `ContactAgentProxy` that lives in the *SuperOffice.CRM.Services.Proxy.dll*.

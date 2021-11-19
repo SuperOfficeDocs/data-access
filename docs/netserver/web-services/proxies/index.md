@@ -1,20 +1,28 @@
 ---
-title: Wrapped or unwrapped proxy
-uid: wrapped_or_unwrapped_proxy
-description: Wrapped or unwrapped proxy
-author: {github-id}
-so.date:
-keywords:
+title: Proxies
+uid: ws_proxies
+description: Proxies
+author: Bergfrid Dias
+so.date: 11.18.2021
+keywords: API, web services, proxy, WebAPI, SOAP
 so.topic: concept
-# so.envir:
-# so.client:
 ---
 
-# Wrapped or unwrapped proxy
+# Proxies
+
+## SOAP
+
+There is flexibility in using SuperOffice **proxies**. Not only are all of the complexities involved with communicating with web services done for you, but also in the ability to code once and have your application work both local or remote simply by changing a single configuration setting - SuperOffice->Services->DefaultMode. Under the hood, however, there are significant differences between the different modes, Local, Remote, and Switch.
+
+One way to communicate with NetServer web services is to use Microsoft's ServiceModel Metadata Utility Tool ([SVCUTIL.exe][9] to generate a client proxy class for a particular NetServer web service, for example Appointment.svc or Contact.svc.
+
+Another way is to create a Visual Studio Service Reference and communicate with the services through that proxy.
+
+The most complete way, however, is to reference the pre-packaged, all-in-one factory-driven proxy, **SuperOffice.Services.dll**.
 
 Proxy generators can generate calls in one of 2 ways: wrapped or unwrapped. The SOAP calls described by the WSDL take one parameter and return one result object. All the parameters to the call are placed on the parameter object. The proxy generator can choose to present the parameters as one object or as a list of parameters.
 
-## Wrapped proxy
+### Wrapped proxy
 
 Wrapped proxies match the WSDL call and use one parameter object. A call using a wrapped proxy looks like this:
 
@@ -27,7 +35,7 @@ Response res = agent.SomeMethod( r );
 
 The order of the parameters is not important, because there is only one parameter to the call. The properties on the parameter object can be initialized in any order without affecting the call.
 
-## Unwrapped proxy
+### Unwrapped proxy
 
 By unwrapping the parameter object, the method signature looks more like a normal function call. A call using an unwrapped proxy looks like this:
 
@@ -48,3 +56,8 @@ void SomeCall( int associateId, bool flag, string name );
 ```
 
 In a future release, the parameters will be tagged with ordering information, making life for non-.Net clients simpler. But for now, you will need to pay careful attention to the order of parameters when making unwrapped SOAP proxy calls.
+
+## WebApi client library
+
+<!-- Referenced links -->
+[9]: https://msdn.microsoft.com/en-us/library/aa347733(v=vs.110).aspx

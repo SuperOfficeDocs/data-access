@@ -10,8 +10,8 @@ so.topic: concept
 
 # SuperOffice NetServer web services
 
-[NetServer exposes many layers][12] of its API to do the same functionality.
-The web services are the highest level for working with NetServer. This layer consists of [web service endpoints][11] based on WCF **SOAP** and **REST**ful WebAPI (IIS application) and web service proxies.
+[NetServer exposes many layers][3] of its API to do the same functionality.
+The web services are the highest level for working with NetServer. This layer consists of [web service endpoints][2] based on WCF **SOAP** and **REST**ful WebAPI (IIS application) and web service proxies.
 
 Each installation and online tenant exposes NetServer web services for all clients, including SuperOffice Web, SuperOffice Mobile, and partner application clients.
 
@@ -115,48 +115,28 @@ To summarize: **The agent object presents the services and the carrier object (s
 
 Carrier entities resemble Entity objects. In contrast, carrier objects (not ending in Entity) such as Contact and Person, are more similar to **Row objects**.
 
-## Calling web services TBD
+## Calling a web service
 
 The web services are bundled in your Developer Tools subscription.
 
-One way to communicate with NetServer web services is to use Microsoft's ServiceModel Metadata Utility Tool ([SVCUTIL.exe][8] to generate a client proxy class for a particular NetServer web service, for example Appointment.svc or Contact.svc.
+You have the option to:
 
-Another way is to create a Visual Studio Service Reference and communicate with the services through that proxy.
+* Use NetServer Proxies ([NuGet packages][6])
+* Generate a custom proxy by adding a web service
+* Use the WebAPI client
+* Use RESTful [WebAPI endpoints][7]
+* Use RESTful [Agent endpoints][8]
 
-The most complete way, however, is to reference the pre-packaged, all-in-one factory-driven proxy, SuperOffice.Services.dll.
-
-There is flexibility in using SuperOffice **proxies**. Not only are all of the complexities involved with communicating with web services done for you, but also in the ability to code once and have your application work both local or remote simply by changing a single configuration setting - SuperOffice->Services->DefaultMode. Under the hood, however, there are significant differences between the different modes, Local, Remote, and Switch.
-
-For SOAP-based clients, NetServer .NET assemblies use a service agent pattern to work with business entities used by clients to access the service endpoints. These are available as [NuGet packages][6]
-
-One call to the web services can hide or include multiple database queries, business logic, user-preference checks, and default handling. For SuperOffice CRM Online, you have the option to:
-
-* use NetServer Proxies ([NuGet packages][6])
-* generate a custom proxy by adding a web service
-* use RESTful [WebAPI endpoints][7]
-* use RESTful [Agent endpoints][8]
-
-Your application is not allowed to place .net assemblies in a tenant web application and must use the web services for all interactions.
-
-## SoSession
-
-A session retrieves data regarding the currently logged-in user and keeps them in the cache. Session Cache holds authentication information about the logged-in user, associate of the user, business ID of the company that the user belongs to, reference data, and many more. Each time a new user logs in a session is created.
-
-* [Create session][3]
-* [Suspend session][4]
+> [!NOTE]
+> Your Online application is not allowed to place .NET assemblies in a tenant web application and must use the web services for all interactions.
 
 <!-- Referenced links -->
 [1]: ../entities/index.md
-[3]: ../../authentication/onsite/sosession/create.md
-[4]: ../../authentication/onsite/sosession/suspend.md
-[5]: ../../../../superoffice-docs/docs/apps/getting-started/what-api-to-use.md
+[2]: endpoints.md
+[3]: ../index.md
 [6]: https://www.nuget.org/packages/SuperOffice.NetServer.Services
 [7]: ../../api-reference/restful/rest/index.md
 [8]: ../../api-reference/restful/agent/index.md
-[9]: https://msdn.microsoft.com/en-us/library/aa347733(v=vs.110).aspx
-[10]: http://java.sun.com/developer/technicalArticles/J2EE/j2ee_ws/index.html#use
-[11]: endpoints.md
-[12]: ../index.md
 
 <!-- Referenced images -->
 [img1]: media/netserver-web-services.png

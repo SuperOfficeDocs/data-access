@@ -189,8 +189,6 @@ items:
 - name: Web Services
   href: netserver/web-services/index.md
   items:
-#  - name: Proxies
-#    href: netserver/web-services/proxies/index.md
   - name: Endpoints
     href: netserver/web-services/endpoints/index.md
     items:
@@ -214,8 +212,21 @@ items:
       href: netserver/web-services/endpoints/reverse-proxy.md
     - name: Timezones
       href: netserver/web-services/endpoints/so-timezone.md
-  - name: Modes
-    href: netserver/web-services/modes.md
+  - name: Proxies
+    href: netserver/web-services/proxies/index.md
+    items:
+    - name: Call using NetServer Services proxies
+      href: netserver/web-services/proxies/call-service-using-ns-proxy.md
+    - name: Call using custom proxies
+      href: netserver/web-services/proxies/call-service-using-ns-proxy-ws.md
+    - name: Call service using NetServer binaries
+      href: netserver/web-services/proxies/call-service-using-ns-binaries.md
+    - name: Call service using NetServer version 6
+      href: netserver/web-services/proxies/make-soap-call-crm6.md
+    - name: Call service using NetServer version 7
+      href: netserver/web-services/proxies/make-soap-call-crm7.md
+    - name: Modes
+      href: netserver/web-services/proxies/modes.md
   # Calling
   - name: Service Script Engine
     href: netserver/web-services/scripting/index.md
@@ -228,18 +239,6 @@ items:
       href: netserver/web-services/scripting/run-scripts.md
     - name: Reference
       href: netserver/web-services/scripting/reference/
-  - name: How to...
-    items:
-    - name: Call service using NetServer Services Proxies
-      href: netserver/web-services/call-service-using-ns-proxy.md
-    - name: Call service using custom proxies
-      href: netserver/web-services/call-service-using-ns-proxy-ws.md
-    - name: Call service using NetServer binaries
-      href: netserver/web-services/call-service-using-ns-binaries.md
-    - name: Call service using NetServer version 6
-      href: netserver/web-services/make-soap-call-crm6.md
-    - name: Call service using NetServer version 7
-      href: netserver/web-services/make-soap-call-crm7.md
 - name: Entities
   href: netserver/entities/index.md
   items:

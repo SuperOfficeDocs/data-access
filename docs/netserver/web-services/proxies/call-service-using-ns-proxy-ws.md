@@ -1,16 +1,16 @@
 ---
-title: Calling through a proxy by adding a web services
+title: Calling through a proxy by adding a web service
 uid: call_service_using_ns_proxy_ws
-description: Calling through a proxy by adding a web servicesincluding spaces.
-author: {github-id}
-so.date:
-keywords:
+description: Calling through a proxy by adding a web service
+author: Bergfrid Dias
+so.date: 11.18.2021
+keywords: API, web services, proxy, SOAP, NetServer
 so.topic: howto
 # so.envir:
 # so.client:
 ---
 
-# Calling through a proxy by adding a web services
+# Calling through a proxy by adding a web service
 
 To call a NetServer service through a proxy as a web service you have to set up the NetServer provided web services as an application in the IIS. After configuring the IIS application you have to add the web service you are going to use in your application as a web reference. The following figure shows the web reference added to a web application.
 
@@ -78,14 +78,13 @@ Having multiple services that share the same carrier objects is a scenario that 
 ## See also
 
 * [Agent patterns][2]
+* [Wrapped or unwrapped proxies][2]
 * [Authentication and SOAP calls][3]
-* [Wrapped or unwrapped proxies][4]
 
 <!-- Referenced links -->
 [1]: http://www.hightech.ir/SeeSharp/Proxy-Code-Generation-In-Visual-Studio
-[2]: agents/index.md
-[3]: ../../authentication/onsite/sosession/using-soap.md
-[4]: wrapped-or-unwrapped-proxy.md
+[2]: ../index.md
+[3]: ../../../authentication/onsite/sosession/using-soap.md
 
 <!-- Referenced images -->
 [img1]: media/image006.jpg

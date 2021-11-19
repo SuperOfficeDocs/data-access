@@ -160,10 +160,19 @@ SoCredentials is an object representation of the SoCredentialsHeader element, wh
 
 Regarding NetServer services authentication, probably the most important thing to do first is to determine how you intend to leverage the web services provided by NetServer. Will you decide to use the [SOAP proxies][1] in your project, create your own client proxy or use the [REST][3] endpoints and implement all of the functionality yourself? Either way, the service-oriented aspects of NetServer web services provide many means to an end.
 
+## SoSession
+
+A session retrieves data regarding the currently logged-in user and keeps them in the cache. Session Cache holds authentication information about the logged-in user, associate of the user, business ID of the company that the user belongs to, reference data, and many more. Each time a new user logs in a session is created.
+
+* [Create session][4]
+* [Suspend session][5]
+
 <!-- Referenced links -->
 [1]: https://www.nuget.org/packages/SuperOffice.NetServer.Services
 [2]: ../authentication/overview.md
 [3]: ../api-reference/restful/index.md
+[4]: ../../authentication/onsite/sosession/create.md
+[5]: ../../authentication/onsite/sosession/suspend.md
 [10]: http://java.sun.com/developer/technicalArticles/J2EE/j2ee_ws/index.html#use
 
 <!-- Referenced images -->
