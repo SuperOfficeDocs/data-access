@@ -186,7 +186,7 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 [9]: ../../../../assets/downloads/Swagger-v1-REST.zip
 [10]: ../../../../security/sentry/services/index.md
 [11]: ../../webhooks/reference/index.md
-[12]: get-version.md
+[12]: ../get-webapi-version.md
 [13]: submit-rest.md
 [14]: ../../../../api-reference/restful/rest/index.md
 [15]: rest.md

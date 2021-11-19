@@ -1,10 +1,10 @@
 ---
 title: How to get the API version
-uid: webapi_rest_get_version
-description: How to get the REST WebAPI version
+uid: webapi_get_version
+description: How to get the WebAPI version and list of supported URLs.
 author: Bergfrid Dias
-so.date: 11.18.2021
-keywords: API, web services, endpoints, WebAPI, REST
+so.date: 11.19.2021
+keywords: API, web services, endpoints, WebAPI, REST, Agents, version
 so.topic: howto
 # so.envir:
 # so.client:

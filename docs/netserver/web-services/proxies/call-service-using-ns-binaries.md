@@ -1,7 +1,7 @@
 ---
 title: Calling the services directly using the NetServer binaries
 uid: call_service_using_ns_binaries
-description: Calling the services directly using the NetServer binariesincluding spaces.
+description: Calling the services directly using the NetServer binaries
 author: {github-id}
 so.date:
 keywords:

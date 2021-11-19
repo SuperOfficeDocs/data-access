@@ -1,10 +1,22 @@
+---
+title: WebAPI
+uid: webapi_reference_rest
+description: REST WebAPI reference
+author: Bergfrid Dias
+so.date: 11.19.2021
+keywords: API, web services, WebAPI, REST
+so.topic: reference
+---
+
 # SuperOffice REST API v1
 
 Welcome to the SuperOffice WebAPI.
 
-## Building Blocks
+## Building blocks
 
-The SuperOffice WebAPI has two major parts:
+[!include[Intro to the WebAPI](../../../includes/webapi-intro.md)]
 
-* **REST API** - URLs describe entities like person or sale.
-* **Agents API** - the services API, accessible via HTTP.
+## Getting started
+
+* Get the version number and build date from the **API endpoint**: `/api`
+* Get a list of supported URLs using the version URL: `/api/v1`

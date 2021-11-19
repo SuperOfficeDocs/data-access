@@ -194,18 +194,15 @@ items:
     items:
     - name: Agents webapi
       href: netserver/web-services/endpoints/agents-webapi/index.md
-      items:
-      - name: Get version
-        href: netserver/web-services/endpoints/agents-webapi/get-version.md
     - name: REST webapi
       href: netserver/web-services/endpoints/rest-webapi/index.md
       items:
-      - name: Get version
-        href: netserver/web-services/endpoints/rest-webapi/get-version.md
       - name: How to submit a request
         href: netserver/web-services/endpoints/rest-webapi/submit-rest.md
       - name: In-depth article
         href: netserver/web-services/endpoints/rest-webapi/rest.md
+    - name: Get version
+      href: netserver/web-services/endpoints/get-webapi-version.md
     - name: HTTP request headers
       href: netserver/web-services/endpoints/http-headers.md
     - name: Reverse proxy
