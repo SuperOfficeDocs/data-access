@@ -3,8 +3,8 @@ title: Headers
 uid: webapi_headers
 description: WebAPI headers
 author: Bergfrid Dias
-so.date: 11.18.2021
-keywords: API, WebAPI, headers, Accept-Language, Content-Type, If-Modified-Since, If-Unmodified-Since, internationalization, SO-Language, SO-Culture, Accept, If-Modified-Since, If-Unmodified-Since
+so.date: 11.19.2021
+keywords: API, WebAPI, headers, Accept-Language, Content-Type, If-Modified-Since, If-Unmodified-Since, internationalization, SO-Language, SO-Culture, Accept, If-Modified-Since, If-Unmodified-Since, SO-TimeZone, includeTZOffset
 so.topic: concept 
 ---
 
@@ -15,6 +15,7 @@ HTTP headers that the SuperOffice WebAPI understands:
 * Accept-Language
 * Content-Type
 * If-Modified-Since and If-Unmodified-Since (REST only)
+* SO-TimeZone
 
 ## <a name="accept-language"></a>Multiple languages
 
@@ -193,3 +194,79 @@ If-Unmodified-Since: Wed, 21 Oct 2015 07:28:00 GMT
 This will return a **412 Precondition failed** response if the contact has been modified after October 2015.
 
 This is telling you that your cached copy of the data is no good anymore. It has been modified on the server after you fetched it.
+
+## <a name="so-timezone">SO-TIMEZONE
+
+You specify the time zone using the `SO-TIMEZONE` HTTP header. It can be either an id or a time-zone name.
+
+The following blocks are the same because the `/api/v1/timezone` archive lists the Norway time zone code as 261.
+
+```http
+GET /appointment/123
+Accept: application/json
+SO-TimeZone: NO
+```
+
+```http
+GET /appointment/123
+Accept: application/json
+SO-TimeZone: 261
+```
+
+This will convert dates to/from the given time zone, but it will leave the dates without a time zone specifier.
+
+This is the way that the WCF service API works, and how the WebAPI has worked since its release. It leaves time zones up to the client.
+
+### <a name="includetzoffset">includeTZOffset
+
+```http
+GET /appointment/123
+Accept: application/json
+SO-TimeZone: NO, includeTZOffset
+```
+
+Adding `includeTZOffset` to the `SO-TIMEZONE` header will cause the time zone offsets to be included in the JSON. This makes JavaScript adjust the dates to UTC correctly and will affect date-time calculations done by clients since the timezone is no longer unspecified.
+
+For example:
+
+```javascript
+// SO-TimeZone: US-NY
+// StartDate: "2018-12-24T07:34:45" 
+
+x = a.StartDate
+// Mon Dec 24 2018 07:34:45 GMT+0100 (Central European Standard Time)
+
+x.ToISOString();
+// "2018-12-24T06:34:45.000Z"
+
+x.getHours()
+// 7
+
+x.getUtcHours()
+// 6
+```
+
+So here we get the expected time back, but it is attached to the wrong time zone, so the UTC time is wrong.
+
+But if we specify the SO-TimeZone header to include the TZ Offset:
+
+```js
+// SO-TimeZone: US-NY, includeTZOffset
+// StartDate: "2018-12-24T07:34:45-0500" 
+
+x = a.StartDate
+// Mon Dec 24 2018 13:34:45 GMT+0100 (Central European Standard Time)
+
+x.toISOString()
+//"2018-12-24T12:34:45.000Z"
+
+x.getHours()
+// 13
+
+x.getUtcHours()
+// 12
+```
+
+Now the time we get back is not what we expected (7 hours) (because JavaScript is converting to local (Norwegian) time automatically), but the time zone and UTC values are correct.
+
+Which behavior you want depends on what sort of the date processing you are doing.
