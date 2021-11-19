@@ -2,7 +2,7 @@
 uid: soap-web-services
 title: SOAP Web services
 description: SOAP reference
-author: {github-id}
+author: Bergfrid Dias
 so.date: 11.17.2021
 so.topic: reference
 keywords: web services, SOAP, API, WCF, WSDL

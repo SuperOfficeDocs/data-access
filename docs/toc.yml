@@ -192,9 +192,11 @@ items:
   - name: Endpoints
     href: netserver/web-services/endpoints/index.md
     items:
-    - name: Agents webapi
+    - name: SOAP (SuperOfice.NetServer.Services)
+      href: netserver/web-services/endpoints/soap/index.md
+    - name: Agents WebAPI
       href: netserver/web-services/endpoints/agents-webapi/index.md
-    - name: REST webapi
+    - name: REST WebAPI
       href: netserver/web-services/endpoints/rest-webapi/index.md
       items:
       - name: How to submit a request
