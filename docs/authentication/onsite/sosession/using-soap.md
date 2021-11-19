@@ -81,12 +81,5 @@ An [agent][1] contains a set of methods corresponding to SOAP calls. These metho
 * **Secret** – Sets the SOAP secret
 * **UserId** – Sets the `userId`
 
-## How to make SOAP calls
-
-* How to make SOAP calls [with CRM 6][2]
-* How to make SOAP calls [with CRM 7][3]
-
 <!-- Referenced links -->
-[1]: ../../../netserver/services/agents/index.md
-[2]: ../../../netserver/services/make-soap-call-crm6.md
-[3]: ../../../netserver/services/make-soap-call-crm7.md
+[1]: ../../../netserver/services/soap/index.md

@@ -119,7 +119,7 @@ Carrier entities resemble Entity objects. In contrast, carrier objects (not endi
 
 The web services are bundled in your Developer Tools subscription.
 
-You have the option to:
+The service-oriented aspects of NetServer web services provide many means to an end. You have the option to:
 
 * Use NetServer Proxies ([NuGet packages][6])
 * Generate a custom proxy by adding a web service

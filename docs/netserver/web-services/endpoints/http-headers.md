@@ -95,7 +95,7 @@ SO-Culture defaults to the language, so you only need to specify it when it is d
  SO-Culture: sv
 ```
 
-## <a name="content-type">Content types
+## <a name="content-type"></a>Content types
 
 The API supports both JSON and XML responses. Use the `Accept` header to specify which you would like to receive.
 
@@ -154,7 +154,7 @@ Returns a JSON representation of the same (contact 123):
 }
 ```
 
-## <a name="modified-unmodified">Modified or unmodified
+## <a name="modified-unmodified"></a>Modified or unmodified
 
 > [!NOTE]
 > These headers apply only to the **REST WebAPI** (not Agents).
@@ -195,7 +195,7 @@ This will return a **412 Precondition failed** response if the contact has been 
 
 This is telling you that your cached copy of the data is no good anymore. It has been modified on the server after you fetched it.
 
-## <a name="so-timezone">SO-TIMEZONE
+## <a name="so-timezone"></a>SO-TIMEZONE
 
 You specify the time zone using the `SO-TIMEZONE` HTTP header. It can be either an id or a time-zone name.
 
