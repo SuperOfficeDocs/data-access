@@ -14,7 +14,7 @@ so.envir:
 
 # NetServer web service scripting API
 
-The following endpoint interfaces define all web service methods that serve event hooks for integrations. The details of how to add your own script event handlers are described in the [Scripting in NetServer services](../index.md) article.
+The following endpoint interfaces define all web service methods that serve event hooks for integrations. The details of how to add your own script event handlers are described in the [Scripting in NetServer services][1] article.
 
 * [IAIAgent](iaiagent/index.md)
 * [IAppointmentAgent](iappointmentagent/index.md)
@@ -66,4 +66,3 @@ The following endpoint interfaces define all web service methods that serve even
 * [IUserDefinedFieldInfoAgent](iuserdefinedfieldinfoagent/index.md)
 * [IViewStateAgent](iviewstateagent/index.md)
 * [IWebhookAgent](iwebhookagent/index.md)
-
