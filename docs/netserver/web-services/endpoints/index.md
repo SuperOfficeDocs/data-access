@@ -3,7 +3,7 @@ title: Endpoints
 uid: ws_endpoints
 description: Endpoints
 author: Bergfrid Dias
-so.date: 11.18.2021
+so.date: 11.22.2021
 keywords: API, web services, endpoints, WebAPI, SOAP
 so.topic: concept
 ---
@@ -11,6 +11,15 @@ so.topic: concept
 # Endpoints
 
 ## SOAP
+
+* Learn about the SOAP API [endpoints][9] such as Services88.
+* Use a [built-in or custom proxy][10].
+* Check out the [latest reference][12].
+
+### Authorization (SOAP)
+
+* [Proxy authentication using SoSession][8]
+* [Direct authentication using a Ticket][11]
 
 ## WebAPI
 
@@ -21,7 +30,7 @@ so.topic: concept
 * Get the version number and build date from the **API endpoint**: `/api`
 * Get a list of supported URLs using the version URL: `/api/v1`
 
-### Authorization
+### Authorization (WebAPI)
 
 * [Authorization types and how to configure them][3]
 * [How to reuse sessions with XSRF-TOKEN][4]
@@ -40,3 +49,8 @@ so.topic: concept
 [5]: http-headers.md#accept-language
 [6]: http-headers.md#content-type
 [7]: http-headers.md#modified-unmodified
+[8]: ../../../authentication/onsite/sosession/index.md
+[9]: soap/index.md
+[10]: ../proxy/index.md
+[11]: ../../../authentication/onsite/index.md#the-ticket
+[12]: ../../../api-reference/soap/Services88/index.md

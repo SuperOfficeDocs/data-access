@@ -3,8 +3,8 @@ title: REST WebAPI
 uid: rest_api
 description: SuperOffice REST Web API exposes objects as entities that can be manipulated using the HTTP verbs GET, PUT, POST, and DELETE.
 author: Bergfrid Dias
-so.date: 11.18.2021
-keywords: API, web services, endpoints, WebAPI, REST
+so.date: 11.22.2021
+keywords: API, web services, endpoints, WebAPI, REST, ODATA, SO-AppToken, SOTicket
 so.topic: concept
 ---
 
@@ -26,9 +26,7 @@ POST api/v1/List/Category/Items
 
 Adds a new list item to the Category list.
 
-## Entities
-
-The REST API has the major entities (Company, Person, Project, Sale, and so on) exposed.
+The REST API exposes the **major entities** (Company, Person, Project, Sale, and so on):
 
 * `/api/v1/Contact`
 * `/api/v1/Person`
@@ -38,19 +36,19 @@ The REST API has the major entities (Company, Person, Project, Sale, and so on) 
 
 The entities all have similar structures.
 
-`/api/v1/Contact` returns an ODATA feed of contact records. You can select fields and order and filter the result using ODATA operations.
+`/api/v1/Contact` returns an [ODATA][16] feed of contact records. You can select fields and order and filter the result using ODATA operations.
 
-### Filter
+## Filter
 
 `/api/v1/Contact?$select=name,category&$filter=registeredDate before '2021-1-1'`
 
 This returns the contact ID, name, and category for contacts created before 2021.
 
-### Default
+## Default
 
 `/api/v1/Contact/default` returns a new blank entity.
 
-### Retrieve object
+## Retrieve object
 
 `/api/v1/Contact/123` returns the Contact with ID 123. This object can be PUT or DELETE - subject to the usual sentry restrictions. If your role does not allow you to update, then the WebAPI won't give you more access.
 
@@ -60,22 +58,22 @@ PUT /api/v1/Contact/123
 DELETE /api/v1/Contact/123
 ```
 
-### Simple
+## Simple
 
 `/api/v1/Contact/123/Simple` returns a simplified version of the entity. This cannot be updated or deleted, but it can be easier to work with - it does not have deeply nested structures, and does not support things like user-defined fields.
 
-### User-defined fields
+## User-defined fields
 
 Most of the entities have user-defined fields, and expose information about the layout at `/api/v1/Contact/UdefLayout`.
 
 The actual user-defined field values are returned in the entity's `UserDefinedFields` property.
 
-### Lists of entities
+## Lists of entities
 
 Many have related lists of other entities as well:
 
-* `/api/v1/Contact/123/Projects`|
-* `/api/v1/Contact/123/Sales`|
+* `/api/v1/Contact/123/Projects`
+* `/api/v1/Contact/123/Sales`
 
 These lists are archives that you can filter and sort using OData operations.
 
@@ -148,12 +146,31 @@ Errors are returned using HTTP error codes, and as a JSON object:
 }
 ```
 
-## How to
+## Calling (non-interactive request)
+
+Let's look at how your application can communicate with the SuperOffice web services *after* authenticating and obtaining the system user ticket. You have to establish a secure connection before you start exchanging data.
+
+In contrast to the **interactive** workflow, where the `Authorization` header uses `Bearer [access_token]`, the **non-interactive** workflow requires the `Authorization` header to use `SOTicket` instead of `Bearer`, followed by the ticket value.
 
 > [!NOTE]
-> The examples below are given using JavaScripty pseudo-code.
+> Pre-requisites: You have a [valid system user ticket][13].
 
-* [Submit a non-interactive REST request][13]
+The **ApplicationToken** header must also be specified as SO-AppToken with the client secret (application token) value provided when the application was registered.
+
+* **Authorization**: `SOTicket System_User_Ticket_Value`
+* **SO-AppToken**: `Application_Token_Value`
+
+```csharp
+GET /Cust26759/api/v1/MDOList/category?flat=True HTTP/1.1
+Host: sod.superoffice.com
+accept: application/json
+authorization: SOTICKET 7T:MAA3AGYAMQBlAGQAZAAxAGQAZQAwADgAYgAxAGEAYwBkADYAOAA0ADcAMQA2ADkAOQBhADQAZgBiADMAOQAyADsAMgAwADgANwAzADEANQAwADQAMwA7AEMAdQBzAHQAMgA2ADcANQA5AA==
+accept-language: en
+SO-AppToken: f2398a3a7wer3759d4b220e9a9c94321
+```
+
+## How to (code samples)
+
 * [Create a new company][2]
 * [Add a category list item][3]
 * [Add a document template][4]
@@ -187,6 +204,7 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 [10]: ../../../../security/sentry/services/index.md
 [11]: ../../webhooks/reference/index.md
 [12]: ../get-webapi-version.md
-[13]: submit-rest.md
+[13]: ../../../../authentication/online/auth-application/get-system-user-ticket.md
 [14]: ../../../../api-reference/restful/rest/index.md
 [15]: in-depth.md
+[16]: ../../../search/odata/index.md

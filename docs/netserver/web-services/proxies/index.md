@@ -3,7 +3,7 @@ title: Proxies
 uid: ws_proxies
 description: Proxies
 author: Bergfrid Dias
-so.date: 11.18.2021
+so.date: 11.22.2021
 keywords: API, web services, proxy, WebAPI, SOAP
 so.topic: concept
 ---
@@ -19,7 +19,7 @@ There is flexibility in using SuperOffice **proxies**. Not only are all of the 
 **Options:**
 
 * Use NetServer proxies ([NuGet packages][6])
-* Generate a custom proxy by adding a web service
+* Generate a [custom proxy][3] by adding a web service
 
 ### NetServer proxies
 
@@ -30,7 +30,7 @@ You can either:
 * [Call directly with binaries][1]
 * [Call through a proxy as a web service][2]
 
-## Custom proxies
+### Custom proxies
 
 * One way to communicate with NetServer web services is to use Microsoft's ServiceModel Metadata Utility Tool ([SVCUTIL.exe][9] to generate a client proxy class for a particular NetServer web service, for example, *Appointment.svc* or *Contact.svc*.
 

@@ -28,6 +28,53 @@ After giving a name to the added web service you can use that web service name i
 
 Having multiple services that share the same carrier objects is a scenario that is not well supported in Visual Studio.
 
+### Direct authentication with SoCredentials
+
+The following example demonstrates how to call the web service through a **Visual Studio WebReference** proxy object.
+
+```csharp
+public ContactEntity GetContact()
+{
+  Contact ws = new Contact();
+  ws.SoCredentials = new SoCredentialsHeader();
+  // Get the ticket from the principal web service.
+  ws.SoCredentials.Secret = GetTicket("JR", "password");
+  ContactEntity contactEntity = ws.GetContact(3);
+  return contactEntity;
+}
+
+public string GetTicket(string username, string password)
+{
+  SoPrincipalClient client = new SoPrincipalClient();
+  SoTimeZone timezone;
+  SoExtraInfo extraInfo;
+  SoCredentials credentials;
+  SOPrincipalCarrier principal;
+  bool authSuccess = false;
+  bool success = false;
+  SoExceptionInfo exInfo = pc.AuthenticateUsernamePassword(
+    "",
+    username,
+    password,
+    out extraInfo,
+    out success,
+    out timezone,
+    out principal,
+    out credentials,
+    out authSuccess
+    );
+  if (exInfo != null)
+    throw new SoServiceException(exInfo);
+  return credentials.Ticket;
+```
+
+The first thing is to instantiate a `Contact` proxy object. Next, before any methods are called, the `SoCredentials` proxy property is set to a new `SoCredentialsHeader` instance, and then set accordingly.
+
+SoCredentials is an object representation of the SoCredentialsHeader element, which is an element in the SOAP message header. Each time a method is called against the web service, these credentials are sent along with it. This is mandatory the order to successfully authenticate against the web service.
+
+> [!NOTE]
+> If any one of these values is wrong, the most likely result will be a `SoapHeaderException`, accompanied by the "Server unavailable, please try later" message.
+
 ### Connection management
 
 Both alternatives **generate method stubs** to make asynchronous calls.However, there are still system limitations imposed when making more than two simultaneous calls. To remedy that you'll need to look further into how the .Net framework manages connections.

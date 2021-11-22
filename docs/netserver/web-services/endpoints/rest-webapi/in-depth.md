@@ -3,7 +3,7 @@ title: SuperOffice RESTful WebAPI
 description: SuperOffice RESTful WebAPI
 author: Tony Yates
 so.date: 11.26.2015
-keywords: REST, API, RESTful, WebAPI
+keywords: REST, API, RESTful, WebAPI, HTTP Action Verbs, BASIC, SOTicket, authentication, XSRF Token, setRequestHeader, ODATA
 so.topic: article
 so.envir: cloud
 so.client: online
@@ -14,17 +14,18 @@ so.version: 8.1
 
 SuperOffice REST WebAPI services are available from version 8.1.
 
+> [!NOTE]
+> This article by Tony Yates was originally published in 2015. It is included here in the docs for completeness. However, you will find the content under the respective topics on this site and those *might* be more current.
+
 ## Introduction
 
-Representational State Transfer (REST) is an architectural pattern penned by Roy Fielding for creating an HTTP-based APIs. There are no shortage of articles online that discuss what REST is, how it's been interpreted and how it's been implemented on various platforms, and therefore will not be discussed here. This article will focus primarily on how to use consume SuperOffice REST resources, set required authentication headers, and describe how a request URL, body, and response body should appear and behave.
+**Representational State Transfer** (REST) is an architectural pattern penned by Roy Fielding for creating an HTTP-based API. There's no shortage of articles online that discuss what REST is, how it's been interpreted and how it's been implemented on various platforms, and will therefore not be discussed here. This article will focus primarily on how to consume SuperOffice REST resources, set required authentication headers, and describe how a request URL, body, and response body should appear and behave.
 
 ## Configuration
 
-Before submitting an actual request to the webserver, we must make sure everything is configured correctly. IIS must be configured to handle all of the HTTP verbs, and NetServer must be configured to support the REST feature.
+Before submitting an actual request to the web server, we must make sure everything is configured correctly. IIS must be configured to handle all of the HTTP verbs, and NetServer must be configured to support the REST feature.
 
-### IIS Configuration
-
-#### Configure HTTP Action Verbs
+### Configure HTTP Action Verbs (IIS)
 
 In IIS, navigate to the application hosting SuperOffice web client or NetServer. Select it in the IIS application tree, then double-click **Handler Mappings** in the **Features View**.
 
@@ -34,25 +35,28 @@ Click to view the **Verbs** tab in the Request Restrictions dialog. Next click t
 
 **IIS Manager Handler Mappings:**
 
-![x][img1]
+![IIS Manager Handler Mappings -screenshot][img1]
 
 IIS is now configured to access and process all request verbs, and therefore permit requests to create, read, update and delete via SuperOffice REST APIs.
 
-#### Configure Basic Authentication
+### Configure Basic Authentication (IIS)
 
-While API authentication is discussed below, it's important to understand how to configure IIS if you plan on using basic authentication. If you do not plan on using basic authentication, skip this sub-section.
+While API authentication is discussed below, it's important to understand how to configure IIS if you plan on using basic authentication.
 
-To enable Basic Authentication for REST API, first enable basic authentication on the website root. Do this by selecting the root website, then double-click the Authentication icon in the Features View pane. With the Authentication panel shown, right-click the **Basic Authentication** option and set the status to Enabled.
+> [!NOTE]
+> If you don't plan on using basic authentication, skip to [Configure NetServer](#configure-netserver).
 
-![x][img2]
+To enable Basic Authentication for REST API, first enable basic authentication on the website root. Do this by selecting the root website, then double-click the Authentication icon in the **Features View** pane. With the **Authentication** panel shown, right-click the **Basic Authentication** option and set the status to Enabled.
 
-Next, disable Basic Authentication on the SuperOffice web application. Select the SuperOffice web application under the root website, then double-click the Authentication icon. In the Authentication panel, if the Basic Authentication status is Enabled, right-click Basic Authentication and select Disable.
+![Enable basic authentication on the website root -screenshot][img2]
 
-![x][img3]
+Next, disable Basic Authentication on the SuperOffice web application. Select the SuperOffice web application under the root website, then double-click the Authentication icon. In the **Authentication** panel, if the Basic Authentication status is *Enabled*, right-click Basic Authentication and select *Disable*.
 
-With Basic Authentication configured this way, any valid SuperOffice user can navigate to the REST URLs and invoke a request. To test these settings, navigate to the application's URL and attempt to get the contact where contact ID equals 1. Do that by navigating in a browser to `http://superoffice80/api/v1/contact/1` and this should result in a Credentials dialog prompting for a username and password. Any valid SuperOffice username works.
+![Disable basic authentication on the SuperOffice web application -screenshot][img3]
 
-### NetServer Configuration
+With Basic Authentication configured this way, any valid SuperOffice user can navigate to the REST URLs and invoke a request. To test these settings, navigate to the application's URL and attempt to get the contact where contact ID equals 1. Do that by navigating in a browser to `http://superoffice80/api/v1/contact/1` and this should result in a **Credentials** dialog prompting for a username and password. Any valid SuperOffice username works.
+
+### Configure NetServer
 
 In the current SuperOffice installations, NetServer REST services are switched on by default and may not need to be configured. However, for the sake of knowledge, these settings are a feature that must be toggled on by adding or changing the settings in the configuration file.
 
@@ -68,7 +72,7 @@ Ensure the following entries in SuperOffice sectionGroup element: the [WebApi se
 </sectionGroup>
 ```
 
-Locate or add the WebApi element and set one or both keys to true to enable: AuthorizeWithUsername and AuthorizeWithTicket.
+Locate or add the `WebApi` element and set one or both keys to true to enable: `AuthorizeWithUsername` and `AuthorizeWithTicket`.
 
 **SuperOffice element in web.config:**
 
@@ -83,7 +87,7 @@ Locate or add the WebApi element and set one or both keys to true to enable: Aut
 </SuperOffice>
 ```
 
-Now that NetServer configuration is complete, let's dig a little deeper and learn more about submitting actual requests and authentication.
+Now that the NetServer configuration is complete, let's dig a little deeper and learn more about submitting actual requests and authentication.
 
 ## Hello WebAPI
 
@@ -94,7 +98,7 @@ GET superoffice/api
 HTTP/1.1Host: www.yourserver.com
 ```
 
-This will request the API overview. If you use a browser to open `http://crm.example.com/superoffice/api` you will get a web page that says:
+This will request the API overview. If you use a browser to open `http://crm.example.com/superoffice/api` you will get a webpage that says:
 
 ```http
 HTTP/1.1 200 OK
@@ -108,20 +112,20 @@ Swagger API Explorer
 
 If you use [POSTMAN][2] or a similar tool, you will get back some JSON that contains the same information instead of an HTML page.
 
-This gets us some meta-data about the API without logging in, and an indication that the API is up and running correctly.
+This gets us some metadata about the API without logging in, and an indication that the API is up and running correctly.
 
 ## Authentication
 
-SuperOffice NetServer only supports **the following first two** authentication mechanisms.
+SuperOffice NetServer supports only **the following first two** authentication mechanisms.
 
 1. BASIC
 2. SOTicket
 3. Bearer (OAuth - for Online only)
 4. X-XSRF-TOKEN (web client - cookie and hidden field)
 
-### Authorization Header
+### Authorization header
 
-If the web server receives an *anonymous* request for a SuperOffice resource it will force the use of **Basic** authentication by rejecting the request with a 401 (Access Denied) status code and set the WWW-Authenticate response header as shown below:
+If the web server receives an *anonymous* request for a SuperOffice resource it will force the use of **Basic** authentication by rejecting the request with a **401 (Access Denied)** status code and setting the **WWW-Authenticate** response header:
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -156,64 +160,60 @@ HTTP/1.1 Host: www.yourserver.com
 Authorization: SOTicket 7:HlksdjfLKJlkjKJHKJhkjHKJHiuhuYGHGFgdttGVuYGuR&R&f==
 ```
 
-Given an HTML form that contains three text box controls for: username, password, and ID, the following example demonstrates how an XMLHttpRequest is used to call to the project resource to get a project by a given ID value.
+Given an HTML form that contains three text-box controls for username, password, and ID, the following example demonstrates how an XMLHttpRequest is used to call to the project resource to get a project by a given ID value.
 
 **Example HTML / JavaScript method:**
 
 ```html
 <script>
-   
-   function onGetId(f)
-   {      
-      var user = document.getElementById("user").value;
-      var pass = document.getElementById("pass").value;
-      var project = document.getElementById('projectid');
-      var projectid = project.value;
-
-      var url = ur"https://server/SuperOffice/api/v1/project/" + projectid;
-      
-      var req = new XMLHttpRequest();
-      req.responseType = "json";
-      req.open( "GET", url, true);
-      req.withCredentials = true;
-      req.setRequestHeader("Authorization", "Basic " + btoa(user + ":" + pass))
-      req.onload = function() { onGetProject(req.response ); };
-      req.onerror = function() { alert( "Request Error - check Console for details." ); };
-      req.send();
-      
-      // Don't submit form
-      return false;
-   }
-   
-   function onGetProject(proj)
-   {
-     var n = document.getElementById('project_name');
-     var ti = document.getElementById('project_typeid');
-     var tn = document.getElementById('project_typename');
-     
-     n.value = proj.Name;
-     ti.value = proj.ProjectType.Id;         
-     tn.value = proj.ProjectType.Value;
-   }
-
+  function onGetId(f)
+  {
+    var user = document.getElementById("user").value;
+    var pass = document.getElementById("pass").value;
+    var project = document.getElementById('projectid');
+    var projectid = project.value;
+    var url = "https://server/SuperOffice/api/v1/project/" + projectid;
+    var req = new XMLHttpRequest();
+    req.responseType = "json";
+    req.open( "GET", url, true);
+    req.withCredentials = true;
+    req.setRequestHeader("Authorization", "Basic " + btoa(user + ":" + pass))
+    req.onload = function() { onGetProject(req.response ); };
+    req.onerror = function() { alert( "Request Error - check Console for details." ); };
+    req.send();
+    // Don't submit form
+    return false;
+  }
+  function onGetProject(proj)
+  {
+    var n = document.getElementById('project_name');
+    var ti = document.getElementById('project_typeid');
+    var tn = document.getElementById('project_typename');
+    n.value = proj.Name;
+    ti.value = proj.ProjectType.Id;
+    tn.value = proj.ProjectType.Value;
+  }
 </script>
 ```
 
-Notice how the setRequestHeader method takes 2 arguments: the Authorization key and the authentication mechanism. Note that the [btoa method][3] base64 encodes a string. It's not something we've created. but built into the browser's window class and supported by all browsers. There is also the `atob` method which decoded a base64 encoded value to a normal string.
+> [!NOTE]
+> The `setRequestHeader` method takes two arguments: the Authorization key and the authentication mechanism.
+>
+> The [btoa method][3] base64 encodes a string. It's not something we've created. but built into the browser's window class and supported by all browsers. There is also the `atob` method, which decodes a base64 encoded value to a normal string.
 
-### XSRF Token
+### XSRF token
 
-The [XSRF token][4] only works when code exists in the client and is able to execute on the same domain. This is used by the client to stop **cross-site request forgery**. The XSRF token is accessible in the cookie or a hidden input field on the web client, called XSRF\_TOKEN. With the token, calls can be made to the web API without an authenticate header - use the **X-XSRF-TOKEN** header instead. The xsrf value is set on login. It does not change until the next login.
+The [XSRF token][4] works only when code exists in the client and can execute on the same domain. This is used by the client to stop **cross-site request forgery**. The XSRF token is accessible in the cookie or a hidden input field on the web client, called XSRF_TOKEN. With the token, calls can be made to the web API without an authenticate header - use the **X-XSRF-TOKEN** header instead. The xsrf value is set on login. It does not change until the next login.
 
 That's pretty much all there is to know for SuperOffice REST services authentication. Now lets' focus on how to create, read, update and delete known entities.
 
-#### Supported CRUD Operations
+#### Supported CRUD operations
 
 The SuperOffice REST API depends on the SuperOffice SOAP service layer. The SuperOffice REST API takes full advantage of the existing SOAP functionality to support Create, Read, Update and Delete (CRUD) operations for all entity types, list items, and more.
 
 **SuperOffice API layer diagram:**
 
-![x][img4]
+![SuperOffice API layer diagram][img4]
 
 This means that when you ask for resources using the REST API, the framework is calling into the NetServer web services API for executing the request. Take the following resource request for example.
 
@@ -221,9 +221,9 @@ This means that when you ask for resources using the REST API, the framework is 
 GET /api/v1/Appointment/123
 ```
 
-Underneath the covers, this call is actually invocating the AppointmentAgent GetAppointmentEntity web service method. The following example displays a few more examples of how the API calls into NetServers web service infrastructure.
+Underneath the covers, this call is actually invocating the AppointmentAgent `GetAppointmentEntity` web service method. The following example displays a few more examples of how the API calls into NetServers web service infrastructure.
 
-**Example REST resources and Wcf method invocations:**
+**Example REST resources and WCF method invocations:**
 
 | | REST resource| WFC method |
 |-|---|---|
@@ -254,9 +254,9 @@ Every REST endpoint supports dynamic invocation towards an online test database 
 
 ![image12qvq.png][img8]
 
-## Content Negotiation
+## Content negotiation
 
-You can specify what format of data you get back by sending either an Accept or Content-Type HTTP header.
+You can specify what format of data you get back by sending either an [Accept][9] or [Content-Type][10] HTTP header.
 
 ```http
 GET http://localhost/SuperOffice80/api/v1/Person/15 HTTP/1.1
@@ -282,7 +282,7 @@ Content-Type: text/xml; charset=utf-8
 
 ![x][img10]
 
-## Complex Queries with OData
+## Complex queries with OData
 
 [Wikipedia][7] states OData "is an open protocol which allows the creation and consumption of queryable and interoperable RESTful APIs in a simple and standard way."
 
@@ -298,11 +298,11 @@ The example queries the contact service, asks for the contact name and departmen
 
 **OData query results:**
 
-![x][img11]
+![OData query results][img11]
 
-### OData System Query Options
+### OData system query options
 
-SuperOffice implements support for the following OData System Query Options:
+SuperOffice implements support for the following OData system query options:
 
 * $filter
 * $orderby
@@ -310,7 +310,7 @@ SuperOffice implements support for the following OData System Query Options:
 * $skip
 * $select
 
-Use an ampersand to separate query options, just like you might do with URL query strings.
+Use an **ampersand** to separate query options, just like you might do with URL query strings.
 
 ```http
 ../api/v1/contact/?$select=name, department&$filter=name begins 'S'&$orderby=name&$top=2
@@ -318,19 +318,19 @@ Use an ampersand to separate query options, just like you might do with URL quer
 
 SuperOffice supports a variety of restriction operators. Certain operators work only one, or more, data types. For example, while *is* will work with operands of type integer and string, it will not work with data types of type date or list. Below are the most common operators used in constructing filters.
 
-**OData Filter Expressions - OData datatype:**
+#### OData filter expressions - OData datatype
 
 | Operator | Description |
-|----------|-------------|
+|---|---|
 | eq or = | Equal to |
 | ne | Not equal to |
 | le or <= | Less than or equal to |
 | ge or >= | Greater than or equal to |
 
-**OData Filter Expressions - Integer datatype:**
+#### OData filter expressions - Integer datatype
 
 | Operator | Description |
-|----------|-------------|
+|---|---|
 | set | Is True |
 | equals | Is equal to |
 | greater | Greater than |
@@ -344,10 +344,10 @@ SuperOffice supports a variety of restriction operators. Certain operators work 
 | notcontains | Does not contain |
 | isnot | Is not equal to |
 
-**OData Filter Expressions - String datatype:**
+#### OData filter expressions - String datatype
 
 | Operator | Description |
-|----------|-------------|
+|---|---|
 | begins | Begins with  |
 | contains | Does contain |
 | is | Is equal to |
@@ -355,33 +355,33 @@ SuperOffice supports a variety of restriction operators. Certain operators work 
 | notcontains | Does not contain |
 | isnot | Is not equal to |
 
-**OData Filter Expressions - Dates datatype:**
+#### OData filter expressions - Dates datatype
 
 | Operator | Description |
-|----------|-------------|
+|---|---|
 | before | Is before date  |
 | date | Is on date |
 | after | Is after date |
 | datebetween | Is between two dates |
 
-**OData Filter Expressions - Lists datatype:**
+#### OData filter expressions - Lists datatype
 
 | Operator | Description |
-|----------|-------------|
+|---|---|
 | oneof | Is one of  |
 | notoneof | Is not one of |
 | is | Is equal to |
 
-**OData Filter Expressions -  Associate datatype:**
+#### OData filter expressions -  Associate datatype
 
 | Operator | Description |
-|----------|-------------|
+|---|---|
 | associateisoneof | The associate is one of  
 | associateisnotoneof | The associate is not one of |
 
-### Query Field Conventions
+### Query field conventions
 
-Query fields in NetServer archives contain a forward slash separation character. For example:
+Query fields in NetServer archives contain a **forward slash** separation character. For example:
 
 ```text
 streetAddress/addressId
@@ -390,17 +390,17 @@ streetAddress/line2
 streetAddress/line3
 ```
 
-When used in OData queries, use 3 underscore characters instead. For example:
+When used in OData queries, use **3 underscore characters** instead. For example:
 
 ```http
 ../api/v1/contact/?$select=nameDepartment, category, postAddress___city, code&$top=2
 ```
 
-**OData Query Results with sub field:**
+**OData query results with sub-field:**
 
-![x][img14]
+![OData query results][img12]
 
-### Implicit Filters
+### Implicit filters
 
 All entity REST services expose the ability to query for a specific instance. For example:
 
@@ -410,7 +410,9 @@ All entity REST services expose the ability to query for a specific instance. Fo
 
 This implies NetServer to add the following filter:
 
-../api/v1/contact?$select=name&$filter=contactId=123
+```http
+../api/v1/contact?$select=name&$filter=contactId=123`
+```
 
 When used, the implicit filter is an easy way to drill into related entities. For example:
 
@@ -426,7 +428,7 @@ Each one of the examples will return the related entities for contact with `cont
 
 ## Binary Data
 
-Person, Project, and Product Image data is just content that can be GET or POST without the need to wrap it in XML. For example:
+Person, Project, and Product image data is just content that can be GET or POST without the need to wrap it in XML. For example:
 
 ```http
 /api/v1/Person/123/image
@@ -434,11 +436,16 @@ Person, Project, and Product Image data is just content that can be GET or POST 
 /api/v1/Product/123/image
 ```
 
-Each one of these calls, if issued in a GET call, returns the image associated with each one accordingly. If not image can be found, the resulting message will say just that "Image not found".
+Each one of these calls, if issued in a GET call, returns the image associated with each one accordingly. If no image can be found, the resulting message will say just that "Image not found".
 
-![x][img13]
+```http
+{
+  $type: "System.Web.Http.HttpError, System.Web.Http."
+  Message: "Image not found"
+}
+```
 
-### Optional Parameters
+### Optional parameters
 
 GET takes the following extra parameters:
 
@@ -452,92 +459,40 @@ The type parameter returns the desired image format.
 
 The `ifBlank` parameter will return with a transparent 1x1 px png, or an image that states no photo if the result is no image exists, and instead of the "Image not found" message:
 
-![x][img14]
+![Image that states no photo -screenshot][img14]
 
-### Upload Example
+### Upload example
 
-This example uses the below form, which using a multipart/form-data enctype to upload an image to the project. It specifies a default project identity of 23 but will update the `projectId` when something else is typed into the project Id input field. The chose file button opens a select image file dialog, permitting the user to select an image. When the Upload Project Image button is clicked, the forms' onsubmit event is raised and updates the action URL with the current project identity.
+This example uses the below form, which uses a multipart/form-data enctype to upload an image to the project. It specifies a default project identity of 23 but will update the `projectId` when something else is typed into the project Id input field. The choose file button opens a select image file dialog, permitting the user to select an image. When the Upload Project Image button is clicked, the forms' onsubmit event is raised and updates the action URL with the current project identity.
 
 **Example upload form:**
 
-![x][img15]
+![Example upload form -screenshot][img15]
 
 Once the form has been successfully submitted, and the REST services have completed, the browser is redirected and shows the binaryobject identity:
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Image Upload</title>
-    <script>
- 
-        var projectId = 23; //random default
- 
-        function updateProjectId(input) {
-            //should validate its a valid number
-            projectId = Number(input.value);
-        }
- 
-        function onUploadImage(form) {
-            var actionUrl = "http://localhost/superoffice80/api/v1/project/" +
-                            projectId + "/image";
-            form.action = actionUrl;
-        }
- 
-        function onGetId(button) {
-            var actionUrl = "http://localhost/superoffice80/api/v1/project/" + 
-                            projectId + "/image?ifBlank=2";
-            button.form.action = actionUrl;
-            var img = document.getElementById('projectimg')
-            img.src = actionUrl;
-            return false;
-        }
- 
-    </script>
-</head>
-<body>
-    <h1>Images</h1>
-    <img id='projectimg' src=''>
- 
-    <form id='formUpload' onsubmit="return onUploadImage(this)" action="#" method="post" 
-          enctype="multipart/form-data">
-        <fieldset>
-            <legend>Project Information</legend>
-            <br />
-            Project Id:<br />
-            <input id='projectid' name='projectid' value='23' 
-                   onkeyup="updateProjectId(this)">
-            <br /><br />
-            <button type="submit" formaction="#" formmethod="get" 
-                    onclick="return onGetId(this)">Get Image</button>
-            <br /><br />
-            Project Image: <br />
-            <input accept="image/*" id="projectImg" name='projectimg' type="file">
-            <br /><br />
-            <button type="submit">Upload Project Image</button>
-        </fieldset>
-    </form>
-</body>
-</html>
-```
+[!code-html[HTML](includes/image-upload-form.html)]
 
 **Post form submission result:**
 
-![x][img16]
+![Post form submission result -screenshot][img16]
 
 ## Conclusion
 
 SuperOffice REST services add another API surface to the NetServer real estate, offering a great deal of information in a highly desired format. Although incomplete, it should suffice for a majority of REST consumers and will evolve as demand increase.
 
-Take your time getting to know SuperOffice REST services, and if you happen to stumble into an area that lacks support, please submit an email to sdk@superoffice.com with your API wishes.
+Take your time getting to know SuperOffice REST services, and if you happen to stumble into an area that lacks support, please submit an email to `sdk@superoffice.com` with your API wishes.
+
 <!-- Referenced links -->
-[1]: ../../config/webapi.md
+[1]: ../../../config/webapi.md
 [2]: https://www.getpostman.com/
 [3]: http://www.w3schools.com/jsref/met_win_btoa.asp
 [4]: index.md
 [6]: ../agents-webapi/index.md
 [7]: https://en.wikipedia.org/wiki/Open_Data_Protocol
-[8]: ../../search/odata/index.md
+[8]: ../../../search/odata/index.md
+[9]: http-headers.md#accept-language
+[10]: http-headers.md#content-type
 
 <!-- Referenced images -->
 [img1]: media/iis-configuration.png
@@ -552,7 +507,6 @@ Take your time getting to know SuperOffice REST services, and if you happen to s
 [img10]: media/rest-2.png
 [img11]: media/rest-3.png
 [img12]: media/rest-4.png
-[img13]: media/rest-5.png
 [img14]: media/rest-6.png
 [img15]: media/imagesupload.png
 [img16]: media/rest-7.png

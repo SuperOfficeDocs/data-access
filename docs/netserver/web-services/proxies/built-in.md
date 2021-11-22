@@ -14,6 +14,8 @@ so.topic: howto
 
 This section explains how to access SuperOffice web services from .NET using SuperOffice tools.
 
+Whether targeting a local or remote database, an **SoSession** is the object that maintains a user's principal. The **secret** is calculated for us during the `Authenticate` call. The proxy objects returned by the agent factory will automatically add the SOAP authentication header for us. This makes working with the SOAP services much simpler. See the [Authentication][2] section for more information.
+
 > [!NOTE]
 > There is no secret used here: the username + password is passed in clear-text, so you should use HTTPS if you are going to be doing this over the open internet.
 

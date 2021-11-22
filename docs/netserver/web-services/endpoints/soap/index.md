@@ -1,16 +1,16 @@
 ---
 title: SOAP
 uid: soap
-description: SOAP API
+description: SuperOffice SOAP API endpoints
 author: Bergfrid Dias
-so.date: 11.19.2021
-keywords: API, web services, endpoints, SOAP, Agents
+so.date: 11.22.2021
+keywords: API, web services, endpoints, SOAP, Agents, Services88
 so.topic: concept
 ---
 
 # SOAP API
 
-WCF/SOAP requests and responses.
+SOAP is a simple XML-based protocol used to let applications exchange information over HTTP. In SuperOffice we can access the web services using WCF/SOAP requests and responses.
 
 ## Available endpoints
 
@@ -25,7 +25,9 @@ WCF/SOAP requests and responses.
 
 ## Calling
 
-**Pre-requisite:** [update the configuration files][7]
+The raw SOAP might look something like this:
+
+[!code-xml[XML](../../../../authentication/onsite/sosession/includes/soap-env.xml)]
 
 The following example shows how we may retrieve a `ContactEntity` using the `IContactAgent`.
 
@@ -58,6 +60,10 @@ ContactEntity newConEnt = newConAgt.GetContactEntity(5);
 > [!NOTE]
 > The `IContactAgent` class provides methods such as `GetAddress`, `GetAddressByCountry`, `GetContact`, `DeleteContactEntity`, and many more, which can be used in a manner similar to the above.
 
+---
+
+[Read more about SOAP proxies.][7]
+
 <!-- Referenced links -->
 [1]: ../../../api-reference/soap/Services88/index.md
 [2]: ../../../api-reference/soap/Services87/index.md
@@ -65,6 +71,6 @@ ContactEntity newConEnt = newConAgt.GetContactEntity(5);
 [4]: ../../../api-reference/soap/Services85/index.md
 [5]: ../../../api-reference/soap/Services84/index.md
 [6]: ../../../service-soap/overview.md
-[7]: ../../proxy/config.md
+[7]: ../../proxy/index.md
 
 <!-- Referenced images -->

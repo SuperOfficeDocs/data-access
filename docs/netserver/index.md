@@ -3,8 +3,8 @@ uid: what_is_netserver
 title: What is Netserver / Understanding NetServer
 description: NetServer is a multi-tiered database access layer that bridges communication between clients and the SuperOffice database.
 author: AnthonyYates
-so.date: 11.18.2021
-keywords: API, NetServer, HDB, RDB, entity, row, archive, OSQL
+so.date: 11.22.2021
+keywords: API, NetServer, HDB, RDB, entity, row, archive, OSQL, web service, services
 so.topic: concept
 so.envir: cloud, onsite
 so.client: win, web
@@ -20,7 +20,7 @@ As a multi-tiered database access layer that bridges communications between clie
 
 In a nutshell, NetServer is a layered, factory-driven library that enables developers to conduct Create, Read, Update and Delete (CRUD) operations to the SuperOffice database, and more. Whether deploying a solution to a local SuperOffice database installation or operating in a distributed environment, NetServer exposes an array of application programming interface (API) approaches to facilitate a wide range of solution implementations.
 
-Although the terrain is vast and complex, and at first sight, be can somewhat intimidating, the NetServer APIs tailor to a wide variety of developers by layering the architecture in various intuitive abstractions. The layered aspect of NetServer invites developers to tap into the database from several facets. In this article, we will guide you through the various regions of NetServer, show you the attractions, as well as point out the areas to avoid.
+Although the terrain is vast and complex and can be somewhat intimidating at first, the NetServer APIs accommodate a wide variety of developers by layering the architecture in various intuitive abstractions. The layered aspect of NetServer invites developers to tap into the database from several facets. In this article, we will guide you through the various regions of NetServer, show you the attractions, as well as point out the areas to avoid.
 
 ## Persistence layers
 
@@ -32,7 +32,7 @@ You can choose to work at the level that suits you best. **Webhooks** are suppor
 
 ### Domain-level APIs (NetServer Core)
 
-The lowest layer of NetServer, the domain-level development APIs, is generally used by a client or application server. This layer does the heavy lifting and is responsible for marshaling all the model-based data into raw SQL.
+The lowest layer of NetServer, the domain-level development APIs, is generally used by a client or application server. This layer does the heavy lifting and is responsible for **marshaling all the model-based data into raw SQL**.
 
 * [SQL data objects (OSQL)][1]: Low-level, high-performance, database-independent objectified SQL.
 * [Row and Rows][2]: Medium-level data table and data row-level access.
@@ -43,36 +43,33 @@ The lowest layer of NetServer, the domain-level development APIs, is generally u
 
 The highest level of NetServer data access is the service-orientated architecture and consists of:
 
-* [Web service endpoints][5] based on WCF **SOAP** and **REST**ful WebAPI: IIS application used by SuperOffice Web and PocketCRM.
+* [Web service endpoints][5] based on WCF **SOAP** and **REST**ful WebAPI: IIS application used by SuperOffice Web and Mobile.
 * Web service proxies: Service agent pattern .NET assemblies used by clients to access the service endpoints.
 
 An important aspect of NetServer web service development is its **deployment flexibility**. It's capable of being embedded in a domain-centric fat client application, as well as a thin client deployed with NetServer service proxies for data access across the internet.
 
-This article is an overview of the NetServer API, as well as dive into the different aspects of NetServers service offerings. Each level is described briefly below and in detail in the linked sections.
+The following sections present an overview of the NetServer API and the different aspects of NetServers service offerings. Each level is described briefly below and in detail in the linked sections.
 
 ## Services layer
 
-At the highest level, encapsulated in the **SuperOffice.Services namespace**, is an agent pattern-derived API that in terms of deployment is quite flexible. Access and modification to data in the database, using service objects, will always be coded the same, whether the application and database are located on the same server, or operating in a distributed environment. This flexibility does come at a performance price though.
+At the highest level, encapsulated in the **SuperOffice.Services namespace**, is an **agent** pattern-derived API that in terms of deployment is quite flexible. Access and modification to data in the database, using service objects, will always be coded the same, whether the application and database are located on the same server, or operating in a distributed environment. This flexibility does come at a performance price though.
 
-> [!NOTE]
-> The SuperOffice.Services layer should not be confused with the web services available in the installation directory: InstallBase\\WebServices. SuperOffice.Services is a **consumer** of these web services, whereas the web services are hosted in IIS. The layer is a **client proxy** to the NetServer web services and greatly simplifies what is required to call them.
-
-![SuperOffice.Services vs. web services][img2]
+[Read more about web services.][5]
 
 ## Archives
 
 An [archive][4] is a **configurable multi-column list** that flattens the complex relationships between tables into a simple grid.
 
-Archives simplify searching and retrieving collections of related data efficiently. The archive system is very flexible and supports many different providers. Each provider describes a set of related columns from the database. Each provider supports a set of methods for finding out what columns are available.
+Archives simplify **searching and retrieving** collections of related data efficiently. The archive system is very flexible and supports many different providers. Each provider describes a set of related **columns** from the database. Each provider supports a set of methods for finding out what columns are available.
 
 ## Relational database layer (entities)
 
 The relational database (RDB) layer, conceptually the **business logic** layer, is encapsulated within the **SuperOffice.Entities namespace**. Relational database objects, such as `Contact`, `ContactCollection`, `Person`, and `PersonCollection`, are all found here. These objects abstract away the complexities required to access and present information from the database.
 
-Relational database objects expose the data as neat and logical objects commonly referred to as [entities][3]. Entities **represent real-world objects**, such as companies and people.
+RDB objects expose the data as neat and logical objects commonly referred to as [entities][3]. Entities **represent real-world objects**, such as companies and people.
 
 > [!TIP]
-> This layer is great for creating and saving new entities, such as creating a new Contact or Sale, but is not as efficient as one of the lower layers when retrieving information.
+> This layer is great for **creating and saving** new entities, such as creating a new `Contact` or `Sale`, but is not as efficient as one of the lower layers when retrieving information.
 
 [Read more about Entities.][3]
 
@@ -93,18 +90,23 @@ At the lowest levels of the framework is a database-independent objectified SQL 
 
 [OSQL][1] encompasses all **common SQL elements**, such as SELECT, JOIN, WHERE, AND, OR, and so forth. It exposes all of these elements as **class objects**, to be constructed and leveraged in an "object-orientated" manner.
 
-OSQL has the best performance of all NetServer API layers. When using OSQL to create code, the code will be more responsive and efficient than when using the Services, RDB, or the HDB layers.
+OSQL has the **best performance** of all NetServer API layers. When using OSQL to create code, the code will be more responsive and efficient than when using the Services, RDB, or the HDB layers.
 
 [Read more about OSQL.][1]
 
 ## Programming with NetServer APIs
 
-When programming with the NetServer API, other than calling the web services directly, every solution needs a SuperOffice-specific section group in your application configuration file. This means adding a SuperOffice-specific section group to an *app.config* file for Windows Forms applications, or the *web.config* file for an ASP.NET web application. The SuperOffice section group contains configuration options relevant NetServer operations, such as logging, document handling, security, database options, and so forth. Everything you need to know about the SuperOffice configuration options is well-defined in the [NetServer configuration documentation][12].
+When programming with the NetServer API, other than calling the web services directly, every solution needs a SuperOffice-specific section group in your application configuration file. This means adding a SuperOffice-specific section group to an *app.config* file for Windows Forms applications, or the *web.config* file for an ASP.NET web application.
+
+The SuperOffice section group contains configuration options relevant NetServer operations, such as logging, document handling, security, database options, and so forth. Everything you need to know about the SuperOffice configuration options is well-defined in the [NetServer configuration documentation][12].
 
 > [!NOTE]
 > The more control over the queries you have, the more responsibility you take on for handling ensuring that relationships and keys are maintained properly.
 
-All types of technology platforms, including Java, PHP, Python, Ruby, and many more can integrate with NetServer web services. Any technology stack that supports web services can connect to and exchange data with SuperOffice NetServer. SuperOffice only supplies .NET proxy assemblies. All other technology platforms must generate their own proxies, or use raw SOAP/XML, to access the web services.
+All types of technology platforms, including Java, PHP, Python, Ruby, and many more can integrate with NetServer web services. Any technology stack that supports web services can connect to and exchange data with SuperOffice NetServer. SuperOffice supplies .NET proxy assemblies only. All other technology platforms must generate their own proxies, or use raw SOAP/XML, to access the web services.
+
+> [!TIP]
+> Before you start coding, brush up on your knowledge about [SuperOffice authentication][13].
 
 ### Integration points
 
@@ -130,13 +132,13 @@ All types of technology platforms, including Java, PHP, Python, Ruby, and many m
 
 ### Performance
 
-The following figure displays a summary of performance using the different objects available to extract data from the database using Entities and Rows. The test database was a small one, with only 39 contacts. Using performance counters, the test included retrieving all contacts as a ContactCollection, ContactList, and ContactRows. ContactRows, being the lowest layer used, clearly out performed the other two queries with an average of 9.1 milliseconds. The ContactCollection query finished a little while later, at an average of 25.8 milliseconds. The ContactList trailed far behind the other two, with an average search time of 212.4 milliseconds.
+The following figure displays a summary of performance using the different objects available to extract data from the database using Entities and Rows. The test database was a small one, with only 39 contacts. Using performance counters, the test included retrieving all contacts as a ContactCollection, ContactList, and ContactRows. ContactRows, being the lowest layer used, clearly outperformed the other two queries with an average of 9.1 milliseconds. The ContactCollection query finished a little while later, at an average of 25.8 milliseconds. The ContactList trailed far behind the other two, with an average search time of 212.4 milliseconds.
 
 ![Performance testing][img6]
 
 ## Conclusion
 
-This has been a high-level view of NetServer. As you can see, there is a vast difference between the different approaches. Be aware though that, just because one layer took longer to complete than the other, it does not any one layer should be ignored. Each query type has its place in the development world when used judiciously.
+This has been a high-level view of NetServer. As you can see, there is a vast difference between the different approaches. Be aware though that, just because one layer took longer to complete than the other, it does not imply that a layer should be ignored. Each query type has its place in the development world when used judiciously.
 
 <!-- Referenced links -->
 [1]: osql/index.md
@@ -151,10 +153,10 @@ This has been a high-level view of NetServer. As you can see, there is a vast di
 [10]: ../api-reference/webapi/index.md
 [11]: ../../../crmscript/docs/overview/index.md
 [12]: config/index.md
+[13]: ../authentication/overview.md
 
 <!-- Referenced images -->
 [img1]: media/netserverhilevelview.png
-[img2]: media/sm-serviceinterfaces.png
 [img3]: media/netserver-components-overview.png
 [img4]: media/netserverarchitecture-blue-650.png
 [img6]: media/contactchart.png
