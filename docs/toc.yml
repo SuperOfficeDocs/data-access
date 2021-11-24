@@ -51,6 +51,13 @@ items:
         href: authentication/online/auth-application/sign-system-user-token.md
       - name: Get system user ticket
         href: authentication/online/auth-application/get-system-user-ticket.md
+    - name: WebAPI
+      href: authentication/online/webapi/index.md 
+      items:
+      - name: IAuthorization
+        href: authentication/online/webapi/iauthorization.md
+      - name: SystemUserClient
+        href: authentication/online/webapi/systemuserclient.md
     - name: Validate tokens
       href: authentication/online/validate-security-tokens.md
     - name: Troubleshooting
@@ -221,6 +228,8 @@ items:
       href: netserver/web-services/proxies/custom.md
     - name: Modes
       href: netserver/web-services/proxies/modes.md
+    - name: Call using WebAPI client 
+      href: netserver/web-services/proxies/webapi-client.md
 - name: Entities
   href: netserver/entities/index.md
   items:

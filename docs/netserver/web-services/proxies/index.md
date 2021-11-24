@@ -3,8 +3,8 @@ title: Proxies
 uid: ws_proxies
 description: Proxies
 author: Bergfrid Dias
-so.date: 11.22.2021
-keywords: API, web services, proxy, WebAPI, SOAP
+so.date: 11.24.2021
+keywords: API, web services, proxy, WebAPI, SOAP, WebApiOptions
 so.topic: concept
 ---
 
@@ -19,7 +19,7 @@ There is flexibility in using SuperOffice **proxies**. Not only are all of the 
 **Options:**
 
 * Use NetServer proxies ([NuGet packages][6])
-* Generate a [custom proxy][3] by adding a web service
+* Generate a [custom proxy][4] by adding a web service
 
 ### NetServer proxies
 
@@ -36,7 +36,7 @@ You can either:
 
 * Another way is to create a Visual Studio Service Reference and communicate with the services through that proxy.
 
-## Wrapped or unwrapped
+### Wrapped or unwrapped
 
 Proxy generators can generate calls in one of 2 ways: wrapped or unwrapped. The SOAP calls described by the WSDL take one parameter and return one result object. All the parameters to the call are placed on the parameter object. The proxy generator can choose to present the parameters as one object or as a list of parameters.
 
@@ -73,9 +73,24 @@ In a future release, the parameters will be tagged with ordering information, ma
 
 ## WebApi client library
 
+[!include[ALT](../../../includes/webapi-client-intro.md)]
+
+This library makes it easier to work in a **multi-tenant** environment. It isolates a tenant's context in a **WebApiOptions** instance, where each instance is configured to target one specific tenant. Each instance can be configured with its own language, culture and timezone settings.
+
+This library also has built-in **system user token** support.
+
+### Howto
+
+* [How to use SuperOffice.WebApi][5]
+* [How to authenticate][4]
+* [How to use the system user flow][7]
+
 <!-- Referenced links -->
 [1]: built-in.md#binary
 [2]: built-in.md#iis
 [3]: custom.md
+[4]: ../../../authentication/online/webapi/iauthorization.md
+[5]: webapi-client.md
 [6]: https://www.nuget.org/packages/SuperOffice.NetServer.Services
+[7]: ../../../authentication/online/webapi/systemuserclient.md
 [9]: https://docs.microsoft.com/en-us/dotnet/framework/wcf/servicemodel-metadata-utility-tool-svcutil-exe
