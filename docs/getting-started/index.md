@@ -3,7 +3,7 @@ uid: intro-to-superoffice-apis
 title: Introduction to SuperOffice APIs
 description: Introducing SuperOffice APIs
 author: Tony Yates
-so.date: 11.15.2021
+so.date: 11.25.2021
 keywords: api, getting started, integration point, scripting, Jscript, Javascript, VB.NET, C#
 so.topic: concept
 so.envir: cloud, onsite
@@ -22,7 +22,7 @@ There are several levels of SuperOffice extensibility, and these are commonly de
 
 The first two levels of extensibility are exposed inside the admin UI pages of SuperOffice. These are features commonly managed by system administrators and SuperOffice consultants and are used to tailor SuperOffice to individual customer needs.
 
-The **scripting level** pertains to a few different features that provide similar functionality, albeit by different means. [CRMScript][3] is a SuperOffice scripting dialect similar to JavaScript and is managed inside the administrative pages of SuperOffice. **NetServer scripting** is an Application Server capability that is accessible onsite only.
+The **scripting level** pertains to a few different features that provide similar functionality, albeit by different means. [CRMScript][3] is a SuperOffice scripting dialect similar to JavaScript and is managed inside the administrative pages of SuperOffice. [NetServer scripting][16] is an Application Server capability that is accessible onsite only.
 
 **External APIs** provide complete data access for both SuperOffice clients and online applications. This level includes SuperOffice COM APIs and the [NetServer API landscape][15].
 
@@ -166,6 +166,7 @@ Read more about each platform API in the SDK documentation.
 [13]: ../../../superoffice-docs/docs/mirroring/overview.md
 [14]: scripting-languages.md
 [15]: ../netserver/index.md
+[16]: ../../../superoffice-docs/docs/automation/netserver-scripting/index.md
 
 <!-- Referenced images -->
 [img1]: media/web-client-custom-code.png

@@ -584,17 +584,6 @@ items:
       href: netserver/erp-connectors/helpers.md
     - name: Sample ERP Sync connector
       href: netserver/erp-connectors/sample.md
-  - name: NetServer Script Engine
-    href: netserver/scripting/index.md
-    items:
-    - name: Configuration
-      href: netserver/scripting/configure.md
-    - name: Basic scripting
-      href: netserver/scripting/basic-scripting.md
-    - name: Running scripts
-      href: netserver/scripting/run-scripts.md
-    - name: Reference
-      href: netserver/scripting/reference/
   - name: Sentry plug-in
     href: security/sentry/plugins/index.md
     items:

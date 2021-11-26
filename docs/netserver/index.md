@@ -3,7 +3,7 @@ uid: what_is_netserver
 title: What is Netserver / Understanding NetServer
 description: NetServer is a multi-tiered database access layer that bridges communication between clients and the SuperOffice database.
 author: AnthonyYates
-so.date: 11.22.2021
+so.date: 11.25.2021
 keywords: API, NetServer, HDB, RDB, entity, row, archive, OSQL, web service, services
 so.topic: concept
 so.envir: cloud, onsite
@@ -50,7 +50,7 @@ An important aspect of NetServer web service development is its **deployment fl
 
 The following sections present an overview of the NetServer API and the different aspects of NetServers service offerings. Each level is described briefly below and in detail in the linked sections.
 
-## Services layer
+## Web services layer
 
 At the highest level, encapsulated in the **SuperOffice.Services namespace**, is an **agent** pattern-derived API that in terms of deployment is quite flexible. Access and modification to data in the database, using service objects, will always be coded the same, whether the application and database are located on the same server, or operating in a distributed environment. This flexibility does come at a performance price though.
 

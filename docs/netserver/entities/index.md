@@ -61,7 +61,7 @@ This is the case when working with Entity lists. These are similar to entity mod
 
 ### Complex properties
 
-Entities are objects that may contain property values that are fetched from more than just the primary object table. In the case of a `Person` entity, the primary object table being the `Person` table. A `Person.Contact` property is a class object that is structured and populated in such a way that take into account settings from more tables than just the `Person` table.
+Entities are objects that may contain property values that are fetched from more than just the primary object table. In the case of a `Person` entity, the primary object table is the `Person` table. A `Person.Contact` property is a class object that is structured and populated in such a way that takes into account settings from more tables than just the `Person` table.
 
 * **A single entity:** a logical real-world object, such as `Contact`, `Person`, or `Appointment`.
 * **[Entity collections][12]:** collections of the business models, such as `ContactCollection`, `PersonCollection`, and `AppointmentCollection`.
@@ -114,12 +114,12 @@ using (SoSession session = SoSession.Authenticate("JR", ""))
 }
 ```
 
-Notice how easy it is to access all of the appointments and appointment information belonging to a person. There is no need to write complex SQL queries that join multiple other tables and establishing criteria, to gain access all of the details pertaining to the appointment. All complex properties of the appointment are easily accessible.
+Notice how easy it is to access all of the appointments and appointment information belonging to a person. There is no need to write complex SQL queries that join multiple other tables and establish criteria, to gain access to all of the details about the appointment. All complex properties of the appointment are easily accessible.
 
 > [!NOTE]
-> The value of many entity properties are retrieved from the database when the property is accessed, not when the object itself is initialized. This is sometimes referred to as lazy fetching.
+> The value of many entity properties is retrieved from the database when the property is accessed, not when the object itself is initialized. This is sometimes referred to as lazy fetching.
 
-The following code demonstrates how to leverage an entities inner index class to fetch the business object - in this case a Contact.
+The following code demonstrates how to leverage an entity's inner index class to fetch the business object - in this case, a Contact.
 
 ```csharp
 Contact contact = new Contact.IdxContactId(7);
