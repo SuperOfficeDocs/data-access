@@ -2,24 +2,15 @@
 title: Windows Communication Foundation
 uid: wcf_primer
 description: Windows Communication Foundation (WCF)
-author: {github-id}
-so.date:
-keywords:
-so.topic: guide
-# so.envir:
+author: Tony Yates
+so.date: 11.26.2021
+keywords: API, WCF, Windows Communication Foundation, SOAP, web services
+so.topic: concept
+so.envir: onsite
 # so.client:
 ---
 
 # Windows Communication Foundation (WCF)
-
-## Terminology
-
-* **Service** - web service that implements a contract. Equivalent to an .asmx web service
-* **Endpoint** - Address, port, and protocol a web service is exposed through
-* **Binding** - Configuration of a binding including SOAP version, protocol, security, etc…
-* **Behavior** - How the service behaves – yet another place to configure
-
-## Endpoints
 
 **Providers:**
 
@@ -33,8 +24,8 @@ so.topic: guide
 
 | Consumer | Description |
 |---|---|
-| Sales & Marketing Web (CRM.web) | The web server talks to the back-end web-services using NetServer proxies. |
-| Customer Service | The CGI scripts in C++ use the gSOAP library to talk to the back-end web services. |
+| Sales & Marketing Web (CRM.web) | The web server talks to the back-end web services using NetServer proxies. |
+| Service | The CGI scripts in C++ use the gSOAP library to talk to the back-end web services. |
 | Pocket | Pocket uses Java and Sun Metro to generate proxies. |
 | Third-party clients | Use the SDK or PHP/Java/Perl to talk to the web services. |
 
@@ -49,7 +40,7 @@ Install the web services on a separate server, or as a separate web application 
 * Several installations = several configurations, more stuff to maintain.
 * More flexibility.
   * When are you upgrading which SuperOffice 7 product to 7.1 or SR?
-* More Control?
+* More control?
   * Do you want your web services exposed to the internet?
   * Do you need System users to access your web services?
   * Is the user in your .mst file a valid system user?
@@ -79,8 +70,8 @@ In the *web.config* file for the application server you can turn on help pages t
 
 For the web server to talk to the backend you must change the `DefaultMode` to "Remote".
 
-* With ASMX services that was enough.
-* With WCF you must also set up the WCF binding to connect the web server to the app server.
+* With ASMX services, that was enough.
+* With WCF, you must also set up the WCF binding to connect the web server to the app server. Configuration of a binding includes SOAP version, protocol, security, and so on.
 
 ## Troubleshooting
 
@@ -100,13 +91,13 @@ Use the web browser to navigate to the web-service end-point and see what you ge
 
 ### Fiddler
 
-Use Fiddler to look at the HTTP traffic between the client and the web service to see what is really going on.
+Use Fiddler to look at the HTTP traffic between the client and the web service to see what is going on.
 
-Fiddler is a HTTP Proxy that allows you to look at HTTP traffic between local clients and a server (possibly running on your local machine).
+Fiddler is an HTTP Proxy that allows you to look at HTTP traffic between local clients and a server (possibly running on your local machine).
 
 ### Use SoWcfHost
 
-This is a stand-alone EXE that you can use to host web-services locally without relying on IIS or the development web-server. This makes it a little easier to attach a debugger to, and you have more control over what services are running.
+This is a stand-alone EXE that you can use to host web services locally without relying on IIS or the development web server. This makes it a little easier to attach a debugger to, and you have more control over what services are running.
 
 <!-- Referenced images -->
 [img1]: media/config-app-server.png

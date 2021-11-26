@@ -10,6 +10,8 @@ so.topic: concept
 
 # Endpoints
 
+An endpoint is the address, port, and protocol a web service is exposed through.
+
 ## WebAPI
 
 [!include[Intro to the WebAPI](../../../includes/webapi-intro.md)]

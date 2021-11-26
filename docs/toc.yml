@@ -205,6 +205,8 @@ items:
       items:
       - name: TableRight
         href: netserver/web-services/endpoints/soap/table-rights.md
+      - name: WCF primer
+        href: netserver/web-services/endpoints/soap/wcf-primer.md
   - name: Proxies
     href: netserver/web-services/proxies/index.md
     items:
