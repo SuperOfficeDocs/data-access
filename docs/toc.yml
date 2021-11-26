@@ -228,8 +228,6 @@ items:
       href: netserver/web-services/proxies/built-in.md
     - name: Call using custom proxies
       href: netserver/web-services/proxies/custom.md
-    - name: Modes
-      href: netserver/web-services/proxies/modes.md
 - name: Entities
   href: netserver/entities/index.md
   items:
