@@ -199,11 +199,6 @@ items:
   - name: Endpoints
     href: netserver/web-services/endpoints/index.md
     items:
-    - name: SOAP (SuperOfice.NetServer.Services)
-      href: netserver/web-services/endpoints/soap/index.md
-      items:
-      - name: TableRight
-        href: netserver/web-services/endpoints/soap/table-rights.md
     - name: Agents WebAPI
       href: netserver/web-services/endpoints/agents-webapi/index.md
     - name: REST WebAPI
@@ -219,17 +214,22 @@ items:
       href: netserver/web-services/endpoints/reverse-proxy.md
     - name: Timezones
       href: netserver/web-services/endpoints/so-timezone.md
+    - name: SOAP
+      href: netserver/web-services/endpoints/soap/index.md
+      items:
+      - name: TableRight
+        href: netserver/web-services/endpoints/soap/table-rights.md
   - name: Proxies
     href: netserver/web-services/proxies/index.md
     items:
+    - name: Call using WebAPI client
+      href: netserver/web-services/proxies/webapi-client.md
     - name: Call using NetServer Services proxies
       href: netserver/web-services/proxies/built-in.md
     - name: Call using custom proxies
       href: netserver/web-services/proxies/custom.md
     - name: Modes
       href: netserver/web-services/proxies/modes.md
-    - name: Call using WebAPI client 
-      href: netserver/web-services/proxies/webapi-client.md
 - name: Entities
   href: netserver/entities/index.md
   items:

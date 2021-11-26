@@ -43,7 +43,7 @@ The lowest layer of NetServer, the domain-level development APIs, is generally u
 
 The highest level of NetServer data access is the service-orientated architecture and consists of:
 
-* [Web service endpoints][5] based on WCF **SOAP** and **REST**ful WebAPI: IIS application used by SuperOffice Web and Mobile.
+* [Web service endpoints][5] based on **REST**ful WebAPI and WCF **SOAP**: IIS application used by SuperOffice Web and Mobile.
 * Web service proxies: Service agent pattern .NET assemblies used by clients to access the service endpoints.
 
 An important aspect of NetServer web service development is its **deployment flexibility**. It's capable of being embedded in a domain-centric fat client application, as well as a thin client deployed with NetServer service proxies for data access across the internet.
