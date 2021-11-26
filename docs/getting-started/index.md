@@ -155,9 +155,9 @@ Read more about each platform API in the SDK documentation.
 [2]: mailto:sdk@superoffice.com
 [3]: ../../../crmscript/docs/overview/index.md
 [4]: ../../../superoffice-docs/docs/service/integrate/index.md
-[5]: extend-win.md
-[6]: extend-web-onsite.md
-[7]: extend-web-online.md
+[5]: ../../../superoffice-docs/docs/onsite/integrate/win-client/index.md
+[6]: ../../../superoffice-docs/docs/onsite/integrate/web-client/index.md
+[7]: ../../../superoffice-docs/docs/online/integrate/index.md
 [8]: ../api-reference/restful/index.md
 [9]: ../api-reference/soap/index.md
 [10]: ../netserver/webhooks/index.md

@@ -5,14 +5,6 @@ items:
   href: getting-started/scripting-options.md
 - name: NetServer fundamentals
   href: netserver/index.md
-- name: Scenarios
-  items:
-  - name: Web (online)
-    href: getting-started/extend-web-online.md
-  - name: Web (onsite)
-    href: getting-started/extend-web-onsite.md
-  - name: Windows
-    href: getting-started/extend-win.md
 - name: Authentication
   href: authentication/index.yml
   items:
