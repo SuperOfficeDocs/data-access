@@ -210,8 +210,6 @@ items:
       href: netserver/web-services/endpoints/get-webapi-version.md
     - name: HTTP request headers
       href: netserver/web-services/endpoints/http-headers.md
-    - name: Reverse proxy
-      href: netserver/web-services/endpoints/reverse-proxy.md
     - name: Timezones
       href: netserver/web-services/endpoints/so-timezone.md
     - name: SOAP
