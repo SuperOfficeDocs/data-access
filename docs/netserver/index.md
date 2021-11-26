@@ -108,36 +108,6 @@ All types of technology platforms, including Java, PHP, Python, Ruby, and many m
 > [!TIP]
 > Before you start coding, brush up on your knowledge about [SuperOffice authentication][13].
 
-### Integration points
-
-**Low-level:**
-
-* Document Plugin
-* Sentry Plugin
-* Add or override archive providers
-* Add or override resources providers
-* Multiple levels of database access
-
-**High-level:**
-
-* [Webhooks][9]
-* [SOAP][6]
-* [REST][10]
-* [CRMScript][11]
-
-**Related SDK:**
-
-* [NetServer Core SDK][8] (long loading time)
-* [NetServer Web Services][7]
-
-### Performance
-
-The following figure displays a summary of performance using the different objects available to extract data from the database using Entities and Rows. The test database was a small one, with only 39 contacts. Using performance counters, the test included retrieving all contacts as a ContactCollection, ContactList, and ContactRows. ContactRows, being the lowest layer used, clearly outperformed the other two queries with an average of 9.1 milliseconds. The ContactCollection query finished a little while later, at an average of 25.8 milliseconds. The ContactList trailed far behind the other two, with an average search time of 212.4 milliseconds.
-
-![Performance testing][img6]
-
-## Conclusion
-
 This has been a high-level view of NetServer. As you can see, there is a vast difference between the different approaches. Be aware though that, just because one layer took longer to complete than the other, it does not imply that a layer should be ignored. Each query type has its place in the development world when used judiciously.
 
 <!-- Referenced links -->
@@ -159,4 +129,3 @@ This has been a high-level view of NetServer. As you can see, there is a vast di
 [img1]: media/netserverhilevelview.png
 [img3]: media/netserver-components-overview.png
 [img4]: media/netserverarchitecture-blue-650.png
-[img6]: media/contactchart.png
