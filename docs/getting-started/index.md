@@ -154,7 +154,7 @@ Read more about each platform API in the SDK documentation.
 [1]: https://community.superoffice.com/en/developer/forum/
 [2]: mailto:sdk@superoffice.com
 [3]: ../../../crmscript/docs/overview/index.md
-[4]: extend-service.md
+[4]: ../../../superoffice-docs/docs/service/integrate/index.md
 [5]: extend-win.md
 [6]: extend-web-onsite.md
 [7]: extend-web-online.md

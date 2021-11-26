@@ -11,8 +11,6 @@ items:
     href: getting-started/extend-web-online.md
   - name: Web (onsite)
     href: getting-started/extend-web-onsite.md
-  - name: Service
-    href: getting-started/extend-service.md
   - name: Windows
     href: getting-started/extend-win.md
 - name: Authentication
