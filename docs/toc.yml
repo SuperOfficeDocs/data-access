@@ -1,8 +1,6 @@
 items:
 - name: SuperOffice APIs
   href: getting-started/index.md
-- name: Scripting options
-  href: getting-started/scripting-options.md
 - name: NetServer fundamentals
   href: netserver/index.md
 - name: Authentication

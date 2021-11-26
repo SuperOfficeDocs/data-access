@@ -3,8 +3,8 @@ uid: intro-to-superoffice-apis
 title: Introduction to SuperOffice APIs
 description: Introducing SuperOffice APIs
 author: Tony Yates
-so.date: 11.25.2021
-keywords: api, getting started, integration point, scripting, Jscript, Javascript, VB.NET, C#
+so.date: 11.26.2021
+keywords: API, getting started, integration point, scripting, Jscript, Javascript, VB.NET, C#
 so.topic: concept
 so.envir: cloud, onsite
 so.client: win, web, service
@@ -66,11 +66,11 @@ These first three CRM clients support many forms of integration, but the mobile 
 
 The list of available APIs for integrations decreases the closer they are to online. That is just the nature of the respective environment and not the limitations of the platforms or APIs.
 
-| | Windows | Web | Online |
+| | NetServer Web Services | NetServer Core | COM |
 |---|:-:|:-:|:-:|
-| COM | X | | |
-| NetServer Core | X | X | |
-| NetServer Web Services | X | X | X |
+| Windows | X | X | X |
+| Web | X | X | |
+| Online | X | | |
 
 * From NetServer Core, Web supports NetServer script events only.
 * Using NetServer web services, the configuration must be set to Local Mode for Windows and Local or Remote mode for Web.
@@ -88,11 +88,7 @@ The APIs that enable external integration with SuperOffice typically mean applic
 
 The difference between the two is that automation primarily deals with [scripting languages][14] while most integrations use a compiled program using .NET, Java, or Delphi.
 
-**Automation** allows an application to execute code when an event occurs inside the client. These events occur when an action takes place such as when a dialog is opened, or a person is created.
-
-While automation code is usually defined by customer requirements, consultants often create routines that assist with common tasks. Automation code can perform just about any task imaginable, but generally involve validating, transforming, and/or moving data. These types of routines are commonly discussed in the [developer forums][1].
-
-Internal automation APIs are very useful for managing predetermined routines based on customers' requirements and providing user interaction within the application. They can make complex multiple-step tasks easier by programmatically automating the mundane details, and let the user focus on the task at hand.
+[!include[What is automation?](../../../superoffice-docs/docs/automation/includes/automation-intro.md)]
 
 **NetServer**, although used as an umbrella term that encapsulates a variety of data access capabilities, is just as much if not more extensible than the SuperOffice clients. With constructs such as low-level database objects to high-level business objects, to higher-level web services and web service proxy libraries, NetServer is itself an extensible SuperOffice product.
 
@@ -164,7 +160,7 @@ Read more about each platform API in the SDK documentation.
 [11]: ../netserver/erp-connectors/index.md
 [12]: ../netserver/quote-connectors/index.md
 [13]: ../../../superoffice-docs/docs/mirroring/overview.md
-[14]: scripting-languages.md
+[14]: ../../../superoffice-docs/docs/automation/overview.md#languages
 [15]: ../netserver/index.md
 [16]: ../../../superoffice-docs/docs/automation/netserver-scripting/index.md
 
