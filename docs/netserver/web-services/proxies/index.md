@@ -89,8 +89,8 @@ In a future release, the parameters will be tagged with ordering information, ma
 [1]: built-in.md#binary
 [2]: built-in.md#iis
 [3]: custom.md
-[4]: ../../../authentication/online/webapi/iauthorization.md
+[4]: ../../../authentication/webapi/iauthorization.md
 [5]: webapi-client.md
 [6]: https://www.nuget.org/packages/SuperOffice.NetServer.Services
-[7]: ../../../authentication/online/webapi/systemuserclient.md
+[7]: ../../../authentication/webapi/systemuserclient.md
 [9]: https://docs.microsoft.com/en-us/dotnet/framework/wcf/servicemodel-metadata-utility-tool-svcutil-exe

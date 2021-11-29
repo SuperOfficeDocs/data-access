@@ -3,7 +3,7 @@ uid: what_is_netserver
 title: What is Netserver / Understanding NetServer
 description: NetServer is a multi-tiered database access layer that bridges communication between clients and the SuperOffice database.
 author: AnthonyYates
-so.date: 11.25.2021
+so.date: 11.29.2021
 keywords: API, NetServer, HDB, RDB, entity, row, archive, OSQL, web service, services
 so.topic: concept
 so.envir: cloud, onsite
@@ -12,13 +12,13 @@ so.client: win, web
 
 # Understanding NetServer
 
-All SuperOffice clients, in one form or another, depend on NetServer for database access. While each client has its own extensibility points, NetServer also has extensibility points. Some of NetServer's extensibility options surface to the clients, such as the Document Plug-in.
+All SuperOffice clients, in one form or another, depend on NetServer for database access. While each client has its own extensibility points, NetServer also has extensibility points. Some of NetServer's extensibility options surface to the clients, such as the [Document Plug-in][14].
 
-As a multi-tiered database access layer that bridges communications between clients and the SuperOffice database, NetServer uses database-independent database access code, as well as high-level web services for both the SuperOffice Web and mobile clients.
+As a **multi-tiered database access layer** that bridges communications between clients and the SuperOffice database, NetServer uses database-independent database access code, as well as high-level web services for both the SuperOffice Web and mobile clients.
 
 ![NetServer architecture][img3]
 
-In a nutshell, NetServer is a layered, factory-driven library that enables developers to conduct Create, Read, Update and Delete (CRUD) operations to the SuperOffice database, and more. Whether deploying a solution to a local SuperOffice database installation or operating in a distributed environment, NetServer exposes an array of application programming interface (API) approaches to facilitate a wide range of solution implementations.
+In a nutshell, NetServer is a layered, **factory-driven** library that enables developers to conduct Create, Read, Update and Delete (CRUD) operations to the SuperOffice database, and more. Whether deploying a solution to a local SuperOffice database installation or operating in a distributed environment, NetServer exposes an array of application programming interface (API) approaches to facilitate a wide range of solution implementations.
 
 Although the terrain is vast and complex and can be somewhat intimidating at first, the NetServer APIs accommodate a wide variety of developers by layering the architecture in various intuitive abstractions. The layered aspect of NetServer invites developers to tap into the database from several facets. In this article, we will guide you through the various regions of NetServer, show you the attractions, as well as point out the areas to avoid.
 
@@ -108,7 +108,68 @@ All types of technology platforms, including Java, PHP, Python, Ruby, and many m
 > [!TIP]
 > Before you start coding, brush up on your knowledge about [SuperOffice authentication][13].
 
-This has been a high-level view of NetServer. As you can see, there is a vast difference between the different approaches. Be aware though that, just because one layer took longer to complete than the other, it does not imply that a layer should be ignored. Each query type has its place in the development world when used judiciously.
+### Factory pattern
+
+**Factory** is the location in the code at which objects are constructed. The intent of employing this pattern is to isolate the creation of objects from their usage. This allows the new derived types to be introduced into the code with no change to the code that uses the base objects. The use of these patterns makes it possible to interchange the classes without changing the code that uses them even at runtime. However, the employment of this pattern incurs the risk of unnecessary complexity and extra work in the initial writing of code.
+
+The NetServer implementation of the Factory patterns consists of an Interface named `IPrivateFactory` that is located in the `SuperOffice.Factory` namespace. The Factory hides the details about the settings from the user. Some of the factory patterns exposed through the NetServer include `ConnectionFactory` that is mostly seen by the user compared to the `AddressFactory`, which is used mostly within the NetServer code.
+
+Since the user mostly views the `ConnectionFactory` during the next few sections, Factory patterns will be explained in terms of the `ConnectionFactory`. Depending on the service mode setup, the `ConnectionFactory` will give back different objects.
+
+For example, `ConnectionFactory.GetConnection` returns an `SoConnection`. This could be configured in a way such that it would return another sub-class of `SoConnection`.
+
+The Factory pattern requires that you replace our standard class with your class, which means you have to make all SuperOffice functions plus your own functions, – this means an extra bit of work. This makes the Plugin pattern simpler than the Factory pattern because you only have to provide the functionality in your own plugin. Once the sub-class is ready, the user needs to set it up in the config file. When it has been set up, the Factory would automatically return the user-defined class instead of the standard class, since the Factory looks in the config file to check whether the standard class has been replaced with the user’s own implementation. The config file points to the assembly, which contains the user’s custom class or plugin. For Example:
+
+```XML
+<Factory>
+  <DynamicLoad>
+    <add key="MyFactory" value="C:\NetServer\Server\Feature SIX\bin\Debug\ MyFactory.dll" />
+  </DynamicLoad>
+</Factory>
+```
+
+Below is an example of the use of the get ConnectionFactory.
+
+```csharp
+using SuperOffice.Data;
+using SuperOffice.Data.SQL;
+//Create a DataSet of the Contact table
+ContactTableInfo conTableInfo = TablesInfo.GetContactTableInfo();
+//SQL Statement
+Select newSelect = S.NewSelect();
+newSelect.ReturnFields.Add(conTableInfo.Name,
+conTableInfo.Department);
+newSelect.Restriction = conTableInfo.ContactId.In(S.Parameter(10));
+using(SuperOffice.SoSession mySession =
+SuperOffice.SoSession.Authenticate("SAM", "sam"))
+{
+  if (mySession == null) return;
+  //Establish a Connection with the Database
+  SoConnection newConn = ConnectionFactory.GetConnection();
+  SoCommand newComm = newConn.CreateCommand();
+  newComm.SqlCommand = newSelect;
+  newConn.Open();
+  SoDataReader newReader = newComm.ExecuteReader();
+  //Retrieve the Date
+  while (newReader.Read())
+  {
+    string conName = newReader.GetString(0);
+  }
+  //Close Reader and Dispose of the Session
+  newReader.Close();
+  mySession.Dispose();
+}
+```
+
+For us to use the `ConnectionFactory`, the `SuperOffice.Data` namespace has been called. After a `DataSet` of the `Contact` table has been created using OSQL statements.
+
+To use the connection, we create an instance of the `SoConnection` using the `ConnectionFactory`, `GetConnection` method.
+
+The `newConn` variable may contain an `SoConnection` object, or it may contain a sub-class of `SoConnection`. The factory controls what sort of object is returned. The factory is configured using the *app.config* file.
+
+## Summary
+
+This has been a high-level view of NetServer. As you can see, there is a vast difference between the different approaches. Be aware though that, just because one layer takes longer to complete than another, it does not imply that a layer should be ignored. Each query type has its place in the development world when used judiciously.
 
 <!-- Referenced links -->
 [1]: osql/index.md
@@ -124,6 +185,7 @@ This has been a high-level view of NetServer. As you can see, there is a vast di
 [11]: ../../../crmscript/docs/overview/index.md
 [12]: config/index.md
 [13]: ../authentication/overview.md
+[14]: ../documents/plugins/soarc-document-plugin.md
 
 <!-- Referenced images -->
 [img1]: media/netserverhilevelview.png

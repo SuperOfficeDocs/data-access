@@ -12,6 +12,19 @@ items:
     href: authentication/terminology.md
   - name: Users and associates
     href: authentication/users-and-associates.md
+  - name: WebAPI
+    href: authentication/webapi/index.md 
+    items:
+    - name: IAuthorization
+      href: authentication/webapi/iauthorization.md
+    - name: SystemUserClient
+      href: authentication/webapi/systemuserclient.md
+    - name: Enable Basic authentication (username + password)
+      href: authentication/webapi/enable-basic-auth.md
+    - name: Enable IIS Identity (AD)
+      href: authentication/webapi/enable-iis-identity.md
+    - name: Reuse session with X-XSRF-TOKEN
+      href: authentication/webapi/reuse-session.md
   - name: Online authentication
     href: authentication/online/index.md
     items:
@@ -39,13 +52,6 @@ items:
         href: authentication/online/auth-application/sign-system-user-token.md
       - name: Get system user ticket
         href: authentication/online/auth-application/get-system-user-ticket.md
-    - name: WebAPI
-      href: authentication/online/webapi/index.md 
-      items:
-      - name: IAuthorization
-        href: authentication/online/webapi/iauthorization.md
-      - name: SystemUserClient
-        href: authentication/online/webapi/systemuserclient.md
     - name: Validate tokens
       href: authentication/online/validate-security-tokens.md
     - name: Troubleshooting
@@ -67,15 +73,6 @@ items:
     items:
     - name: Pipeline and plug-ins
       href: authentication/onsite/pipeline.md
-    - name: WebAPI
-      href: authentication/onsite/webapi/index.md 
-      items:
-      - name: Enable Basic authentication (username + password)
-        href: authentication/onsite/webapi/enable-basic-auth.md
-      - name: Enable IIS Identity (AD)
-        href: authentication/onsite/webapi/enable-iis-identity.md
-      - name: Reuse session with X-XSRF-TOKEN
-        href: authentication/onsite/webapi/reuse-session.md
     - name: SoSession
       href: authentication/onsite/sosession/index.md
       items:
@@ -506,6 +503,7 @@ items:
     - name: Ticket events
       href: netserver/webhooks/reference/ticket-events.md
 - name: Plug-ins
+  href: netserver/plug-ins/index.md
   items:
   - name: Document plug-in
     href: documents/plugins/soarc-document-plugin.md

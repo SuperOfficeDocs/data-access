@@ -15,7 +15,7 @@ so.version: 8.1
 SuperOffice REST WebAPI services are available from version 8.1.
 
 > [!NOTE]
-> This article by Tony Yates was originally published in 2015. It is included here in the docs for completeness. However, you will find the content under the respective topics on this site and those *might* be more current.
+> This article was originally published in 2015. It is included here in the docs for completeness. However, you will find the content under the respective topics on this site and those *might* be more current.
 
 ## Introduction
 
@@ -491,8 +491,8 @@ Take your time getting to know SuperOffice REST services, and if you happen to s
 [6]: ../agents-webapi/index.md
 [7]: https://en.wikipedia.org/wiki/Open_Data_Protocol
 [8]: ../../../search/odata/index.md
-[9]: http-headers.md#accept-language
-[10]: http-headers.md#content-type
+[9]: ../http-headers.md#accept-language
+[10]: ../http-headers.md#content-type
 
 <!-- Referenced images -->
 [img1]: media/iis-configuration.png

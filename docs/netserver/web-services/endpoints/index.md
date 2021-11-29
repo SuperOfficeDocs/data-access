@@ -49,14 +49,14 @@ An endpoint is the address, port, and protocol a web service is exposed through.
 <!-- Referenced links -->
 [1]: rest-webapi/index.md
 [2]: agents-webapi/index.md
-[3]: ../../../authentication/onsite/webapi/index.md#options
-[4]: ../../../authentication/onsite/webapi/reuse-session.md
+[3]: ../../../authentication/webapi/index.md#options
+[4]: ../../../authentication/webapi/reuse-session.md
 [5]: http-headers.md#accept-language
 [6]: http-headers.md#content-type
 [7]: http-headers.md#modified-unmodified
 [8]: ../../../authentication/onsite/sosession/index.md
 [9]: soap/index.md
-[10]: ../proxy/index.md
+[10]: ../proxies/index.md
 [11]: ../../../authentication/onsite/index.md#the-ticket
 [12]: ../../../api-reference/soap/Services88/index.md
 [13]: ../../../../../superoffice-docs/docs/onsite/install/iis/reverse-proxy.md#webapi

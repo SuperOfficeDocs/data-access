@@ -1,9 +1,9 @@
 ---
 uid: intro-to-superoffice-apis
 title: Introduction to SuperOffice APIs
-description: Introducing SuperOffice APIs
+description: Introducing SuperOffice APIs. The levels of SuperOffice extensibility are configuration, UI workflow, scripting, external APIs, and internal APIs.
 author: Tony Yates
-so.date: 11.26.2021
+so.date: 11.29.2021
 keywords: API, getting started, integration point, scripting, Jscript, Javascript, VB.NET, C#
 so.topic: concept
 so.envir: cloud, onsite
@@ -20,7 +20,7 @@ There are several levels of SuperOffice extensibility, and these are commonly de
 
 ![ExtensibilityStairs][img2]
 
-The first two levels of extensibility are exposed inside the admin UI pages of SuperOffice. These are features commonly managed by system administrators and SuperOffice consultants and are used to tailor SuperOffice to individual customer needs.
+The first two levels of extensibility are exposed inside the **admin UI pages** of SuperOffice. These are features commonly managed by system administrators and SuperOffice consultants and are used to tailor SuperOffice to individual customer needs.
 
 The **scripting level** pertains to a few different features that provide similar functionality, albeit by different means. [CRMScript][3] is a SuperOffice scripting dialect similar to JavaScript and is managed inside the administrative pages of SuperOffice. [NetServer scripting][16] is an Application Server capability that is accessible onsite only.
 
@@ -75,12 +75,12 @@ The list of available APIs for integrations decreases the closer they are to onl
 * From NetServer Core, Web supports NetServer script events only.
 * Using NetServer web services, the configuration must be set to Local Mode for Windows and Local or Remote mode for Web.
 
-There are virtually no limitations as to which API you leverage when building an integration that targets just the Windows client. If, however, your requirements include both the Windows client and the Web client, the available API options decrease. This is not necessarily a bad thing though. Sometimes it just makes technological sense to build an integration using only one of the available APIs. Gor example, it doesn't make sense to use the COM-based API in today's web service architectures.
+There are virtually no limitations as to which API you leverage when building an integration that targets just the Windows client. If, however, your requirements include both the Windows client and the Web client, the available API options decrease. This is not necessarily a bad thing though. Sometimes it just makes technological sense to build an integration using only one of the available APIs. For example, it doesn't make sense to use the COM-based API in today's web service architectures.
 
 > [!NOTE]
 > Although it sometimes can't be avoided, we generally discourage building integrations that leverage more than one of our APIs in the same solution.
 
-Although integrations in SuperOffice CRM Online can display visual elements, such as partner applications through a web panel, the Web client in SuperOffice CRM Online only supports service-orientated integrations today. Meaning that all data access routines must use the web services APIs. Considering the SuperOffice Web client relies exclusively on these APIs, and has more functionality than the Windows user and administration clients, the capability of the web service APIs should never be considered inferior. The web service APIs should be given serious consideration for nearly all scenarios.
+While integrations in SuperOffice CRM Online can display visual elements, such as partner applications through a web panel, the Web client in SuperOffice CRM Online supports only service-orientated integrations. Therefore, all data-access routines must use the web services APIs. Considering the SuperOffice Web client relies exclusively on these APIs, and has more functionality than the Windows user and administration clients, the capability of the web service APIs should never be considered inferior. The web service APIs should be given serious consideration for nearly all scenarios.
 
 ## Automation vs. integration
 
@@ -90,7 +90,7 @@ The difference between the two is that automation primarily deals with [scriptin
 
 [!include[What is automation?](../../../superoffice-docs/docs/automation/includes/automation-intro.md)]
 
-**NetServer**, although used as an umbrella term that encapsulates a variety of data access capabilities, is just as much if not more extensible than the SuperOffice clients. With constructs such as low-level database objects to high-level business objects, to higher-level web services and web service proxy libraries, NetServer is itself an extensible SuperOffice product.
+**NetServer**, although used as an umbrella term that encapsulates a variety of data access capabilities, is just as much if not more extensible than the SuperOffice clients. With constructs such as [low-level database objects][17] to [high-level business objects][18], to [higher-level web services][19] and web service proxy libraries, NetServer is itself an extensible SuperOffice product.
 
 SuperOffice has several partners and 3rd party vendors who have built tightly-coupled integrations with SuperOffice using external APIs. The different types of integrations built range from tiny edge-case security plugins to integrations with completely new document management systems. There are even complete enterprise resource planning systems that leverage SuperOffice CRM as the heart of its ecosystem.
 
@@ -102,33 +102,33 @@ The following table compares some of the most common extensibility points and de
 
 | Level | Extensibility | Client | Onsite | Online |
 |---|---|---|:-:|:-:|
-| Configuration | Preferences         | Sales, Service | X | X |
+| Configuration | [Preferences][20]   | Sales, Service | X | X |
 |               | Lists               | Sales, Service | X | X |
-|               | User-defined Fields | Sales          | X | X |
+|               | [Custom Fields][23] | Sales, Service | X | X |
 |               | SAINT               | Sales          | X | X |
 |               | Sales Guide         | Sales          | X | X |
 |               | Project Guide       | Sales          | X | X |
 | UI Workflow   | Drive the application UI | Sales     | X | |
-|               | Triggers            | Service        | X | X |
-|               | SuperMacro          | Service        | X | X |
-|               | Extra Tables        | Service        | X | X |
-|               | Custom Screens      | Service        | X | X |
-|               | Web panels          | Sales, Service | X | X |
+|               | [Triggers][21]      | Sales, Service | X | X |
+|               | [SuperMacro][22]    | Sales, Service | X | X |
+|               | [Extra Tables][30]  | Service        | X | X |
+|               | [Custom Screens][25] | Service        | X | X |
+|               | [Web panels][24]    | Sales, Service | X | X |
 |               | Zapier              | Sales, Service | | X |
-| Scripting     | CRMScript           | Service        | X | X |
-|               | NetServer Service   | Sales, Service | X | |
+| Scripting     | [CRMScript][3]      | Service        | X | X |
+|               | [NetServer Scripting][16] | Sales, Service | X | |
 |               | Windows Client      | Sales          | X | |
 | External APIs | [SOAP][9]           | Sales, Service | X | X |
 |               | [Restful][8]        | Sales, Service | X | X |
 |               | [Quote Connector][12]    | Sales | X | X |
 |               | [ERP Sync Connector][11] | Sales | X | X |
 |               | [Database Mirroring][13] | Sales, Service | | X |
-| Internal APIs | Custom Pages        | Sales          | X | |
-|               | Custom Dialogs      | Sales          | X | |
-|               | DataHandlers        | Sales          | X | |
-|               | Ajax Methods        | Sales          | X | |
-|               | Archive Providers   | Sales          | X | |
-|               | MDO Providers       | Sales          | X | |
+| Internal APIs | [Custom Pages][26]  | Sales          | X | |
+|               | [Custom Dialogs][26] | Sales          | X | |
+|               | [DataHandlers][26]  | Sales          | X | |
+|               | [Ajax Methods][27]  | Sales          | X | |
+|               | [Archive Providers][28] | Sales          | X | |
+|               | [MDO Providers][29] | Sales          | X | |
 |               | Document Plugins    | Sales          | X | |
 |               | Sentry Plugins      | Sales          | X | |
 |               | Batch Task Plugins  | Sales          | X | |
@@ -163,6 +163,20 @@ Read more about each platform API in the SDK documentation.
 [14]: ../../../superoffice-docs/docs/automation/overview.md#languages
 [15]: ../netserver/index.md
 [16]: ../../../superoffice-docs/docs/automation/netserver-scripting/index.md
+[17]: ../netserver/osql/index.md
+[18]: ../netserver/entities/index.md
+[19]: ../netserver/web-services/index.md
+[20]: ../../../superoffice-docs/docs/admin/user-preferences/index.md
+[21]: ../../../superoffice-docs/docs/automation/trigger/create-trigger-script.md
+[22]: ../../../superoffice-docs/docs/automation/trigger/create-trigger-macro.md
+[23]: ../custom-fields/overview.md
+[24]: ../../../user-interface/docs/web-panels/index.md
+[25]: ../../../user-interface/docs/service-ui/custom-screens/index.md
+[26]: ../../../user-interface/docs/web-application/index.yml
+[27]: ../../../user-interface/docs/web-application/custom-ajax-methods.md
+[28]: ../netserver/archive-providers/index.md
+[29]: ../netserver/mdo-providers/reference/index.md
+[30]: ../../../crmscript/docs/custom-database/extra-tables.md
 
 <!-- Referenced images -->
 [img1]: media/web-client-custom-code.png
