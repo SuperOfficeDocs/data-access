@@ -1670,7 +1670,7 @@ title: Services88.TicketAgent WSDL
     </wsdl:operation>
     <wsdl:operation name="SendTicketMessage">
       <wsdl:documentation>
-        <summary>Send a message to recipients, e.g. by email or sms</summary>
+        <summary>Send a message to recipients, for example by email.</summary>
       </wsdl:documentation>
       <wsdl:input wsaw:Action="http://www.superoffice.net/ws/crm/NetServer/Services88/Ticket/SendTicketMessage" name="SendTicketMessageRequest" message="tns:SendTicketMessageRequest" />
       <wsdl:output wsaw:Action="http://www.superoffice.net/ws/crm/NetServer/Services88/Ticket/SendTicketMessageResponse" name="SendTicketMessageResponse" message="tns:SendTicketMessageResponse" />
