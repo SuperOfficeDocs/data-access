@@ -248,6 +248,6 @@ jsonResult.result.Kind
 These are always UTC, and so their values are not affected by the [TimeZone header][1]. If you specify `includeTZOffset` they are always tagged as UTC times.
 
 <!-- Referenced links -->
-[1]: http-headers.md
+[1]: endpoints/http-headers.md
 
 <!-- Referenced images -->

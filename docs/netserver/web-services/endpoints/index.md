@@ -3,14 +3,14 @@ title: Endpoints
 uid: ws_endpoints
 description: Endpoints
 author: Bergfrid Dias
-so.date: 11.26.2021
-keywords: API, web services, endpoints, WebAPI, SOAP
+so.date: 12.02.2021
+keywords: API, web services, endpoints, WebAPI, SOAP, REST
 so.topic: concept
 ---
 
 # Endpoints
 
-An endpoint is the address, port, and protocol a web service is exposed through.
+An endpoint is the address, port, and protocol a web service is exposed at. In short, the web service **URL**.
 
 ## WebAPI
 
@@ -18,7 +18,7 @@ An endpoint is the address, port, and protocol a web service is exposed through.
 
 ### Getting started
 
-* Get the version number and build date from the **API endpoint**: `/api`
+* [Get the version number][14] and build date from the **API endpoint**: `/api`
 * Get a list of supported URLs using the version URL: `/api/v1`
 
 > [!NOTE]
@@ -60,3 +60,4 @@ An endpoint is the address, port, and protocol a web service is exposed through.
 [11]: ../../../authentication/onsite/index.md#the-ticket
 [12]: ../../../api-reference/soap/Services88/index.md
 [13]: ../../../../../superoffice-docs/docs/onsite/install/iis/reverse-proxy.md#webapi
+[14]: get-webapi-version.md

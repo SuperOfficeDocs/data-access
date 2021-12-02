@@ -3,7 +3,7 @@ title: Agents WebAPI
 uid: webapi_agents
 description: Agents Web API
 author: Bergfrid Dias
-so.date: 11.18.2021
+so.date: 12.02.2021
 keywords: API, web services, endpoints, WebAPI, REST, Agents
 so.topic: concept
 ---
@@ -11,6 +11,7 @@ so.topic: concept
 # Agents WebAPI
 
 The Agents API contains everything in the normal web service API but does not attempt to model entities. It exposes the latest Services agents and functions. All operations are accessed using HTTP POST.
+
 To get the version and more info, [access the API endpoint][7]: `/api`
 
 > [!NOTE]
@@ -50,7 +51,18 @@ This method takes an appointment entity as its parameter so this needs to be in 
 
 ## Errors
 
-Errors are returned as a NULLs:
+Errors are returned as a NULLs. You may also get a 200 OK with an internal error object.
+
+> [!NOTE]
+> Check the response object, not just the HTTP status code.
+
+**HTTP 400 Bad Request - with an error result:**
+
+```http
+POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=glops
+```
+
+Happens when the request is malformed.
 
 **HTTP 200 OK - with a NULL result:**
 
@@ -58,11 +70,7 @@ Errors are returned as a NULLs:
 POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=9999
 ```
 
-**HTTP 400 Bad Request - with an error result:**
-
-```http
-POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=glops
-```
+Happens when the request succeeds but there is nothing to return.
 
 **200 OK with an internal error object:**
 
@@ -73,7 +81,7 @@ POST api/v1/Agents/Contact/GetContactEntity?contactEntityId=glops
 }
 ```
 
-You may also get a 200 OK with an internal error object.
+Happens when the request succeeds but the data is invalid. For example, a required parameter is missing.
 
 ## How to
 

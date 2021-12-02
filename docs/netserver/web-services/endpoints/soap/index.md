@@ -3,7 +3,7 @@ title: SOAP
 uid: soap
 description: SuperOffice SOAP API endpoints
 author: Bergfrid Dias
-so.date: 11.22.2021
+so.date: 12.02.2021
 keywords: API, web services, endpoints, SOAP, Agents, Services88
 so.topic: concept
 ---
@@ -21,15 +21,15 @@ SOAP is a simple XML-based protocol used to let applications exchange informatio
 * [Services84][5]
 
 > [!NOTE]
-> The above endpoints should not be confused with the legacy [SOAP interface of SuperOffice Service][6].
+> The above endpoints are not the same as the legacy [SOAP interface of SuperOffice Service][6] (customer, admin, and ticket port).
 
 ## Calling
 
-The raw SOAP might look something like this:
+The raw SOAP looks something like this:
 
 [!code-xml[XML](../../../../authentication/onsite/sosession/includes/soap-env.xml)]
 
-The following example shows how we may retrieve a `ContactEntity` using the `ContactAgent`.
+The following example shows how to retrieve a `ContactEntity` using the `ContactAgent`.
 
 ```csharp
 using SuperOffice;
@@ -37,28 +37,21 @@ using SuperOffice.CRM.Services;
 
 using(SoSession newSession = SoSession.Authenticate("sam", "sam"))
 {
-  //Retrieving a Contact Entity from a service agent
-  //Instantiating a Contact Agent
+  //Instantiate agent
   using(ContactAgent myContactAgent = new ContactAgent())
   {
-    //Retrieving a Contact Entity carrier from a service call
+    //Retrieve a ContactEntity carrier
     ContactEntity myContactEntity = myContactAgent.GetContactEntity(5);
 
-    //Retrieving values of the carrier properties
+    //Retrieve values of the carrier properties
     string conName = myContactEntity.Name;
     string conDept = myContactEntity.Department;
   }
 }
 ```
 
-Here, we have created an instance of the `ContactAgent` using the `GetContactAgent` method exposed by the `AgentFactory` class. Next, we use the created implementation of the `ContactAgent` to retrieve the `ContactEntity` as shown below.
-
-```csharp
-ContactEntity newConEnt = newConAgt.GetContactEntity(5);
-```
-
 > [!NOTE]
-> The `ContactAgent` class provides methods such as `GetAddress`, `GetAddressByCountry`, `GetContact`, `DeleteContactEntity`, and many more, which can be used in a manner similar to the above.
+> The `ContactAgent` class provides methods such as `GetAddress`, `GetAddressByCountry`, `GetContact`, `DeleteContactEntity`, and many more.
 
 ---
 

@@ -3,14 +3,14 @@ title: REST WebAPI
 uid: rest_api
 description: SuperOffice REST Web API exposes objects as entities that can be manipulated using the HTTP verbs GET, PUT, POST, and DELETE.
 author: Bergfrid Dias
-so.date: 11.22.2021
+so.date: 12.02.2021
 keywords: API, web services, endpoints, WebAPI, REST, ODATA, SO-AppToken, SOTicket
 so.topic: concept
 ---
 
 # REST WebAPI
 
-The REST API exposes objects as entities that can be retrieved using HTTP GET, modified using HTTP PUT, created using HTTP POST, and deleted using HTTP DELETE. To get the version and more info, [access the API endpoint][12]: `/api`
+The REST API exposes objects as entities that can be retrieved using HTTP GET, modified using HTTP PUT or PATCH, created using HTTP POST, and deleted using HTTP DELETE. To get the version and more info, [access the API endpoint][12]: `/api`
 
 **Examples:**
 
@@ -38,11 +38,13 @@ The entities all have similar structures.
 
 `/api/v1/Contact` returns an [ODATA][16] feed of contact records. You can select fields and order and filter the result using ODATA operations.
 
-## Filter
+## ODATA filters
 
 `/api/v1/Contact?$select=name,category&$filter=registeredDate before '2021-1-1'`
 
 This returns the contact ID, name, and category for contacts created before 2021.
+
+[Read more about REST WebAPI search.][17]
 
 ## Default
 
@@ -50,7 +52,7 @@ This returns the contact ID, name, and category for contacts created before 2021
 
 ## Retrieve object
 
-`/api/v1/Contact/123` returns the Contact with ID 123. This object can be PUT or DELETE - subject to the usual sentry restrictions. If your role does not allow you to update, then the WebAPI won't give you more access.
+`/api/v1/Contact/123` returns the Contact with ID 123. This object can be PUT or DELETE - subject to the usual sentry restrictions. The WebAPI won't facilitate elevated access.
 
 ```http
 GET /api/v1/Contact/123
@@ -60,7 +62,7 @@ DELETE /api/v1/Contact/123
 
 ## Simple
 
-`/api/v1/Contact/123/Simple` returns a simplified version of the entity. This cannot be updated or deleted, but it can be easier to work with - it does not have deeply nested structures, and does not support things like user-defined fields.
+`/api/v1/Contact/123/Simple` returns a simplified version of the entity. This cannot be updated or deleted, but it can be easier to work with - it does not have deeply nested structures, and does not include things like user-defined fields.
 
 ## User-defined fields
 
@@ -75,7 +77,7 @@ Many have related lists of other entities as well:
 * `/api/v1/Contact/123/Projects`
 * `/api/v1/Contact/123/Sales`
 
-These lists are archives that you can filter and sort using OData operations.
+These lists are archives that you can filter and sort using OData queries.
 
 ## Lists
 
@@ -97,9 +99,9 @@ To return the **list items** in the given list:
 
 `/api/v1/MDOList` gives you read access to hierarchical lists and other list providers in the system.
 
-## Archives
+## Search
 
-The archive provider system is exposed as an OData endpoint.
+The archive provider system is used to search to get read-only data and is exposed as an OData endpoint.
 
 * `/api/v1/Archive/OwnerContacts?$select=contactId,name,orgnr`
 * `/api/v1/Archive/EmailAddress?$select=fullName,emailAddress&$filter=contactId=12`
@@ -125,7 +127,9 @@ Built-in string resources can be read in supported languages.
 
 ## System
 
-Users, roles, and license stuff are exposed via simple endpoints. If you have admin rights in your role, you can POST or PUT to update system information.
+Users, roles, and license stuff are exposed via simple endpoints. Available onsite only!
+
+If you have admin rights in your role, you can POST or PUT to update system information.
 
 * `/api/v1/User/Tony`
 * `/api/v1/Role/12`
@@ -150,7 +154,7 @@ Errors are returned using HTTP error codes, and as a JSON object:
 
 Let's look at how your application can communicate with the SuperOffice web services *after* authenticating and obtaining the system user ticket. You have to establish a secure connection before you start exchanging data.
 
-In contrast to the **interactive** workflow, where the `Authorization` header uses `Bearer [access_token]`, the **non-interactive** workflow requires the `Authorization` header to use `SOTicket` instead of `Bearer`, followed by the ticket value.
+In contrast to the **interactive** workflow, where the `Authorization` header uses `Bearer [access_token]`, the **non-interactive** workflow requires the `Authorization` header to use `SOTicket` instead of `Bearer`, followed by the ticket value. You also have to include the `SO-AppToken` header.
 
 > [!NOTE]
 > Pre-requisites: You have a [valid system user ticket][13].
@@ -189,7 +193,7 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 * [Learn the Agents WebAPI][1]
 * [Look up endpoints in the REST reference][14]
 * [Download REST WebAPI Swagger file][9]
-* [Read Tony's article][15] on how to consume SuperOffice REST resources, set required authentication headers, and how a request URL, body, and response body should appear and behave.
+* [Read the article][15] on how to consume SuperOffice REST resources, set required authentication headers, and how a request URL, body, and response body should appear and behave.
 
 <!-- Referenced links -->
 [1]: ../agents-webapi/index.md
@@ -206,5 +210,6 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 [12]: ../get-webapi-version.md
 [13]: ../../../../authentication/online/auth-application/get-system-user-ticket.md
 [14]: ../../../../api-reference/restful/rest/index.md
-[15]: in-depth.md
+[15]: setup.md
 [16]: ../../../search/odata/index.md
+[17]: ../../../search/index.md

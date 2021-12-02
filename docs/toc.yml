@@ -189,21 +189,14 @@ items:
     - name: REST WebAPI
       href: netserver/web-services/endpoints/rest-webapi/index.md
       items:
-      - name: In-depth article
-        href: netserver/web-services/endpoints/rest-webapi/in-depth.md
+      - name: Set-up
+        href: netserver/web-services/endpoints/rest-webapi/setup.md
     - name: Get version
       href: netserver/web-services/endpoints/get-webapi-version.md
     - name: HTTP request headers
       href: netserver/web-services/endpoints/http-headers.md
-    - name: Timezones
-      href: netserver/web-services/endpoints/so-timezone.md
     - name: SOAP
       href: netserver/web-services/endpoints/soap/index.md
-      items:
-      - name: TableRight
-        href: netserver/web-services/endpoints/soap/table-rights.md
-      - name: WCF primer
-        href: netserver/web-services/endpoints/soap/wcf-primer.md
   - name: Proxies
     href: netserver/web-services/proxies/index.md
     items:
@@ -213,6 +206,8 @@ items:
       href: netserver/web-services/proxies/built-in.md
     - name: Call using custom proxies
       href: netserver/web-services/proxies/custom.md
+  - name: Timezones
+    href: netserver/web-services/so-timezone.md
 - name: Entities
   href: netserver/entities/index.md
   items:

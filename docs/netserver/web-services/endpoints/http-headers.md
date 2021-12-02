@@ -3,7 +3,7 @@ title: Headers
 uid: webapi_headers
 description: WebAPI headers
 author: Bergfrid Dias
-so.date: 11.19.2021
+so.date: 12.02.2021
 keywords: API, WebAPI, headers, Accept-Language, Content-Type, If-Modified-Since, If-Unmodified-Since, internationalization, SO-Language, SO-Culture, Accept, If-Modified-Since, If-Unmodified-Since, SO-TimeZone, includeTZOffset
 so.topic: concept 
 ---
@@ -197,7 +197,7 @@ This is telling you that your cached copy of the data is no good anymore. It has
 
 ## <a name="so-timezone"></a>SO-TIMEZONE
 
-You specify the time zone using the `SO-TIMEZONE` HTTP header. It can be either an id or a time-zone name.
+You specify the [time zone][1] using the `SO-TIMEZONE` HTTP header. It can be either an ID or a time-zone name.
 
 The following blocks are the same because the `/api/v1/timezone` archive lists the Norway time zone code as 261.
 
@@ -270,3 +270,8 @@ x.getUtcHours()
 Now the time we get back is not what we expected (7 hours) (because JavaScript is converting to local (Norwegian) time automatically), but the time zone and UTC values are correct.
 
 Which behavior you want depends on what sort of the date processing you are doing.
+
+<!-- Referenced links -->
+[1]: ../so-timezone.md
+
+<!-- Referenced images -->
