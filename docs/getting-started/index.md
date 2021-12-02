@@ -3,7 +3,7 @@ uid: intro-to-superoffice-apis
 title: Introduction to SuperOffice APIs
 description: Introducing SuperOffice APIs. The levels of SuperOffice extensibility are configuration, UI workflow, scripting, external APIs, and internal APIs.
 author: Tony Yates
-so.date: 11.29.2021
+so.date: 12.02.2021
 keywords: API, getting started, integration point, scripting, Jscript, Javascript, VB.NET, C#
 so.topic: concept
 so.envir: cloud, onsite
@@ -53,14 +53,11 @@ SuperOffice will continue to invest in research and development to deliver equiv
 
 ## Platforms (SuperOffice clients)
 
-SuperOffice supports different forms of scripting automation. [SuperOffice Service][4] (CS) supports scripting automation and accounts for the majority of integrations. SuperOffice CRM on the other hand is available as four unique platforms, each of which has its own extensibility characteristics:
+[SuperOffice Service][4] (CS) supports scripting automation and extensive UI customizations and accounts for the majority of integrations.
 
-* [Windows client][5]
-* [Onsite Web client][6]
-* [Online Web client][7]
-* Mobile clients: SuperOffice Mobile and Pocket CRM
+SuperOffice CRM is available as the [Online Web client][7], the [Onsite Web client][6], and the [Windows client][5], each of which has its own extensibility characteristics.
 
-These first three CRM clients support many forms of integration, but the mobile clients do not: SuperOffice Mobile and Pocket CRM support custom web panels that are configurable on each device, but that is all. They don't expose any external integration points.
+The [mobile clients][31] SuperOffice Mobile and Pocket CRM support custom web panels that are configurable on each device. They expose few external integration points.
 
 ### Recommended APIs for each platform
 
@@ -68,19 +65,21 @@ The list of available APIs for integrations decreases the closer they are to onl
 
 | | NetServer Web Services | NetServer Core | COM |
 |---|:-:|:-:|:-:|
-| Windows | X | X | X |
-| Web | X | X | |
-| Online | X | | |
+| [Windows][5] | X | X | X |
+| [Web][6] | X | X | |
+| [Online][7] | X | | |
 
-* From NetServer Core, Web supports NetServer script events only.
-* Using NetServer web services, the configuration must be set to Local Mode for Windows and Local or Remote mode for Web.
+* From [NetServer Core][32], Web supports [NetServer script events][16] only.
+* Using [NetServer web services][19], the [configuration][33] must be set to Local Mode for Windows and Local or Remote mode for Web.
 
 There are virtually no limitations as to which API you leverage when building an integration that targets just the Windows client. If, however, your requirements include both the Windows client and the Web client, the available API options decrease. This is not necessarily a bad thing though. Sometimes it just makes technological sense to build an integration using only one of the available APIs. For example, it doesn't make sense to use the COM-based API in today's web service architectures.
 
-> [!NOTE]
-> Although it sometimes can't be avoided, we generally discourage building integrations that leverage more than one of our APIs in the same solution.
+SuperOffice CRM Online relies exclusively on the service-orientated APIs for data-access, and yet it has more functionality than the other clients.
 
-While integrations in SuperOffice CRM Online can display visual elements, such as partner applications through a web panel, the Web client in SuperOffice CRM Online supports only service-orientated integrations. Therefore, all data-access routines must use the web services APIs. Considering the SuperOffice Web client relies exclusively on these APIs, and has more functionality than the Windows user and administration clients, the capability of the web service APIs should never be considered inferior. The web service APIs should be given serious consideration for nearly all scenarios.
+> [!NOTE]
+> The web service APIs are the preferred integration point for nearly all scenarios and should be considered first. Especially with sustainability in mind.
+>
+> Don't mix NetServer Core and web services. Although it sometimes can't be avoided, we generally discourage building integrations that leverage more than one of our APIs in the same solution.
 
 ## Automation vs. integration
 
@@ -177,6 +176,9 @@ Read more about each platform API in the SDK documentation.
 [28]: ../netserver/archive-providers/index.md
 [29]: ../netserver/mdo-providers/reference/index.md
 [30]: ../../../crmscript/docs/custom-database/extra-tables.md
+[31]: ../../../superoffice-docs/docs/mobile/index.yml
+[32]: ../netserver/index.md#domain-level-apis-netserver-core
+[33]: ../netserver/config/services.md
 
 <!-- Referenced images -->
 [img1]: media/web-client-custom-code.png
