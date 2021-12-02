@@ -188,9 +188,6 @@ items:
       href: netserver/web-services/endpoints/agents-webapi/index.md
     - name: REST WebAPI
       href: netserver/web-services/endpoints/rest-webapi/index.md
-      items:
-      - name: Set-up
-        href: netserver/web-services/endpoints/rest-webapi/setup.md
     - name: Get version
       href: netserver/web-services/endpoints/get-webapi-version.md
     - name: HTTP request headers
@@ -208,6 +205,8 @@ items:
       href: netserver/web-services/proxies/custom.md
   - name: Timezones
     href: netserver/web-services/so-timezone.md
+  - name: How to set up REST
+    href: netserver/web-services/setup-rest.md
 - name: Entities
   href: netserver/entities/index.md
   items:

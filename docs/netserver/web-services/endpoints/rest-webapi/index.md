@@ -210,6 +210,6 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 [12]: ../get-webapi-version.md
 [13]: ../../../../authentication/online/auth-application/get-system-user-ticket.md
 [14]: ../../../../api-reference/restful/rest/index.md
-[15]: setup.md
+[15]: ../../setup-rest.md
 [16]: ../../../search/odata/index.md
 [17]: ../../../search/index.md
