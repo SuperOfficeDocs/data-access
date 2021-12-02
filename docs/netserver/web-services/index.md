@@ -3,8 +3,8 @@ uid: netserver-web-services-overview
 title: NetServer web services
 description: The SuperOffice web services are the highest level for working with NetServer. This layer consists of endpoints based on WCF SOAP and RESTful WebAPI and web service proxies.
 author: Bergfrid Dias
-so.date: 11.22.2021
-keywords: API, web services, endpoints, proxy, NetServer, SOAP, REST, Agent, SuperOffice.CRM.Services
+so.date: 12.02.2021
+keywords: API, web services, endpoints, proxy, NetServer, SOAP, REST, Agent, SuperOffice.CRM.Services, DTO, carrier
 so.topic: concept
 so.envir: cloud, onsite
 so.client: win, web
@@ -17,7 +17,7 @@ so.client: win, web
 Each installation and online tenant exposes NetServer web services for all clients, including SuperOffice Web, SuperOffice Mobile, and partner application clients.
 
 > [!NOTE]
-> The SuperOffice.Services layer should not be confused with the web services available in the installation directory: InstallBase\WebServices. SuperOffice.Services is a **consumer** of these web services, whereas the web services are hosted in IIS. The layer is a **client proxy** to the NetServer web services and greatly simplifies what is required to call them.
+> The SuperOffice.NetServer.Services layer should not be confused with the web services available in the installation directory: [InstallBase]\Remote\ServicesXX. SuperOffice.NetServer.Services is a **consumer** of these web services, whereas the web services are hosted in IIS. The layer is a **client proxy** to the NetServer web services and greatly simplifies what is required to call them.
 
 ![SuperOffice.Services vs. web services diagram][img2]
 
@@ -40,21 +40,15 @@ A service is primarily **a method** exposed by the NetServer to manipulate the d
 A typical service call looks like this when using the NetServer helper classes:
 
 ```csharp
-using SuperOffice.CRM.Services;
-using SuperOffice;
-using(SoSession mySession = SoSession.Authenticate("SAL0", ""))
+using (SuperOffice.SoSession session = SuperOffice.SoSession.Authenticate("user", "password"))
 {
-  //Create a ContactAgent
-  IContactAgent myContactAgent = AgentFactory.GetContactAgent();
+  SuperOffice.Services.ContactAgent contactAgent = new SuperOffice.Services.ContactAgent();
 
-  //Get a Contact carrier through the ContactAgent
-  ContactEntity myContact = myContactAgent.GetContactEntity(1234);
+  ContactEntity contactEntity = contactAgent.CreateDefaultContactEntity();
 
-  //Retrieving the Name property of the Contact
-  string name = myContact.Name;
+// ... populate contact properties
 
-  // warning: hard-coded address layout assumption!
-  string city = myContact.Address[2][1];
+  contactAgent.SaveContactEntity(contactEntity);
 }
 ```
 
@@ -62,30 +56,28 @@ using(SoSession mySession = SoSession.Authenticate("SAL0", ""))
 
 SuperOffice has created a set of objects based on the **Agent pattern** that will perform your work for you. The goal of the pattern is to make it clear when you are making potentially expensive service calls.
 
-All services are called through an agent that is designed to handle a specific **business area**, for example, there will be a dedicated agent to handle the services intended for the sales area.
+All services are called through an agent that is designed to handle a specific **business area**.
 
 An **agent** is a class that exposes a set of methods. All agents live in the **SuperOffice.CRM.Services namespace**. A typical agent has methods for inserting, retrieving, updating, and deleting data. Each method on the agent corresponds to one service call.
 
 ```csharp
-IContactAgent newConAgt = new ContactAgent();
+ContactAgent newConAgt = new ContactAgent();
 ```
 
-The code segment above shows how we create a `ContactAgent`. The agent is the class factory that loads the local or remote agent based on the config file settings.
+The code segment above shows how we create a `ContactAgent`. Once the agent has been created, we can use it to access the different methods exposed by the agent. These methods would vary according to the agent created.
 
-Once the agent has been created, we may use it to access the different methods exposed by the agent. These methods would vary according to the agent created.
-
-A **carrier** is an object that carries data between the Agent and the NetServer services. There are two kinds of carriers: simple read-only carriers and complex entity carriers. The main difference is that entity carriers can be updated and sent back for saving to the database while read-only carriers cannot be saved back to the database.
+A **carrier** is a data transfer object **(DTO)** that carries data between the Agent and the NetServer services. There are two kinds of carriers: simple read-only carriers and complex entity carriers. The main difference is that entity carriers can be updated and sent back for saving to the database while read-only carriers cannot be saved back to the database.
 
 ### Read-only carriers
 
-A read-only carrier is a **simple object**. It exposes its properties primarily as simple string values or ID values correlating to the ID field in the corresponding table. For example:
+A read-only carrier is a **simple, slim object**. It exposes its properties primarily as string values or ID values correlating to the ID field in the corresponding table. For example:
 
-* A read-only carrier will expose the `country` property as a country name and not as a country sub-object.
+* The `country` property is exposed as a country name and not as a country sub-object.
 * The `Person.ContactId` property is of type integer and correlates to the `contact_id` field in the `Contact` table.
 
-The advantage of the read-only carrier is its **simplicity** and you can avoid many overheads by working with an entity carrier.
+The advantages this DTO type are its **simplicity** and that you avoid the overhead that comes when working with full-blown entities.
 
-Below is an example that displays how to load a read-only carrier using an Agent.
+Below is an example that shows how to load a read-only carrier using an Agent.
 
 ```csharp
 using SuperOffice.CRM.Services;
@@ -98,13 +90,13 @@ string myContactCategory = myContact.CategoryName;
 string myContactWebUrl = myContact.URL;
 ```
 
-Here, the `ContactAgent` will return a `Contact` read-only object through the `GetContact` method. These kinds of objects are what we call read-only carriers.
+Here, the `ContactAgent` will return a `Contact` object through the `GetContact` method.
 
 ### Entity carriers
 
-An entity carrier is an [entity][1] object. Unlike in read-only carriers, an entity carrier exposes its properties as objects that are populated with more **detailed data**. The properties will expose their properties since the properties in entity objects are objects themselves. For example, the `PersonEntity.Contact` is a populated object that contains all relational information about the corresponding contact - including name, address, contact ID, phone collection, and more.
+An entity carrier is an [entity][1] object. Unlike read-only carriers, these DTOs expose their properties as objects populated with more **detailed data**. For example, the `PersonEntity.Contact` contains all relational information about the corresponding contact - including name, address, contact ID, phone collection, and more.
 
-The example below displays how to retrieve a `Contact` entity object through the `GetContactEntity` method of the `ContactAgent`.
+The example below shows how to retrieve a `ContactEntity` object through the `GetContactEntity` method of the `ContactAgent`.
 
 ```csharp
 using SuperOffice.CRM.Services;
@@ -117,24 +109,21 @@ string myContactCategory = myContact.Category.Value;
 string myContactWebUrl = myContact.Urls.Length > 0 ? myContact.Urls[0].Value : "";
 ```
 
-To summarize: **The agent object presents the services and the carrier object (such as Person and PersonEntity) represents the data passed back and forth to the server by the agent, depending on the configuration.** Agents are used to execute actions, for example, call methods.
+To summarize: **The agent presents the services and the carrier (such as Person and PersonEntity) represents the data passed back and forth to the server.** Agents are used to execute actions by calling methods.
 
-Carrier entities resemble Entity objects. In contrast, carrier objects (not ending in Entity) such as Contact and Person, are more similar to **Row objects**.
+Entity carriers resemble [NetServer Core Entities][1]. In contrast, read-only carrier are more similar to [NetServer Core Rows][10].
 
 ## Calling a web service
 
-The web services are bundled in your [Developer Tools][4] subscription.
+Access to the web services is included in your [Developer Tools][4] subscription.
 
-The service-oriented aspects of NetServer web services provide many means to an end. You have the option to:
+You have the option to:
 
 * Use NetServer Proxies ([NuGet packages][6])
-* Generate a [custom proxy][5] by adding a web service
+* Generate a [custom proxy][5]
 * Use the [WebAPI client][9]
 * Use RESTful [WebAPI endpoints][7]
 * Use RESTful [Agent endpoints][8]
-
-> [!NOTE]
-> Your Online application is not allowed to place .NET assemblies in a tenant web application and must use the web services for all interactions.
 
 <!-- Referenced links -->
 [1]: ../entities/index.md
@@ -146,6 +135,7 @@ The service-oriented aspects of NetServer web services provide many means to an
 [7]: ../../api-reference/restful/rest/index.md
 [8]: ../../api-reference/restful/agent/index.md
 [9]: ../../api-reference/webapi/index.md
+[10]: ../rows/index.md
 
 <!-- Referenced images -->
 [img1]: media/netserver-web-services.png

@@ -3,8 +3,8 @@ title: NetServer archive providers
 uid: archive_providers
 description: NetServer archive providers
 author: Tony Yates
-so.date: 11.17.2017
-keywords:
+so.date: 12.02.2021
+keywords: archive provider, NetServer, search
 so.topic: concept
 ---
 
@@ -28,7 +28,7 @@ An archive provider is a mechanism that delivers data in a form suitable for dis
 
 ## What is an archive provider
 
-Fundamentally, an archive provider is similar to a database view. They each have a unique name, expose a fixed-set of selectable fields, and mask their join logic. Underneath the hood lies a dynamic system that, based on the requested fields, creates absolute necessary joins only. This of course increases query performance and throughput.
+Fundamentally, an archive provider is similar to a database view. They each have a unique name, expose a fixed set of selectable fields, and mask their join logic. Underneath the hood lies a dynamic system that, based on the requested fields, creates absolute necessary joins only. This of course increases query performance and throughput.
 
 An archive provider is determined by 3 main properties:
 
@@ -36,7 +36,7 @@ An archive provider is determined by 3 main properties:
 * Available Entities
 * Available Columns
 
-**Entities** add a dimension that database views do not possess. They act as an additional **filtering** capability. For example, not all, but several archive providers return rows that are of multiple types. This means that a single query can return rows of details that represent several different types of rows like appointment, sale, and document. On providers that support multiple entities, it possible to tell the provider to only return one or two types of rows, and ignore the rest.
+**Entities** add a dimension that database views do not possess. They act as an additional **filtering** capability. For example, not all, but several archive providers return rows that are of multiple types. This means that a single query can return rows of details that represent several different types of rows like appointment, sale, and document. On providers that support multiple entities, it is possible to tell the provider to only return one or two types of rows and ignore the rest.
 
 Executing complex queries requires a way to specify criteria, and archive providers do this with **archive restrictions**.
 

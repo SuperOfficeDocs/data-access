@@ -29,7 +29,7 @@ The raw SOAP might look something like this:
 
 [!code-xml[XML](../../../../authentication/onsite/sosession/includes/soap-env.xml)]
 
-The following example shows how we may retrieve a `ContactEntity` using the `IContactAgent`.
+The following example shows how we may retrieve a `ContactEntity` using the `ContactAgent`.
 
 ```csharp
 using SuperOffice;
@@ -51,14 +51,14 @@ using(SoSession newSession = SoSession.Authenticate("sam", "sam"))
 }
 ```
 
-Here, we have created an instance of the `IContactAgent` using the `GetContactAgent` method exposed by the `AgentFactory` class. Next, we use the created implementation of the `IContactAgent` to retrieve the `ContactEntity` as shown below.
+Here, we have created an instance of the `ContactAgent` using the `GetContactAgent` method exposed by the `AgentFactory` class. Next, we use the created implementation of the `ContactAgent` to retrieve the `ContactEntity` as shown below.
 
 ```csharp
 ContactEntity newConEnt = newConAgt.GetContactEntity(5);
 ```
 
 > [!NOTE]
-> The `IContactAgent` class provides methods such as `GetAddress`, `GetAddressByCountry`, `GetContact`, `DeleteContactEntity`, and many more, which can be used in a manner similar to the above.
+> The `ContactAgent` class provides methods such as `GetAddress`, `GetAddressByCountry`, `GetContact`, `DeleteContactEntity`, and many more, which can be used in a manner similar to the above.
 
 ---
 

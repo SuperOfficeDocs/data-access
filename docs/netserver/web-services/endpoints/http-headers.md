@@ -217,7 +217,7 @@ This will convert dates to/from the given time zone, but it will leave the dates
 
 This is the way that the WCF service API works, and how the WebAPI has worked since its release. It leaves time zones up to the client.
 
-### <a name="includetzoffset">includeTZOffset
+### <a name="includetzoffset"></a>includeTZOffset
 
 ```http
 GET /appointment/123

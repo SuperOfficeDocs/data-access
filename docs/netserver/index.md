@@ -3,7 +3,7 @@ uid: what_is_netserver
 title: What is Netserver / Understanding NetServer
 description: NetServer is a multi-tiered database access layer that bridges communication between clients and the SuperOffice database.
 author: AnthonyYates
-so.date: 11.29.2021
+so.date: 12.02.2021
 keywords: API, NetServer, HDB, RDB, entity, row, archive, OSQL, web service, services
 so.topic: concept
 so.envir: cloud, onsite
@@ -26,7 +26,7 @@ Although the terrain is vast and complex and can be somewhat intimidating at fir
 
 SuperOffice NetServer provides several **persistence layers**, each one allowing more fine-grain control than the next.
 
-![NetServer architecture, detailed][img4]
+![NetServer architecture, detailed][img4] <!-- TODO update fig to drawIO simplified services -->
 
 You can choose to work at the level that suits you best. **Webhooks** are supported at both the low and high levels of NetServer.
 
@@ -37,14 +37,14 @@ The lowest layer of NetServer, the domain-level development APIs, is generally u
 * [SQL data objects (OSQL)][1]: Low-level, high-performance, database-independent objectified SQL.
 * [Row and Rows][2]: Medium-level data table and data row-level access.
 * [Entities][3]: High-level business model classes that abstract multiple table joins.
-* [Archive][4] and MDO Providers: provide complex search capabilities across the entire database.
+* [Archive providers][4] and [MDO Providers][17]: provide complex search capabilities across the entire database.
 
 ### Service-orientated APIs
 
-The highest level of NetServer data access is the service-orientated architecture and consists of:
+The highest level of NetServer data access is the [service-orientated architecture][5] and consists of:
 
-* [Web service endpoints][5] based on **REST**ful WebAPI and WCF **SOAP**: IIS application used by SuperOffice Web and Mobile.
-* Web service proxies: Service agent pattern .NET assemblies used by clients to access the service endpoints.
+* [Web service endpoints][15] based on **REST**ful WebAPI and WCF **SOAP**: IIS application used by SuperOffice Web and Mobile.
+* [Web service proxies][16]: Service agent pattern .NET assemblies used by clients to access the service endpoints.
 
 An important aspect of NetServer web service development is its **deployment flexibility**. It's capable of being embedded in a domain-centric fat client application, as well as a thin client deployed with NetServer service proxies for data access across the internet.
 
@@ -56,11 +56,13 @@ At the highest level, encapsulated in the **SuperOffice.Services namespace**, is
 
 [Read more about web services.][5]
 
-## Archives
+## Search
 
-An [archive][4] is a **configurable multi-column list** that flattens the complex relationships between tables into a simple grid.
+[Archive providers][4] are similar to database views and simplify **searching and retrieving** collections of related data efficiently. They let you execute complex queries while masking the join logic and handling the security.
 
-Archives simplify **searching and retrieving** collections of related data efficiently. The archive system is very flexible and supports many different providers. Each provider describes a set of related **columns** from the database. Each provider supports a set of methods for finding out what columns are available.
+Each provider describes a set of related **columns** from the database and supports a set of methods for finding out what columns are available.
+
+[Read more about archive providers.][4]
 
 ## Relational database layer (entities)
 
@@ -108,65 +110,6 @@ All types of technology platforms, including Java, PHP, Python, Ruby, and many m
 > [!TIP]
 > Before you start coding, brush up on your knowledge about [SuperOffice authentication][13].
 
-### Factory pattern
-
-**Factory** is the location in the code at which objects are constructed. The intent of employing this pattern is to isolate the creation of objects from their usage. This allows the new derived types to be introduced into the code with no change to the code that uses the base objects. The use of these patterns makes it possible to interchange the classes without changing the code that uses them even at runtime. However, the employment of this pattern incurs the risk of unnecessary complexity and extra work in the initial writing of code.
-
-The NetServer implementation of the Factory patterns consists of an Interface named `IPrivateFactory` that is located in the `SuperOffice.Factory` namespace. The Factory hides the details about the settings from the user. Some of the factory patterns exposed through the NetServer include `ConnectionFactory` that is mostly seen by the user compared to the `AddressFactory`, which is used mostly within the NetServer code.
-
-Since the user mostly views the `ConnectionFactory` during the next few sections, Factory patterns will be explained in terms of the `ConnectionFactory`. Depending on the service mode setup, the `ConnectionFactory` will give back different objects.
-
-For example, `ConnectionFactory.GetConnection` returns an `SoConnection`. This could be configured in a way such that it would return another sub-class of `SoConnection`.
-
-The Factory pattern requires that you replace our standard class with your class, which means you have to make all SuperOffice functions plus your own functions, – this means an extra bit of work. This makes the Plugin pattern simpler than the Factory pattern because you only have to provide the functionality in your own plugin. Once the sub-class is ready, the user needs to set it up in the config file. When it has been set up, the Factory would automatically return the user-defined class instead of the standard class, since the Factory looks in the config file to check whether the standard class has been replaced with the user’s own implementation. The config file points to the assembly, which contains the user’s custom class or plugin. For Example:
-
-```XML
-<Factory>
-  <DynamicLoad>
-    <add key="MyFactory" value="C:\NetServer\Server\Feature SIX\bin\Debug\ MyFactory.dll" />
-  </DynamicLoad>
-</Factory>
-```
-
-Below is an example of the use of the get ConnectionFactory.
-
-```csharp
-using SuperOffice.Data;
-using SuperOffice.Data.SQL;
-//Create a DataSet of the Contact table
-ContactTableInfo conTableInfo = TablesInfo.GetContactTableInfo();
-//SQL Statement
-Select newSelect = S.NewSelect();
-newSelect.ReturnFields.Add(conTableInfo.Name,
-conTableInfo.Department);
-newSelect.Restriction = conTableInfo.ContactId.In(S.Parameter(10));
-using(SuperOffice.SoSession mySession =
-SuperOffice.SoSession.Authenticate("SAM", "sam"))
-{
-  if (mySession == null) return;
-  //Establish a Connection with the Database
-  SoConnection newConn = ConnectionFactory.GetConnection();
-  SoCommand newComm = newConn.CreateCommand();
-  newComm.SqlCommand = newSelect;
-  newConn.Open();
-  SoDataReader newReader = newComm.ExecuteReader();
-  //Retrieve the Date
-  while (newReader.Read())
-  {
-    string conName = newReader.GetString(0);
-  }
-  //Close Reader and Dispose of the Session
-  newReader.Close();
-  mySession.Dispose();
-}
-```
-
-For us to use the `ConnectionFactory`, the `SuperOffice.Data` namespace has been called. After a `DataSet` of the `Contact` table has been created using OSQL statements.
-
-To use the connection, we create an instance of the `SoConnection` using the `ConnectionFactory`, `GetConnection` method.
-
-The `newConn` variable may contain an `SoConnection` object, or it may contain a sub-class of `SoConnection`. The factory controls what sort of object is returned. The factory is configured using the *app.config* file.
-
 ## Summary
 
 This has been a high-level view of NetServer. As you can see, there is a vast difference between the different approaches. Be aware though that, just because one layer takes longer to complete than another, it does not imply that a layer should be ignored. Each query type has its place in the development world when used judiciously.
@@ -186,6 +129,9 @@ This has been a high-level view of NetServer. As you can see, there is a vast di
 [12]: config/index.md
 [13]: ../authentication/overview.md
 [14]: ../documents/plugins/soarc-document-plugin.md
+[15]: web-services/endpoints/index.md
+[16]: web-services/proxies/index.md
+[17]: mdo-providers/reference/index.md
 
 <!-- Referenced images -->
 [img1]: media/netserverhilevelview.png

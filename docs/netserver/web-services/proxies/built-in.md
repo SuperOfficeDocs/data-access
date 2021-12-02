@@ -14,7 +14,7 @@ so.topic: howto
 
 This section explains how to access SuperOffice web services from .NET using SuperOffice tools.
 
-Whether targeting a local or remote database, an **SoSession** is the object that maintains a user's principal. The **secret** is calculated for us during the `Authenticate` call. The proxy objects returned by the agent factory will automatically add the SOAP authentication header for us. This makes working with the SOAP services much simpler. See the [Authentication][2] section for more information.
+Whether targeting a local or remote database, an **SoSession** is the object that maintains a user's principal. The **secret** is calculated for us during the `Authenticate` call. The proxy objects returned will automatically add the SOAP authentication header for us. This makes working with the SOAP services much simpler. See the [Authentication][2] section for more information.
 
 > [!NOTE]
 > There is no secret used here: the username + password is passed in clear-text, so you should use HTTPS if you are going to be doing this over the open internet.
@@ -214,7 +214,7 @@ The database attributes that are specified here will be used when logging into t
 
 ## <a name="modes"></a>Service communication modes
 
-The Agent factory returns implementation objects that talk directly to the database or to return proxy objects that talk to the back-end via SOAP. The advantage of this is that it gives flexibility since you can run everything on one box or two separate boxes without changing the program. Only the config file needs to be changed.
+The constructors return implementation objects that talk directly to the database or to return proxy objects that talk to the back-end via SOAP. The advantage of this is that it gives flexibility since you can run everything on one box or two separate boxes without changing the program. Only the config file needs to be changed.
 
 The diagram depicts the data path taken when communicating with the Services layer.
 
@@ -271,7 +271,7 @@ Switch mode, when set, will attempt to communicate with the setting defined in S
 * When running locally, the new ContactAgent() returns a `ContactAgentImpl` that lives in the *SuperOffice.CRM.Services.Implementation.dll*.
 * When running remotely, the new ContactAgent() returns a `ContactAgentProxy` that lives in the *SuperOffice.CRM.Services.Proxy.dll*.
 
-The application code cannot tell the difference between the two because the `GetContactAgent()` call only promises to return something which implements the `IContactAgent` interface – which both the local implementation and the proxy object do.
+The application code cannot tell the difference between the two because the `GetContactAgent()` call only promises to return something which implements the `ContactAgent` interface – which both the local implementation and the proxy object do.
 
 <!-- Referenced links -->
 
