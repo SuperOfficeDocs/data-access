@@ -3,7 +3,7 @@ title: REST WebAPI
 uid: rest_api
 description: SuperOffice REST Web API exposes objects as entities that can be manipulated using the HTTP verbs GET, PUT, POST, and DELETE.
 author: Bergfrid Dias
-so.date: 12.02.2021
+so.date: 12.03.2021
 keywords: API, web services, endpoints, WebAPI, REST, ODATA, SO-AppToken, SOTicket
 so.topic: concept
 ---
@@ -48,7 +48,13 @@ This returns the contact ID, name, and category for contacts created before 2021
 
 ## Default
 
-`/api/v1/Contact/default` returns a new blank entity.
+Entities have dependencies derived from preferences. When you create entities using the APIs, be aware of these and leverage the [preference system][18].
+
+Using Default will calculate some of the needed values for you, similar to clicking **New** inside the SuperOffice client. ​
+
+`/api/v1/Contact/default`
+
+[Read more about best practice API usage.][19]
 
 ## Retrieve object
 
@@ -108,7 +114,7 @@ The archive provider system is used to search to get read-only data and is expos
 
 ## User preferences
 
-User preferences and `pref.descriptions` can be read and updated.
+[User preferences][18] and `pref.descriptions` can be read and updated.
 
 * `/api/v1/Preference/section/keyname`
 * `/api/v1/PreferenceDescription/section/keyname`
@@ -213,3 +219,5 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 [15]: ../../setup-rest.md
 [16]: ../../../search/odata/index.md
 [17]: ../../../search/index.md
+[18]: ../../../../../../superoffice-docs/docs/admin/user-preferences/index.md
+[19]: ../../../../../../superoffice-docs/docs/apps/best-practices.md#entity-creation
