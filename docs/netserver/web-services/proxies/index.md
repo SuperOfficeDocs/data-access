@@ -47,8 +47,8 @@ The most complete way is to reference the NuGet packages. You can either:
 When necessary, use a tool to generate a client proxy class for a particular NetServer web service, for example, *Appointment.svc* or *Contact.svc*.
 
 <!-- Referenced links -->
-[1]: built-in.md#binary
-[2]: built-in.md#iis
+[1]: built-in.md#locally
+[2]: built-in.md#remotely
 [3]: custom.md
 [4]: ../../../authentication/webapi/iauthorization.md
 [5]: webapi-client.md
