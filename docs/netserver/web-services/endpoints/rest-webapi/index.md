@@ -66,15 +66,123 @@ PUT /api/v1/Contact/123
 DELETE /api/v1/Contact/123
 ```
 
-## Simple
+### Simple
 
 `/api/v1/Contact/123/Simple` returns a simplified version of the entity. This cannot be updated or deleted, but it can be easier to work with - it does not have deeply nested structures, and does not include things like user-defined fields.
 
-## User-defined fields
+## PATCH
 
-Most of the entities have user-defined fields, and expose information about the layout at `/api/v1/Contact/UdefLayout`.
+Using PATCH instead of PUT you can update an entity without sending the entire entity.
+
+HTTP PUT replaces the entire entity.
+
+```http
+PUT /api/v1/contact/123
+{ Name: 'foo', Department: 'bar', Category: { Id: 123 }, Business: { Id: 123 }, Code: 'foo', etc etc }
+```
+
+HTTP PATCH allows partial updates on entities. This is a simple [JSON MERGE PATCH format (RFC 7396)][20].
+
+```http
+PATCH /api/v1/contact/123
+{ Department: 'bar', Category: { Id: 123 } }
+```
+
+This can also be represented more explicitly as a [JSON PATCH (RFC 6902)][21]. This is the preferred structure for the WebAPI.
+
+```http
+PATCH /api/v1/contact/123
+[ { op: 'replace', path: 'Department', value: 'bar' },
+  { op: 'replace' path: 'Category/Id', value: 123 } ]
+```
+
+See [erosb.github.io][22] for a discussion of the benefits and problems with these two formats.
+
+> [!NOTE]
+> If you pass an **object where an array is expected**, we add the object to the array.
+
+For example, if you send the following patch, the corresponding JSON MERGE is generated and applied.
+
+**JSON MERGE:**
+
+```http
+{
+  Department: 'foo',
+  Phones: { Value: '12345678' }
+}
+```
+
+**Turns into JSON PATCH:**
+
+```http
+[{ op: 'replace', path: '/Department', value: 'foo' },
+ { op: 'add', path: '/Phones/-', value: { Value: '12345678' } } ]
+```
+
+Why? We know that Phones is an array, and we can't replace it with an object. If you passed an array, we would replace the entire phones value:
+
+**JSON MERGE:**
+
+```http
+{
+   Department: 'foo',
+   Phones: [ { Value: '12345678' } ]
+}
+```
+
+**Turns into JSON PATCH:**
+
+```http
+[{ op: 'replace', path: '/Department', value: 'foo' },
+ { op: 'replace', path: '/Phones', value: [ { Value: '12345678' } ] } ]
+```
+
+**To update an existing Contact, use PATCH:**
+
+```http
+PATCH /api/v1/Contact/5
+
+[
+  {
+    "op": "add",
+    "path": "Interests",
+    "value": [
+      {
+        "Id": "3",
+        "Selected": true
+      }
+    ]
+  }
+]
+```
+
+## Custom fields
+
+Most of the entities have **user-defined fields**, and expose information about the layout at `/api/v1/Contact/UdefLayout`.
 
 The actual user-defined field values are returned in the entity's `UserDefinedFields` property.
+
+To update a udeffield:
+
+```http
+PATCH /api/v1/contact/32
+
+[
+  {
+    "op": "replace",
+    "path": "CustomFields",
+    "value": {
+      "SuperOffice:1": "Testing"
+    }
+  }
+]
+```
+
+To update a field in a Service extra table:
+
+```http
+[ { 'op' : 'replace', 'path': 'ExtraFields/x_foobar', 'value': 'baz' } ]
+```
 
 ## Lists of entities
 
@@ -221,3 +329,6 @@ Registering a webhook is covered in the [Webhook overview][8]. [Webhook callback
 [17]: ../../../search/index.md
 [18]: ../../../../../../superoffice-docs/docs/admin/user-preferences/index.md
 [19]: ../../../../../../superoffice-docs/docs/apps/best-practices.md#entity-creation
+[20]: https://tools.ietf.org/html/rfc7386
+[21]: https://tools.ietf.org/html/rfc6902
+[22]: https://erosb.github.io/post/json-patch-vs-merge-patch/
