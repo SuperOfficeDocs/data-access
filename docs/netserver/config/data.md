@@ -1,10 +1,10 @@
 ---
 title: NetServer Data element
 uid: ns_config_data
-description: NetServer Data Element
-so.date: 06.06.2018
-author: {github-id}
-keywords: config
+description: The NetServer Data configuration section contains subsections for managing the database connection and session handling.
+so.date: 12.07.2021
+author: Bergfrid Dias
+keywords: config, NetServer, web.config, Database, CommandTimeout, ConnectionString, DatabaseMajor, DatabaseMinor, DatabaseName, DefaultReadUncommitted, DisableSqlTrackingComments, DisableUserInSqlTrackingComments, DynamicLoadedConnectionType, DynamicLoadedDataBaseDriver, ImpersonateDatabaseUser, Server, TablePrefix, Explicit, PartnerAllowed, EmployeeAllowed, AnonymousAllowed, DBUser, DBPassword, CommonDBConnection, Session, Mode, ReauthenticateOnDeserialization
 so.topic: reference
 so.envir: onsite
 ---
@@ -19,34 +19,34 @@ The data configuration section contains four subsections for managing the databa
 
 Configuration values for database connectivity define the location and database-vendor-specific settings.
 
-| Name | Description |
-|---|---|
-| DatabaseMajor | Major name of database provider. Options: MSSQL, Oracle, Sybase, and DB2 (legacy only). |
-| DatabaseMinor | Version number of database. |
-| Server | The server name where the database is located. |
-| DatabaseName | Name of the database. Also used for a distinct service name. |
-| TablePrefix | The prefix of the SuperOffice CRM tables in the database. |
-| ConnectionString | The formatted connection string template placeholders (`Server=[@Server];Database=[@Database];User ID=[@User];Password=[@Password]`). The number of parameters in the `ConnectionString` key will vary from one database vendor software to another, so will the names of the parameters. Vendor database software differences must be taken into consideration when setting this configuration key. The above example displays the configurations for an MSSQL database. |
-| CommandTimeout | Timeout in seconds for the command to wait for a response from the database. |
-| DynamicLoadedDataBaseDriver | Returns the name of the ADO.NET driver to load. |
-| DynamicLoadedConnectionType | Returns the type of connection to open. |
-| DefaultReadUncommitted | Should SELECTs by default run in "ReadUncommitted" isolation level, lessening locking contention (especially on SQL Server)? <br>Default: true |
-| ImpersonateDatabaseUser | Should the DbUser be logged in with windows and impersonated when connecting to the database to support database integrated authentication.<br>Default: false |
-| DisableSqlTrackingComments | If true, then comments that usually precede generated SQL to identify the operation and user will not be generated at all; may help performance on Oracle which thinks it has to re-parse everything if a comment changes.<br>Default: false |
-| DisableUserInSqlTrackingComments | If true, then comments that usually precede generated SQL to identify the operation will not contain associate information; may help performance on Oracle which thinks it has to re-parse everything if a comment changes.<br>Default: false |
+| Name | Description | Default |
+|---|---|---|
+| CommandTimeout | Timeout in seconds for the command to wait for a response from the database. | |
+| ConnectionString | The formatted connection string template placeholders (`Server=[@Server];Database=[@Database];User ID=[@User];Password=[@Password]`). The number of parameters in the `ConnectionString` key will vary from one database vendor software to another, so will the names of the parameters. Vendor database software differences must be taken into consideration when setting this configuration key. The above example displays the configurations for an MSSQL database. | |
+| DatabaseMajor | Major name of database provider. Options: MSSQL, Oracle, Sybase, and DB2 (legacy only). | |
+| DatabaseMinor | Version number of database. | |
+| DatabaseName | Name of the database. Also used for a distinct service name. | |
+| DefaultReadUncommitted | Should SELECTs by default run in "ReadUncommitted" isolation level, lessening locking contention (especially on SQL Server)? | true |
+| DisableSqlTrackingComments | If true, then comments that usually precede generated SQL to identify the operation and user will not be generated at all; may help performance on Oracle which thinks it has to re-parse everything if a comment changes. | false |
+| DisableUserInSqlTrackingComments | If true, then comments that usually precede generated SQL to identify the operation will not contain associate information; may help performance on Oracle which thinks it has to re-parse everything if a comment changes. | false |
+| DynamicLoadedConnectionType | Returns the type of connection to open. | |
+| DynamicLoadedDataBaseDriver | Returns the name of the ADO.NET driver to load. | |
+| ImpersonateDatabaseUser | Should the DbUser be logged in with windows and impersonated when connecting to the database to support database integrated authentication. | false |
+| Server | The server name where the database is located. | |
+| TablePrefix | The prefix of the SuperOffice CRM tables in the database. | |
 
 ## Explicit
 
 Configuration section for authentication behavior when users are explicitly authenticated, typically by calling `SoSession.Authenticate` or the corresponding WCF service.
 
-| Name | Description |
-|---|---|
-| PartnerAllowed | Is partner access allowed. |
-| EmployeeAllowed | Is employee access allowed.<br>Default: true |
-| AnonymousAllowed | Is anonymous user access allowed.<br>Default: false |
-| DBUser | Database user when running on behalf of explicitly authenticated users |
-| DBPassword | Database user password. |
-| CommonDBConnection | Use the same connection string for all users, applying the common User and Password from this section, vs. using the one provided elsewhere.<br>Default: true |
+| Name | Description | Default |
+|---|---|---|
+| AnonymousAllowed | Is anonymous user access allowed? | false |
+| CommonDBConnection | Use the same connection string for all users, applying the common User and Password from this section, vs. using the one provided elsewhere. | true |
+| DBPassword | Database user password. | |
+| DBUser | Database user when running on behalf of explicitly authenticated users | |
+| EmployeeAllowed | Is employee access allowed? | true |
+| PartnerAllowed | Is partner access allowed? | |
 
 ## Session
 
@@ -61,5 +61,8 @@ When in Mode **Thread**, every session requires the [suspend][1] and continue me
 
 When in Mode **Context**, your session only requires authentication and a closure. Here, once you authenticate a session it will be for the lifetime of the session. It is not necessary to call continue and suspend methods. The session values for this configuration will be stored in a context static manner.
 
+See the [NetServer Core reference][2] for details about handling this programmatically.
+
 <!-- Referenced links -->
 [1]: ../../authentication/onsite/sosession/suspend.md
+[2]: <xref:SuperOffice.Configuration.ConfigFile.Data>

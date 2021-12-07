@@ -2,9 +2,9 @@
 title: Factory element
 uid: ns_config_factory
 description: NetServer Factory element
-so.date: 06.06.2018
-author: {github-id}
-keywords: config
+so.date: 12.07.2021
+author: Bergfrid Dias
+keywords: config, NetServer, web.config, Factory, CustomFactories, DynamicLoad
 so.topic: reference
 so.envir: onsite
 ---

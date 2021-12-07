@@ -1,11 +1,10 @@
 ---
-description: nerserver_config      
+uid: nerserver_config
+title: NetServer configuration
 description: NetServer configuration
-author: {github-id}
-keywords: web.config
-so.date: 06.06.2018
-author: {github-id}
-keywords: config
+author: Bergfrid Dias
+so.date: 12.07.2021
+keywords: config, web.config, NetServer
 so.topic: reference
 so.envir: onsite
 ---
@@ -28,3 +27,11 @@ The configuration file must contain a section group named `SuperOffice`. Under i
 In between the ending `configSections` and `configuration` element, there must be a `<SuperOffice></SuperOffice>` element that defines the values that set the NetServer runtime behavior.
 
 View one of the available sections to learn more about the property settings available in each one.
+
+> [!TIP]
+> Consider using the [ConfigFile utility class][1] to access the SuperOffice section in the config file.
+
+<!-- Referenced links -->
+[1]: <xref:SuperOffice.Configuration.ConfigFile>
+
+<!-- Referenced images -->

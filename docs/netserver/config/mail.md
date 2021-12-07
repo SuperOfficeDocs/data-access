@@ -1,14 +1,14 @@
 ---
-title: Mail Element
+title: Mail element
 uid: ns_config_Mail
-description: NetServer Mail element
-so.date: 06.06.2018
-author: {github-id}
-keywords: config
+description: NetServer Mail component configuration options.
+so.date: 12.07.2021
+author: Bergfrid Dias
+keywords: config, NetServer, web.config, Mail, NumberOfDaysToDownload, Reader, Sender
 so.topic: reference
 so.envir: onsite
 ---
-# NetServer Mail Element (SuperOffice only)
+# NetServer Mail element (SuperOffice only)
 
 Mail component configuration options.
 
@@ -25,6 +25,11 @@ Mail component configuration options.
 
 | Name | Description |
 |---|---|
+| NumberOfDaysToDownload | Initial number of days to fetch mail for. |
 | Reader | The Key used for mail reader. |
 | Sender | The Key used for mail sender. |
-| NumberOfDaysToDownload | Initial number of days to fetch mail for. |
+
+See the [NetServer Core reference][1] for details about handling this programmatically.
+
+<!-- Referenced links -->
+[1]: <xref:SuperOffice.Configuration.ConfigFile.Mail>

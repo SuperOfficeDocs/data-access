@@ -1,10 +1,10 @@
 ---
 title: Webhooks element
 uid: ns_config_webhooks
-description: NetServer Webhooks element
-so.date: 06.06.2018
-author: {github-id}
-keywords: config
+description: NetServer configuration related to webhooks - events broadcast to remote servers.
+so.date: 12.07.2021
+author: Bergfrid Dias
+keywords: config, NetServer, web.config, Webhooks, EnableWebhooks, NumThreads, RequireHttps, Timeout, ValidateHttps
 so.topic: reference
 so.envir: onsite
 ---
@@ -21,10 +21,15 @@ Configure values related to webhooks - events broadcast to remote servers.
 </Webhooks>
 ```
 
-| Name | Description |
-|---|---|
-| EnableWebhooks | Broadcast events to remote servers.<br>Default: false |
-| RequireHttps | Require webhooks target URLs to use HTTPS protocol. Should only be turned off during development.<br>Default: true |
-| ValidateHttps | Require valid public HTTPS certificates. Self-signed or expired certs on webhook target URLs are refused. Should only be turned off during development.<br>Default: true |
-| NumThreads | How many background threads to run for dispatching webhooks. Default 0 = scale automatically according to demand |
-| Timeout | Stop background threads after X number of seconds of idle time. Default 30 seconds |
+| Name | Description | Default |
+|---|---|---|
+| EnableWebhooks | Broadcast events to remote servers. | false |
+| NumThreads | How many background threads to run for dispatching webhooks. | 0 = scale automatically according to demand |
+| RequireHttps | Require webhooks target URLs to use HTTPS protocol. Should only be turned off during development. | true |
+| Timeout | Stop background threads after X number of seconds of idle time. | 30 seconds |
+| ValidateHttps | Require valid public HTTPS certificates. Self-signed or expired certs on webhook target URLs are refused. Should only be turned off during development. | true |
+
+See the [NetServer Core reference][1] for details about handling this programmatically.
+
+<!-- Referenced links -->
+[1]: <xref:SuperOffice.Configuration.ConfigFile.Webhooks>

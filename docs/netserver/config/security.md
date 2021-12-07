@@ -1,10 +1,10 @@
 ---
 title: Security element
 uid: ns_config_security
-description: NetServer Security element
-so.date: 06.06.2018
-author: {github-id}
-keywords: config
+description: NetServer configuration sections related to domain- and operational security settings.
+so.date: 12.07.2021
+author: Bergfrid Dias
+keywords: config, NetServer, web.config, Security, ActiveDirectoryCredentialPlugin, Active Directory, DisableIntegration, Cryptography, SymmetricIV, SymmetricKey, SymmetricSecret, Rijndael, Sentry, SoPasswordCredentialPlugin, DisableUseExternalAssociate, DisableUseInternalAssociate, DisableUseSystemAssociate, session
 so.topic: reference
 so.envir: onsite
 ---
@@ -41,13 +41,13 @@ The security section group contains three configuration sections related to doma
 
 Configuration settings related to Active Directory domain.
 
-| Name | Description |
-|---|---|
-| Domain | Name of the domain for authentication. Default domain is used when nothing is provided. The name of the domain or server for `System.DirectoryServices.AccountManagement.ContextType.Domain` context types, the machine name for `System.DirectoryServices.AccountManagement.ContextType.Machine` context types, or the name of the server and port hosting the `System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory` instance. |
-| Container | The container on the store to use as the root of the context. Default container is used when nothing is provided. All queries are performed under this root. |
-| User | The username used to connect to the store. If the username and password parameters are not configured, the default credentials of the current principal are used. Otherwise, both username and password must be configured, and the credentials they specify are used to connect to the store. |
-| Password | The user password used to connect to the store. |
-| DisableIntegration | Disable integration with Active Directory.<br>Default: false |
+| Name | Description | Default |
+|---|---|---|
+| Container | The container on the store to use as the root of the context. Default container is used when nothing is provided. All queries are performed under this root. | |
+| DisableIntegration | Disable integration with Active Directory. | false |
+| Domain | Name of the domain for authentication. Default domain is used when nothing is provided. The name of the domain or server for `System.DirectoryServices.AccountManagement.ContextType.Domain` context types, the machine name for `System.DirectoryServices.AccountManagement.ContextType.Machine` context types, or the name of the server and port hosting the `System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory` instance. | |
+| Password | The user password used to connect to the store. | |
+| User | The username used to connect to the store. If the username and password parameters are not configured, the default credentials of the current principal are used. Otherwise, both username and password must be configured, and the credentials they specify are used to connect to the store. | |
 
 ## Cryptography
 
@@ -55,11 +55,11 @@ Cryptography is used for encrypting and decrypting the user sessions.
 
 | Name | Description |
 |---|---|
-| SymmetricKey | The Key used in the Rijndael algorithm. |
 | SymmetricIV | The IV used in the Rijndael algorithm. |
+| SymmetricKey | The Key used in the Rijndael algorithm. |
 | SymmetricSecret | A secret phrase used as a signature. |
 
-The `SymmetricKey` and the `SymmetricIV` are used in the Rijndeal (`System.Security.Cryptography.Rijndael`) based encrypting and decrypting methods. The `SymmetricSecret` is used to compute a hash code using the SHA256Managed classes (`System.Security.Cryptography.SHA256Managed`). The key-value pairs in the section are used in NetServer session suspend and session continue routines.
+The `SymmetricKey` and the `SymmetricIV` are used in the Rijndael-based (`System.Security.Cryptography.Rijndael`) encryption and decryption methods. The `SymmetricSecret` is used to compute a hash code using the SHA256Managed classes (`System.Security.Cryptography.SHA256Managed`). The key-value pairs in the section are used in NetServer session suspend and session continue routines.
 
 When a session is suspended, the `SymmetricKey` and the `SymmetricIV` are used to encrypt the session information, where the `SymmetricSecret` creates a hash code. Using a `CryptoStream` (`System.Security.Cryptography.CryptoStream`), the encrypted session data and the computed hash will be written to a `MemoryStream` (`System.IO.MemoryStream`) and returned as a Base64String for subsequent calls to a session's `Continue` method.
 
@@ -73,16 +73,21 @@ It is important to know that if your system is using a server cluster these valu
 
 Sentry configuration options.
 
-| Name | Description |
-|---|---|
-| Ignore | Ignore the Sentry mechanism, everything will be allowed.<br>Default: false |
+| Name | Description | Default |
+|---|---|---|
+| Ignore | Ignore the Sentry mechanism, everything will be allowed. | false |
 
 ## SoPasswordCredentialPlugin
 
 SuperOffice password credentials plugin options.
 
-| Name | Description |
-|---|---|
-| DisableUseInternalAssociate | Disables SuperOffice-passwords for Internal associates (normal users).<br>Default: false |
-| DisableUseSystemAssociate | Disables SuperOffice password for System associates.<br>Default: false |
-| DisableUseExternalAssociate | Disables SuperOffice password for External associates.<br>Default: false |
+| Name | Description | Default |
+|---|---|---|
+| DisableUseExternalAssociate | Disables SuperOffice password for External associates. | false |
+| DisableUseInternalAssociate | Disables SuperOffice-passwords for Internal associates (normal users). | false |
+| DisableUseSystemAssociate | Disables SuperOffice password for System associates. | false |
+
+See the [NetServer Core reference][1] for details about handling this programmatically.
+
+<!-- Referenced links -->
+[1]: <xref:SuperOffice.Configuration.ConfigFile.Security>
