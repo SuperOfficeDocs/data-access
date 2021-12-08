@@ -30,6 +30,7 @@ Configuration values related to the WebApi web services.
 | AuthorizeWithUsername | Allow WebAPI to authorize with username + password. |  true |
 | CORSEnable | Allow 3rd party web pages to call WebAPI from the browser.| false |
 | CORSOrigin | If CORS is enabled, define space-delimited Origins that are allowed to call the WebAPI from the browser. Example value: `"http://foo.bar http://localhost/ http://localhost *"`. | |
+| Documentation | Turn on/off Swagger/OpenAPI documentation generation for WebAPI. Turn off to reduce memory usage. | |
 
 See the [NetServer Core reference][1] for details about handling this programmatically.
 

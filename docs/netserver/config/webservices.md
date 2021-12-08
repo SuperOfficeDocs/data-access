@@ -24,7 +24,7 @@ Configuration section used to define SuperOffice CRM web service settings.
 | Name | Description | Default |
 |---|---|---|
 | AllowWebServiceRequests | Permit requests to web services. This value is supported in the default `SoWcfRequestInterceptor` and can be overridden by making a custom `SoWcfRequestInterceptorPlugin`. | |
-| RemoteBaseURL | Base URL for remote services. Will overridden by `Services.RemoteBaseURL`. | `http://localhost/webs/SuperOffice.Web.Services` |
+| RemoteBaseURL | Base URL for remote services. Will be overridden by `Services.RemoteBaseURL`. | `http://localhost/webs/SuperOffice.Web.Services` |
 | RemoveInvalidXMLText | If we should remove UTF-8 characters that are not valid XML. The Text table is the only place where this filter is active. | |
 | WrapExceptions | Check if NetServer shall wrap and serialize exceptions, or leave it up to the communication carrier (WCF). | |
 

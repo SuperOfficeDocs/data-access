@@ -4,7 +4,7 @@ uid: ns_config_security
 description: NetServer configuration sections related to domain- and operational security settings.
 so.date: 12.07.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, Security, ActiveDirectoryCredentialPlugin, Active Directory, DisableIntegration, Cryptography, SymmetricIV, SymmetricKey, SymmetricSecret, Rijndael, Sentry, SoPasswordCredentialPlugin, DisableUseExternalAssociate, DisableUseInternalAssociate, DisableUseSystemAssociate, session
+keywords: config, NetServer, web.config, Security, ActiveDirectoryCredentialPlugin, Active Directory, DisableIntegration, Cryptography, SymmetricIV, SymmetricKey, SymmetricSecret, Rijndael, Sentry, SoPasswordCredentialPlugin, DisableUseExternalAssociate, DisableUseInternalAssociate, DisableUseSystemAssociate, session, PriorityInternalAssociate
 so.topic: reference
 so.envir: onsite
 ---
@@ -47,6 +47,7 @@ Configuration settings related to Active Directory domain.
 | DisableIntegration | Disable integration with Active Directory. | false |
 | Domain | Name of the domain for authentication. Default domain is used when nothing is provided. The name of the domain or server for `System.DirectoryServices.AccountManagement.ContextType.Domain` context types, the machine name for `System.DirectoryServices.AccountManagement.ContextType.Machine` context types, or the name of the server and port hosting the `System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory` instance. | |
 | Password | The user password used to connect to the store. | |
+| PriorityInternalAssociate | Priority of the plugin for internal associates. | |
 | User | The username used to connect to the store. If the username and password parameters are not configured, the default credentials of the current principal are used. Otherwise, both username and password must be configured, and the credentials they specify are used to connect to the store. | |
 
 ## Cryptography
@@ -86,6 +87,7 @@ SuperOffice password credentials plugin options.
 | DisableUseExternalAssociate | Disables SuperOffice password for External associates. | false |
 | DisableUseInternalAssociate | Disables SuperOffice-passwords for Internal associates (normal users). | false |
 | DisableUseSystemAssociate | Disables SuperOffice password for System associates. | false |
+| PriorityInternalAssociate | Priority of the plugin for internal associates. | |
 
 See the [NetServer Core reference][1] for details about handling this programmatically.
 

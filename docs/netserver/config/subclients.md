@@ -19,6 +19,10 @@ Configuration section defining any SuperOffice CRM sub-clients.
 </SubClients>
 ```
 
+| Name | Description |
+|---|---|
+| Clients | List of sub-clients. |
+
 See the [NetServer Core reference][1] for details about handling this programmatically.
 
 <!-- Referenced links -->

@@ -16,7 +16,7 @@ Configuration for the Web client **CssSprite** generator. Used by SuperOffice on
 
 | Name | Description | Default |
 |---|---|---|
-| Enabled |  By enabling this feature an image is created, containing most icons used in the application. | true |
+| Enabled | By enabling this feature an image is created, containing most icons used in the application. | true |
 | ExcludePaths | Paths to exclude. Do not include root path. Semicolon-separated list. | LargeFlag |
 | MaxHeight | The maximum height of an icon allowed in the sprite. Icons higher are excluded. | 100 |
 | MaxWidth | The maximum width of an icon allowed in the sprite. Icons wider are excluded. | 100 |

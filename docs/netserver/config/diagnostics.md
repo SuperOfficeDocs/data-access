@@ -4,7 +4,7 @@ uid: ns_config_diagnostics
 description: NetServer configuration of diagnostic logging tools.
 so.date: 12.07.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, Diagnostics, log, CheckBrowserVersion, EnableResourceTracer, EnableScaffolding, EnableStackTracing, LogDebug, LogError, LogWarning, LogFolder, LoggedServices, LogInformation, LogWarning, LogTrace, LogToFile, LogToSuperOffice, LogServiceCalls
+keywords: config, NetServer, web.config, Diagnostics, log, CheckBrowserVersion, EnableResourceTracer, EnableScaffolding, EnableStackTracing, LogDebug, LogError, LogWarning, LogFolder, LoggedServices, LogInformation, LogWarning, LogTrace, LogToFile, LogToSuperOffice, LogServiceCalls, AppInsightInstrumentationKey, EnableQAAttributes, LogLongQueries, ShowExceptionsFromBackend
 so.topic: reference
 so.envir: onsite
 ---
@@ -38,7 +38,9 @@ Configuration of diagnostic logging tools.
 
 | Name | Description | Default |
 |---|---|---|
+| AppInsightInstrumentationKey | Identifier of resource that you want to associate your telemetry data with. | |
 | CheckBrowserVersion | Determines whether browser version information be sent back to SuperOffice for compatibility verification. | |
+| EnableQAAttributes | If true, the SCIL components render additional attributes to help with automated UI tests. | |
 | EnableResourceTracer | Enable tracing of resource usage per operation to trace. | |
 | EnableScaffolding | When this option is enabled, extra logging is performed. It is strongly recommended to have this option enabled during development and testing. Huge log files are generated when this option is enabled! | |
 | EnableStackTracing | Determines whether stack traces be collected by various events. | |
@@ -53,6 +55,7 @@ Configuration of diagnostic logging tools.
 | LogInformationFrom | Comma separated list of classes, namespaces to log from. Filters the information logging. | |
 | LogLongQueries | Should long-running queries be logged in textual form to a special file. | false |
 | LogLongQueriesAsXML | Should long-running queries be logged to a special file (*Query_year.month.day.log*) in XML serialized format, for later analysis and reruns using the QueryWorkbench tool. | |
+| LogLongQueriesToPlugins | Should long-running queries be logged to SoLoggerPlugins? | false |
 | LogMail | Log mail server communication. | |
 | LogMailFolder | Folder to use for mail logging. | |
 | LogServiceCalls | Determines whether calls to the service layer are logged. | |
@@ -65,8 +68,8 @@ Configuration of diagnostic logging tools.
 | LogTrace | Log trace information. This includes a lot of information. Only use this option while debugging. This will be a severe performance hit! | false |
 | LogTraceFrom | Comma separated list of classes, namespaces to log from. Filters the trace logging. | |
 | LogWarning | Determines whether warning messages are logged. | false |
-| LongQueryThreshold | Threshold for logging a long-running query, in milliseconds. Queries that execute in less than this time are not logged as long-running. The time is from the moment the SQL text is sent to the database until the first row (for a select) or the 'nn rows affected' return value is received. |  2500 |
-| SuperOfficeErrorServiceUrl | The URL used to log to SuperOffice Research and Product Development (Online through a web service). | |
+| LongQueryThreshold | Threshold for logging a long-running query, in milliseconds. Queries that execute in less than this time are not logged as long-running. The time is from the moment the SQL text is sent to the database until the first row (for a select) or the 'nn rows affected' return value is received. | 2500 |
+| ShowExceptionsFromBackend | If true, then the innermost exception message from the backend will be shown in the GUI, directly when the error happens. | |
 | UsageStatUrl | URL for reporting Usage Statistics. | |
 | UserSyncUrl | URL for synchronizing user information. | |
 

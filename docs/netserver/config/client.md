@@ -26,7 +26,9 @@ Configuration values related to client configuration, extension of `ClientConfig
 | ApplicationName | Web client application name - used to resolve page config files. | WebClient - **Don't change!** |
 | ApplicationTitle | Application title. | SuperOffice® CRM |
 | ClientCacheKey | Cache key that is appended (if it exists) to the query string for JavaScript and CSS includes. | |
+| ExportBatchTaskThreshold | Threshold when an Export is delegated to a Batch Task, rather than being run directly in the Web server. | |
 | ExportPageSize | | 10000 |
+| ExportRowLimit | Absolute upper limit for the number of rows in a file export, such as an Excel Export from Archives. | |
 | GoogleImportClientId | Client ID when importing from Google. | |
 | GoogleImportClientSecret | Client secret when importing from Google. | |
 | GoogleImportDispatcher | URL to import from Google. | |

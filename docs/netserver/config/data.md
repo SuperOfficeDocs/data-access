@@ -4,7 +4,7 @@ uid: ns_config_data
 description: The NetServer Data configuration section contains subsections for managing the database connection and session handling.
 so.date: 12.07.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, Database, CommandTimeout, ConnectionString, DatabaseMajor, DatabaseMinor, DatabaseName, DefaultReadUncommitted, DisableSqlTrackingComments, DisableUserInSqlTrackingComments, DynamicLoadedConnectionType, DynamicLoadedDataBaseDriver, ImpersonateDatabaseUser, Server, TablePrefix, Explicit, PartnerAllowed, EmployeeAllowed, AnonymousAllowed, DBUser, DBPassword, CommonDBConnection, Session, Mode, ReauthenticateOnDeserialization
+keywords: config, NetServer, web.config, Database, CommandTimeout, ConnectionString, DatabaseMajor, DatabaseMinor, DatabaseName, DefaultReadUncommitted, DisableSqlTrackingComments, DisableUserInSqlTrackingComments, DynamicLoadedConnectionType, DynamicLoadedDataBaseDriver, ImpersonateDatabaseUser, Server, TablePrefix, Explicit, PartnerAllowed, EmployeeAllowed, AnonymousAllowed, DBUser, DBPassword, CommonDBConnection, Session, Mode, ReauthenticateOnDeserialization, CacheCheckInterval, ForceCacheRefreshInterval, SystemAllowed
 so.topic: reference
 so.envir: onsite
 ---
@@ -21,6 +21,7 @@ Configuration values for database connectivity define the location and database-
 
 | Name | Description | Default |
 |---|---|---|
+| CacheCheckInterval | Number of seconds to check if caches are outdated and need to be refreshed. 0 will disable the timer. | |
 | CommandTimeout | Timeout in seconds for the command to wait for a response from the database. | |
 | ConnectionString | The formatted connection string template placeholders (`Server=[@Server];Database=[@Database];User ID=[@User];Password=[@Password]`). The number of parameters in the `ConnectionString` key will vary from one database vendor software to another, so will the names of the parameters. Vendor database software differences must be taken into consideration when setting this configuration key. The above example displays the configurations for an MSSQL database. | |
 | DatabaseMajor | Major name of database provider. Options: MSSQL, Oracle, Sybase, and DB2 (legacy only). | |
@@ -31,6 +32,7 @@ Configuration values for database connectivity define the location and database-
 | DisableUserInSqlTrackingComments | If true, then comments that usually precede generated SQL to identify the operation will not contain associate information; may help performance on Oracle which thinks it has to re-parse everything if a comment changes. | false |
 | DynamicLoadedConnectionType | Returns the type of connection to open. | |
 | DynamicLoadedDataBaseDriver | Returns the name of the ADO.NET driver to load. | |
+| ForceCacheRefreshInterval | Number of seconds before caches are force refreshed. 0 will disable the timer. | |
 | ImpersonateDatabaseUser | Should the DbUser be logged in with windows and impersonated when connecting to the database to support database integrated authentication. | false |
 | Server | The server name where the database is located. | |
 | TablePrefix | The prefix of the SuperOffice CRM tables in the database. | |
@@ -47,6 +49,7 @@ Configuration section for authentication behavior when users are explicitly auth
 | DBUser | Database user when running on behalf of explicitly authenticated users | |
 | EmployeeAllowed | Is employee access allowed? | true |
 | PartnerAllowed | Is partner access allowed? | |
+| SystemAllowed | Is system user access allowed? | |
 
 ## Session
 
