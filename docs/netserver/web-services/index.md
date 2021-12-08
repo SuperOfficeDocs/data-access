@@ -118,7 +118,6 @@ Entity carriers resemble [NetServer Core Entities][1]. In contrast, read-only ca
 The following agents are not available in Online by default. Access must be requested specifically when an app is registered.
 
 * CRMScriptAgent
-* DatabaseTableAgent
 * EMailAgent
 * ErpSyncAgent
 * MessagingAgent
