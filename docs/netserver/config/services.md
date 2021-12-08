@@ -31,6 +31,8 @@ Configuration settings used to manage SuperOffice web services.
 | SwitchDefault | Default mode for the switch. | Remote |
 | SwitchFailover | Timeout before failover in seconds. | 60. |
 
+**Switch mode**, when set, will attempt to communicate with the setting defined in Services-SwitchDefault. If unable to communicate successfully, NetServer will switch to the other setting option (Local or Remote) and attempt to communicate again.
+
 See the [NetServer Core reference][1] for details about handling this programmatically.
 
 <!-- Referenced links -->
