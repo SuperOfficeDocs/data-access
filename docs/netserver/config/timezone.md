@@ -1,5 +1,5 @@
 ---
-title: Timezone element
+title: TimeZone element
 uid: ns_config_timezone
 description: NetServer configuration values related to TimeZone.
 so.date: 12.07.2021
@@ -9,7 +9,7 @@ so.topic: reference
 so.envir: onsite
 ---
 
-# NetServer Timezone element (SuperOffice only)
+# NetServer TimeZone element (SuperOffice only)
 
 Configuration values related to TimeZone.
 

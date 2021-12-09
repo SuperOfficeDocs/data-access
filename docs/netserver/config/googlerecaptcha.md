@@ -15,7 +15,7 @@ Configuration values for the Google reCAPTCHA validation service.
 | Name | Description |
 |---|---|
 | SecretKey | The secret key from the Google reCAPTCHA instance. |
-| SiteKey | The site key from from the Google reCAPTCHA instance. |
+| SiteKey | The site key from the Google reCAPTCHA instance. |
 | VerificationUrl | URL for Google reCAPTCHA validation service. |
 
 See the [NetServer Core reference][1] for details about handling this programmatically.
