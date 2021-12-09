@@ -105,7 +105,7 @@ items:
   items:
   - name: AccessGateway
     href: netserver/config/accessgateway.md
-  - name: Batchservice
+  - name: BatchService
     href: netserver/config/batchservice.md
   - name: Client
     href: netserver/config/client.md

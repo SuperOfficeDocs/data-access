@@ -2,7 +2,7 @@
 title: Security element
 uid: ns_config_security
 description: NetServer configuration sections related to domain- and operational security settings.
-so.date: 12.07.2021
+so.date: 12.09.2021
 author: Bergfrid Dias
 keywords: config, NetServer, web.config, Security, ActiveDirectoryCredentialPlugin, Active Directory, DisableIntegration, Cryptography, SymmetricIV, SymmetricKey, SymmetricSecret, Rijndael, Sentry, SoPasswordCredentialPlugin, DisableUseExternalAssociate, DisableUseInternalAssociate, DisableUseSystemAssociate, session, PriorityInternalAssociate
 so.topic: reference
@@ -12,6 +12,9 @@ so.envir: onsite
 # NetServer Security element
 
 The security section group contains three configuration sections related to domain- and operational security settings.
+
+> [!WARNING]
+> Do not change these values unless you are absolutely sure!
 
 ```XML
 <Security>
@@ -43,16 +46,22 @@ Configuration settings related to Active Directory domain.
 
 | Name | Description | Default |
 |---|---|---|
-| Container | The container on the store to use as the root of the context. Default container is used when nothing is provided. All queries are performed under this root. | |
+| Container | The container on the store to use as the root of the context. Default container is used when nothing is provided. Leave it blank if you do not know. All queries are performed under this root. | |
 | DisableIntegration | Disable integration with Active Directory. | false |
 | Domain | Name of the domain for authentication. Default domain is used when nothing is provided. The name of the domain or server for `System.DirectoryServices.AccountManagement.ContextType.Domain` context types, the machine name for `System.DirectoryServices.AccountManagement.ContextType.Machine` context types, or the name of the server and port hosting the `System.DirectoryServices.AccountManagement.ContextType.ApplicationDirectory` instance. | |
 | Password | The user password used to connect to the store. | |
 | PriorityInternalAssociate | Priority of the plugin for internal associates. | |
-| User | The username used to connect to the store. If the username and password parameters are not configured, the default credentials of the current principal are used. Otherwise, both username and password must be configured, and the credentials they specify are used to connect to the store. | |
+| User | The username used to connect to the store. It must be able to list and view users. If the username and password parameters are not configured, the default credentials of the current principal are used. Otherwise, both username and password must be configured, and the credentials they specify are used to connect to the store. | |
+
+> [!CAUTION]
+> To find and import Active Directory users, NetServer web services need to be in the Active Directory domain. This is why we recommend [onsite deployment scenario 2][3] with a reverse proxy so you do not expose it to the DMZ.
 
 ## Cryptography
 
-Cryptography is used for encrypting and decrypting the user sessions.
+Cryptography is used for encrypting and decrypting the user credentials and sessions.
+
+> [!CAUTION]
+> Change any of these keys at your own peril.
 
 | Name | Description |
 |---|---|
@@ -76,7 +85,7 @@ Sentry configuration options.
 
 | Name | Description | Default |
 |---|---|---|
-| Ignore | Ignore the Sentry mechanism, everything will be allowed. | false |
+| Ignore | Ignore the [Sentry mechanism][2], everything will be allowed. | false |
 
 ## SoPasswordCredentialPlugin
 
@@ -89,7 +98,18 @@ SuperOffice password credentials plugin options.
 | DisableUseSystemAssociate | Disables SuperOffice password for System associates. | false |
 | PriorityInternalAssociate | Priority of the plugin for internal associates. | |
 
+## Authentication
+
+> [!NOTE]
+> Separate section within the SuperOffice Security group section, it needs to be declared before it can be defined.
+
+| Name | Description |
+|---|---|
+| TrustedDomains | Check if a domain name is trusted. |
+
 See the [NetServer Core reference][1] for details about handling this programmatically.
 
 <!-- Referenced links -->
 [1]: <xref:SuperOffice.Configuration.ConfigFile.Security>
+[2]: ../../security/sentry/index.md
+[3]: ../../../../superoffice-docs/docs/onsite/security/deployment-scenarios.md#scenario2

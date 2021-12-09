@@ -2,7 +2,7 @@
 title: Scripting element
 uid: ns_config_scripting
 description: NetServer configuration values related to NetServer Service Scripting.
-so.date: 12.07.2021
+so.date: 12.09.2021
 author: Bergfrid Dias
 keywords: config, NetServer, web.config, Scripting, EnableScripting, ScriptPath, MaxTimeouts, TimeoutLimit
 so.topic: reference
@@ -25,8 +25,8 @@ Configuration values related to NetServer Service Scripting.
 | Name | Description | Default |
 |---|---|---|
 | EnableScripting | Determines whether scripts will be invoked when web service methods are called. | true |
-| ScriptPath | UNC path to directory containing .cs, .vb or .dll script files. | |
-| MaxTimeouts | Maximum number of timeouts before a script is disabled. | |
+| ScriptPath | UNC path to directory containing .cs, .vb or .dll script files. Defaults to *\script* if not set. | |
+| MaxTimeouts | Maximum number of timeouts before a script is disabled. | 5 |
 | TimeoutLimit | Number of milliseconds before a script times out. | 20000 |
 
 See the [NetServer Core reference][1] for details about handling this programmatically.
