@@ -88,8 +88,6 @@ items:
       href: authentication/onsite/custom-proxies/index.md
     - name: Configuration
       items:
-      - name: NetServer
-        href: authentication/onsite/netserver-config.md
       - name: Enable anonymous user
         href: authentication/onsite/config-anonymous-user.md
       - name: Enable external user
@@ -127,6 +125,8 @@ items:
     href: netserver/config/documents.md
   - name: Downloads
     href: netserver/config/downloads.md
+  - name: Factory
+    href: netserver/config/factory.md
   - name: FeatureToggles
     href: netserver/config/featuretoggles.md
   - name: Globalization

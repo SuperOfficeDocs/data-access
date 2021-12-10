@@ -20,6 +20,10 @@ This section contains all available settings to configure SuperOffice NetServer 
 
 The configuration file must contain a section group named `SuperOffice`. Under it, additional sections and section groups are required that define NetServer configuration elements needed to operate.
 
+Below is a configuration file with only the bare essential SuperOffice sections defined:
+
+[!code-xml[XML](includes/web.config)]
+
 ## SuperOffice section group
 
 [!code-xml[the SuperOffice section group](includes/section-group-superoffice.xml)]

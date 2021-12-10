@@ -28,7 +28,8 @@ You must explicitly [enable the authentication methods][1] you want to use in th
 </WebApi>
 ```
 
-**AuthorizeWithImplicit** must be `true` otherwise the Active Directory authentication method will not work. It adds the `WWW-Authenticate: Negotiate` header that kicks off Windows authentication.
+> [!NOTE]
+> `AuthorizeWithImplicit` must be **true**; otherwise, the Active Directory authentication method will not work. It adds the `WWW-Authenticate: Negotiate` header that kicks off Windows authentication.
 
 ## IIS configuration
 

@@ -38,7 +38,10 @@ You will need to provide some login information to use the SuperOffice WebAPI.
 No `Authorize` header on a request means that you either:
 
 * have [IIS configured to handle identity][1] so that you can log in with your Active Directory, or
-* that you send [an `X-XSRF-TOKEN` header][2] to prove that you have access to a logged-in session
+* that you send [an X-XSRF-TOKEN header][2] to prove that you have access to a logged-in session
+
+> [!NOTE]
+> You must explicitly [enable the authentication methods][4] that you want to use in the *web.config* file.
 
 ### Basic
 
@@ -55,10 +58,6 @@ Alternatively, if the HTML page is running in the context of a SuperOffice web p
 
 > [!NOTE]
 > In this case, don't use the `window.btos(...)` method to convert a Ticket to base64 because the **ticket value is already base64 encoded**.
-
-## Configuration
-
-You must explicitly [enable the authentication methods][4] that you want to use in the *web.config* file.
 
 <!-- Referenced links -->
 [1]: enable-iis-identity.md

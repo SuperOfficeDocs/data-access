@@ -17,7 +17,7 @@ The data configuration section contains subsections for managing the database co
 
 ## Database
 
-Configuration values for database connectivity define the location and database-vendor-specific settings. Supported database servers include SQL Server and Oracle.
+Configuration values for database connectivity define the location and database-vendor-specific settings. Supported database servers include SQL Server and Oracle and the values will look slightly different depending on which vendor you use.
 
 | Name | Description | Default |
 |---|---|---|
@@ -46,6 +46,8 @@ Configuration values for database connectivity define the location and database-
 ## Explicit
 
 Configuration section for authentication behavior when users are explicitly authenticated, typically by calling `SoSession.Authenticate` or the corresponding WCF service. Relates to employee and partner access to the SuperOffice database.
+
+The `Explicit` section allows an application to determine what type of users are authorized to use this application, as well as must set the database credentials, which map to both a database server user and a SuperOffice system user.
 
 | Name | Description | Default |
 |---|---|---|
@@ -83,12 +85,20 @@ This section relates to anonymous access to the SuperOffice database. It is w
 
 ## Session
 
- This section governs session handling, the scope/storage of the session state. This relates to the lifetime of a NetServer communication session, such as the duration of a transaction, or group of transactions, and maintains the credentials defined in one of the following sections.
+ This section governs session handling: how the authenticated session will exist at runtime, the scope/storage of the session state. This relates to the lifetime of a NetServer communication session, such as the duration of a transaction, or group of transactions, and maintains the credentials defined in one of the following sections.
 
 | Name | Description |
 |---|---|
 | Mode | The mode of the session: Thread, Context, HttpContext, Process.<br>Maps to a class name that provides session storage. |
 | ReauthenticateOnDeserialization | A full re-authentication is carried out each time the session is de-serialized (such as from the session server). |
+
+Each session option determines where in memory the authenticated session will be available from.
+
+| Mode | Availability of authenticated SoSession |
+|---|---|
+| Process | to all synchronization contexts and threads |
+| Context | only to routines passed to the same synchronization context |
+| Thread  | only on that thread - if another non-authenticated thread tried to use the SuperOffice API to get data, NetServer would throw an exception. |
 
 * **Thread:** Every session requires the [suspend][1] and continue methods to be called for each query task. Here, each thread executed in NetServer will have sessions that are stored in the implication of different threads and have different session values stored in them. If you want to suspend a session, you must call the suspend method which returns a string with the session values. Should you wish to continue that session, you must call the continue method and pass the string with session values in it as a parameter. The session is stored in a thread-static manner.  Each executing thread has a separate instance of the session. If the session is accessed on a different thread, it will contain a different value. For further reference, see `System.ThreadStaticAttribute`.
 
