@@ -35,14 +35,6 @@ Caching configuration benefits performance. However, it makes more sense to turn
 
 When set to false, configuration changes to UI elements are immediately applied and observed in the browser. There's no need to reset IIS or issue a *flush* SoProtocol.
 
-To delete rows from the `SUPERLISTCOLUMNSIZE` table, use the `archive` attribute guiname value as the key with the following delete query.
-
-```SQL
--- replace [guiname] with the real archive guiname
-DELETE * FROM [CRM7].[DATABASENAME].[SUPERLISTCOLUMNSIZE]
-WHERE listOwner = '[guiname]'
-```
-
 ## CustomPath
 
 The custom-path key name must start with the text **CustomPath** and can be suffixed when necessary to support multiple custom paths. The only requirement is each key must start with "CustomPath_" and be unique.
