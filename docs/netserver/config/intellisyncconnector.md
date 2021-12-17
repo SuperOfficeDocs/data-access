@@ -26,4 +26,4 @@ Configuration settings used by SoIntellisyncConnector.
 See the [NetServer Core reference][1] for details about handling this programmatically.
 
 <!-- Referenced links -->
-[1]: <xref:SuperOffice.Configuration.ConfigFile.SoIntellisyncConnector>
+[1]: <xref:SuperOffice.Configuration.ConfigFile.IntellisyncConnector>
