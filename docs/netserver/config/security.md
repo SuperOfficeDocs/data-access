@@ -98,15 +98,6 @@ SuperOffice password credentials plugin options.
 | DisableUseSystemAssociate | Disables SuperOffice password for System associates. | false |
 | PriorityInternalAssociate | Priority of the plugin for internal associates. | |
 
-## Authentication
-
-> [!NOTE]
-> Separate section within the SuperOffice Security group section, it needs to be declared before it can be defined.
-
-| Name | Description |
-|---|---|
-| TrustedDomains | Check if a domain name is trusted. |
-
 See the [NetServer Core reference][1] for details about handling this programmatically.
 
 <!-- Referenced links -->
