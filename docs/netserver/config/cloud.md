@@ -2,9 +2,9 @@
 title: Cloud element
 uid: ns_config_cloud
 description: NetServer configuration for SuperOffice CRM Online.
-so.date: 12.07.2021
+so.date: 12.17.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, Cloud, Provider, DispatcherUrl, CloudUrl, TenantId, TemplatePath, ArchivePath, DefaultCallbackUrl, DocumentContentType, SpreadSheetContentType, PresentationContentType, UseInheritedPermissions
+keywords: web.config, Cloud element, TemplatePath, ArchivePath, DefaultCallbackUrl
 so.topic: reference
 so.envir: cloud
 so.client: online

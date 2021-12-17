@@ -2,9 +2,9 @@
 title: NetServer Client element
 uid: ns_config_client
 description: Configuration values related to NetServer client configuration, extension of ClientConfigurationProvider.
-so.date: 12.07.2021
+so.date: 12.17.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, ClientConfigurationProvider, Client, ApplicationName, ApplicationInstance, HelpFilesBaseUrl, ExportPageSize, ApplicationTitle, WebAppUsage, ClientCacheKey, UrlSchemeOverride, UrlHostOverride, UrlPortOverride, GoogleImportDispatcher, GoogleImportClientId, GoogleImportClientSecret, MasterDcfConfigHashKeyFormat, NetServicesStatusUrl, NetServicesNextDate, ShowWelcomeDialogs, WWW3Url
+keywords: NetServer, web.config, ClientConfigurationProvider, Client, export
 so.topic: reference
 so.envir: onsite
 so.client: web

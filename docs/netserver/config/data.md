@@ -108,8 +108,6 @@ Each session option determines where in memory the authenticated session will be
 
 * **HttpContext:** Recommended in ASP.NET applications. Added to prevent ASP.NET thread switches from changing identities in the middle of an ASP.net request.
 
-* **PartnerHttpContext:** Helper class for `SuperOffice.DevNet.Online.Login`.
-
 See the [NetServer Core reference][2] for details about handling this programmatically.
 
 <!-- Referenced links -->

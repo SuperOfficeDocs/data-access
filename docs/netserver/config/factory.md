@@ -2,16 +2,16 @@
 title: Factory element
 uid: ns_config_factory
 description: NetServer configuration values are used to access class factory information. The ClassFactory is part of a NetServer extension mechanism to support plug-ins.
-so.date: 12.10.2021
+so.date: 12.17.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, Factory, CustomFactories, DynamicLoad
+keywords: NetServer, web.config, Factory, CustomFactories, DynamicLoad
 so.topic: reference
 so.envir: onsite
 ---
 
 # NetServer Factory element
 
-These configuration values are used to access class factory information. The `ClassFactory` is part of a NetServer extension mechanism to support plug-ins. To utilize the methods, you must develop your own method and configure it to identify that you are enhancing a provided method.
+These configuration values are used to access class factory information. The `ClassFactory` is part of a NetServer extension mechanism to support plug-ins. Add entries for each dynamic link library containing custom archive providers, document or sentry plugins, and so on.
 
 ```XML
 <Factory>

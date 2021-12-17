@@ -2,9 +2,9 @@
 title: ClientConfigurationProvider
 uid: ns_config_client_configuration
 description: NetServer configuration for the Web client configuration data provider.
-so.date: 12.08.2021
+so.date: 12.17.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, ClientConfigurationProvider, FilePath, CacheConfigurations, CacheUserPreferences, ValidateConfigurations, CustomPath
+keywords: web.config, ClientConfigurationProvider, FilePath, cache, CustomPath
 so.topic: reference
 so.envir: onsite
 so.client: web
@@ -34,24 +34,6 @@ Configuration for the Web client configuration data provider. The paths tell the
 Caching configuration benefits performance. However, it makes more sense to turn caching off during development.
 
 When set to false, configuration changes to UI elements are immediately applied and observed in the browser. There's no need to reset IIS or issue a *flush* SoProtocol.
-
-> [!NOTE]
-> Caching works for all configuration files **except system files**. These are cached during application start-up and held in memory.
-
-Any changes to the following files do require an IIS reset:
-
-* SoApplicationConfiguration.config
-* SoAdminApplicationConfiguration.config
-* SoFilterList.config
-* SoObjectMapping.config
-* SoArchiveColumnList.config
-* SoArchiveControlLinkInfoTypes.config
-* SoArchiveCriteriaList.config
-
-> [!NOTE]
-> Any changes to the `archive` configuration will not be observed in the client until the corresponding records in the database are purged.
-
-Once an archive provider is initialized with column definitions in an `archive` element, the column definitions are persisted like preferences in the `SUPERLISTCOLUMNSIZE` table of the database.
 
 To delete rows from the `SUPERLISTCOLUMNSIZE` table, use the `archive` attribute guiname value as the key with the following delete query.
 
