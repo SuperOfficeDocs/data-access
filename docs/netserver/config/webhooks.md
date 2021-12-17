@@ -2,16 +2,16 @@
 title: Webhooks element
 uid: ns_config_webhooks
 description: NetServer configuration related to webhooks - events broadcast to remote servers.
-so.date: 12.07.2021
+so.date: 12.17.2021
 author: Bergfrid Dias
-keywords: config, NetServer, web.config, Webhooks, EnableWebhooks, NumThreads, RequireHttps, Timeout, ValidateHttps
+keywords: NetServer, web.config, Webhooks, NumThreads, RequireHttps
 so.topic: reference
 so.envir: onsite
 ---
 
 # NetServer Webhooks element
 
-Configure values related to webhooks - events broadcast to remote servers.
+Configure values related to webhooks - events broadcast to remote servers. It is possible to configure custom proxy settings. See the [CustomProxy section][2] for details.
 
 ```XML
 <Webhooks>
@@ -33,3 +33,4 @@ See the [NetServer Core reference][1] for details about handling this programmat
 
 <!-- Referenced links -->
 [1]: <xref:SuperOffice.Configuration.ConfigFile.Webhooks>
+[2]: customproxy.md
