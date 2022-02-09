@@ -20,8 +20,8 @@ You need to [fill out a form][1] to register your application, which includes an
 
 Once registered, you will receive 2 tokens:
 
-* Application ID - a public ID you can embed in web pages: `4e5e6f90f529fede129bd25ad`
-* Application token - a secret ID you should not embed in web pages. `74252df1e0119f1913f64c6d8d`
+* Client ID / Application ID - a public ID you can embed in web pages: `4e5e6f90f529fede129bd25ad`
+* Client secret / Application token - a secret ID you should not embed in web pages. `74252df1e0119f1913f64c6d8d`
 
 ## <a name="oauth"></a>Introduction to OAuth 2.0
 
