@@ -1,6 +1,6 @@
 # data-access
 
-This repo is now **inactive/archived**. 
+This repo is now **inactive** and will be marked as archived once issues have been migrated.
 
 The contents has moved to make it easier for collaboraters to located and work with SuperOffice documentation.
 
